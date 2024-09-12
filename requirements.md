@@ -17,24 +17,37 @@ The purpose of this requirements document is to clearly outline the specificatio
 # MoSCoW Prioritization of Requirements
 
 ## Must-Have
-- The essential features and functionalities that are critical for the system's operation.
-- These requirements must be implemented and delivered in the final product.
-- Failure to include these elements would result in a system that does not meet its primary objectives or user needs.
+- Generate comprehensive summaries of qualitative feedback from IDEA survey reports.
+- Implement robust security measures to ensure that each professor has access only to their own IDEA reports.
+- Integrate an authentication system utilizing the existing Single Sign-On (SSO) used by Utah State University.
+- Enable users to filter feedback by specific classes and time frames for targeted analysis.
+- Provide answers to key questions such as “What is the general overview of the comments?”, “What did I do well?”, and “What can I do better?”.
+- Allow aggregation of multiple reports to identify trends over time.
+- Filter out aggressive or inappropriate comments to protect the emotional well-being of professors.
+- Generate an automatic printable report as PDFs based on the specified timeline and selected classes.
+- Include the prompt used to generate the initial report for transparency.
+- Ensure the system is user-friendly and intuitive for professors who may not be tech-savvy.
+- Ensure the system complies with relevant data privacy laws and university policies.
 
 ## Should-Have
-- Important features that are not critical for the system's core functionality.
-- These requirements are considered important but can be deferred to a later phase if necessary.
-- Including these elements would enhance the system's usability, performance, or user experience.
+- Implement a permission system that allows different overseers to access the IDEA reports of the professors they oversee.
+- Provide a history of interactions that users have had with the chatbot for reference and review.
+- Enable analysis of IDEA survey reports from periods before Fall 2019 to offer a comprehensive historical perspective.
+- Allow users to engage in a chat about specific sections of the report, enabling them to ask targeted questions and receive detailed insights.
+- Offer the option to download reports in multiple formats, such as PDF, CSV, and DOCX, to cater to different user needs.
+- Include citations of specific comments that the AI uses to generate its insights, ensuring transparency and traceability.
 
 ## Could-Have
-- Desirable features that are not essential for the system's operation.
-- These requirements are considered optional and can be included if time and resources permit.
-- Implementing these elements would provide additional value or functionality to the system but are not necessary for its basic operation.
+- Provide a detailed analysis of the "Feel and Vibe" of other USU programs to offer comparative insights.
+- Suggest additional questions for professors to ask, such as “What do students think about my quizzes?” or “What is the general consensus on my class difficulty level?” to gain more specific feedback.
+- Implement mobile support to allow professors to access and interact with the system on-the-go.
+- Allow superiors to see which professors are active and using the platform, providing oversight and encouraging engagement.
 
 ## Won't-Have
-- Features that are explicitly excluded from the current scope of the project.
-- These requirements are considered out of scope and will not be implemented in the current iteration.
-- Excluding these elements does not impact the system's core functionality or user experience.
+- Students will not have access to the reports.
+- General public access to reports will not be provided.
+- Quantitative reporting features will not be included.
+- Concerns regarding prompt engineering from professors will not be addressed.
 
 # Requirement Descriptions
 
