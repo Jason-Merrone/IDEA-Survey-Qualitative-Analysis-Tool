@@ -56,6 +56,40 @@ The purpose of this requirements document is to clearly outline the specificatio
 ## Functional Requirements
 - What the system should do; features and functionalities.
 
+1. **Authentication and Access Control**  
+   - The system shall allow professors to log in using Utah State University's Single Sign-On (SSO) for secure authentication. **(M)**  
+   - The system shall ensure that professors can only access their own IDEA survey reports after logging in. **(M)**  
+   - The system shall provide an admin or overseer with permission-based access to the IDEA reports of professors they oversee. **(S)**
+
+2. **AI-Powered Summarization**  
+   - The system shall generate AI-generated summaries of student feedback from external PDFs, focusing on qualitative comments. **(M)**  
+   - The system shall provide answers to specific key questions, such as:
+     - "What is the general overview of the comments?" **(M)**  
+     - "What did I do well?" **(M)**  
+     - "What can I do better?" **(M)**
+
+3. **Filtering and Reporting**  
+   - The system shall allow professors to filter feedback by class and time period. **(M)**  
+   - The system shall support the aggregation of multiple IDEA reports over different time periods to detect trends. **(M)**  
+   - The system shall generate a summary report in PDF format based on selected classes and time frames. **(M)**  
+   - The system shall allow users to download reports in formats like PDF, CSV, and DOCX. **(S)**
+
+4. **Content Moderation and Filtering**  
+   - The system shall filter out inappropriate or aggressive comments from the AI-generated summaries to protect the emotional well-being of professors. **(M)**
+   - Ability to toggle moderation filter **(C)**
+
+5. **Report Generation and Downloading**  
+   - The system shall generate printable reports that can be downloaded in PDF format. **(M)**  
+   - The system shall include the initial prompt used to generate each report to maintain transparency. **(M)**
+
+6. **Data Privacy and Compliance**  
+   - The system shall comply with relevant data privacy regulations (such as FERPA) and university policies to protect sensitive information. **(M)**
+
+7. **User Interface and Usability**  
+   - The system shall provide an intuitive user interface, making it easy for professors to access, filter, and download their reports without requiring technical expertise. **(M)**  
+   - The system shall allow superiors to see which professors are active and using the platform, providing oversight and encouraging engagement. **(C)**
+
+
 ## Non-Functional Requirements
 - How well the system preforms its functions; preformance, security, and usablity.
 
