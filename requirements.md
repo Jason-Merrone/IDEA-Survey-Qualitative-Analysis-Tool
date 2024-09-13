@@ -67,6 +67,7 @@ The purpose of this requirements document is to clearly outline the specificatio
      - "What is the general overview of the comments?" **(M)**  
      - "What did I do well?" **(M)**  
      - "What can I do better?" **(M)**
+   - Allow the user to chat directly to the AI/input custom questions. **(C)**
 
 3. **Filtering and Reporting**  
    - The system shall allow professors to filter feedback by class and time period. **(M)**  
