@@ -16,6 +16,8 @@ The purpose of this requirements document is to clearly outline the specificatio
 
 # MoSCoW Prioritization of Requirements
 
+*Based on what Erik said in class, I assume we'll delete this section. When moving a requirment to the "Requirements" section, we can remove it from this section. We'll just label each of these requirements with a letter or symbol like "M", "S", "C", or "W" to indicate its priority.*
+
 ## Must-Have
 - Generate comprehensive summaries of qualitative feedback from IDEA survey reports.
 - Implement robust security measures to ensure that each professor has access only to their own IDEA reports.
@@ -49,7 +51,7 @@ The purpose of this requirements document is to clearly outline the specificatio
 - Quantitative reporting features will not be included.
 - Concerns regarding prompt engineering from professors will not be addressed.
 
-# Requirement Descriptions
+# Requirements
 
 ## Functional Requirements
 - What the system should do; features and functionalities.
@@ -71,6 +73,8 @@ The purpose of this requirements document is to clearly outline the specificatio
 - [ ] Outline the main flow and alternative flows for each use case.
 
 # User Stories
+
+*Based on what Erik said in class, I also assume we'll delete this section too. We can move the user stories and associate them with the relevant requirement in the "Requirements" section.*
 
 - Simple Format: Write user stories in a simple, standardized format.
   - Template: "As a [role], I want to [action] so that [benefit]."
