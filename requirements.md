@@ -52,20 +52,16 @@ The purpose of this requirements document is to clearly outline the specificatio
 # Requirement Descriptions
 
 ## Functional Requirements
-- Description of the core functionalities that the system must perform.
-- User interactions and system responses.
+- What the system should do; features and functionalities.
 
 ## Non-Functional Requirements
-- Performance criteria such as speed, scalability, and reliability.
-- Security requirements and data protection measures.
+- How well the system preforms its functions; preformance, security, and usablity.
 
-## Technical Requirements
-- Hardware and software specifications.
-- Integration with other systems and technologies.
+## Business Requirements
+- High-level needs of the organization; objectives and strategy.
 
 ## User Requirements
-- User roles and permissions.
-- Usability and accessibility considerations.
+- How the system will be experienced by end-users; solutions to user problems.
 
 # Use Cases
 
