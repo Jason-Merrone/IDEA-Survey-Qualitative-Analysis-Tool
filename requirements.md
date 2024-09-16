@@ -105,7 +105,19 @@ The purpose of this requirements document is to clearly outline the specificatio
    - The system will be optimized to provide the user with a smooth and consistent experience. **(S)**
 
 ## Business Requirements
-- High-level needs of the organization; objectives and strategy.
+1. **Analytics**
+   - User Engagement Tracking: Dashboard/Logs to track what users log on and how often **(C)**
+
+2. **Security**
+   - Accessiblity: Limit user accessiblity to only their own surveys **(M)**
+
+3. **Platform**
+   - Mobile App: Access and interact with the system on-the-go **(C)**
+   - Integration: Ability to merge into exsting USU websites **(C)**
+
+4. **Admin**
+   - Superiors: Super Users given move visibility into the IDEA surveys of users they mannage **(C)**
+
 
 ## User Requirements
 1. **Access to IDEA Reports**
@@ -156,3 +168,8 @@ The purpose of this requirements document is to clearly outline the specificatio
 - As a professor, I want the system to suggest additional questions I can ask so that I can gain more specific feedback.
 - As a professor, I want to access and interact with the system on my mobile device so that I can review feedback on-the-go.
 - As a department chair, I want to see which professors are active and using the platform so that I can provide oversight and encourage engagement.
+
+# Use Case Diagram
+
+This is our first use case diagram. Still a work in progress with either added or subtracted use cases.
+![Diagram](images/UseCaseDiagram_1.png)
