@@ -105,7 +105,19 @@ The purpose of this requirements document is to clearly outline the specificatio
    - The system will be optimized to provide the user with a smooth and consistent experience. **(S)**
 
 ## Business Requirements
-- High-level needs of the organization; objectives and strategy.
+1. **Analytics**
+   - User Engagement Tracking: Dashboard/Logs to track what users log on and how often **(C)**
+
+2. **Security**
+   - Accessiblity: Limit user accessiblity to only their own surveys **(M)**
+
+3. **Platform**
+   - Mobile App: Access and interact with the system on-the-go **(C)**
+   - Integration: Ability to merge into exsting USU websites **(C)**
+
+4. **Admin**
+   - Superiors: Super Users given move visibility into the IDEA surveys of users they mannage **(C)**
+
 
 ## User Requirements
 1. **Access to IDEA Reports**
