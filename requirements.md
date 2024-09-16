@@ -83,16 +83,26 @@ The purpose of this requirements document is to clearly outline the specificatio
    - The system shall generate printable reports that can be downloaded in PDF format. **(M)**  
    - The system shall include the initial prompt used to generate each report to maintain transparency. **(M)**
 
-6. **Data Privacy and Compliance**  
-   - The system shall comply with relevant data privacy regulations (such as FERPA) and university policies to protect sensitive information. **(M)**
-
-7. **User Interface and Usability**  
-   - The system shall provide an intuitive user interface, making it easy for professors to access, filter, and download their reports without requiring technical expertise. **(M)**  
+6. **User Interface and Usability**   
    - The system shall allow superiors to see which professors are active and using the platform, providing oversight and encouraging engagement. **(C)**
 
 
 ## Non-Functional Requirements
-- How well the system preforms its functions; preformance, security, and usablity.
+
+1. **User-Friendly and Accessible**
+   - The system will provide an intuitive user interface, making it easy for professors to access, filter, and download their reports without requiring technical expertise. **(M)**
+   - The system will provide useful and informative error messsages. Any errors will be handled by the system, and users will be guided to available support resources. **(S)**
+   - The system will be accessible as a website that is supported across all major web browsers. Mobile devices will be supported. **(S)**
+   - The website will be compliant with all relevant accessiblity standards and guildlines set out by Utah State University. **(S)**
+
+2. **Data Privacy and Data Governance Compliance**  
+   - The system will comply with relevant data privacy regulations (such as FERPA) and university policies to protect sensitive information. **(M)**
+
+3. **System Security**
+   - The system will implement website security measures to ensure no unauthorized access to functions or user data. **(M)**
+
+4. **System Performance**
+   - The system will be optimized to provide the user with a smooth and consistent experience. **(S)**
 
 ## Business Requirements
 - High-level needs of the organization; objectives and strategy.
