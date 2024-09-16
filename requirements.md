@@ -109,24 +109,24 @@ The purpose of this requirements document is to clearly outline the specificatio
 
 ## User Requirements
 1. **Access to IDEA Reports**
-   - As a professor, I want to securely log in using my USU SSO credintials, ensuring only I have access to my own IDEA reports.
-   - As a department chair or admin, I want permission-based access to the IDEA reports of the professors I oversee, so I can provide guidance and support.
+   - As a professor, I want to securely log in using my USU SSO credintials, ensuring only I have access to my own IDEA reports. **(M)**
+   - As a department chair or admin, I want permission-based access to the IDEA reports of the professors I oversee, so I can provide guidance and support. **(S)**
 2. **AI-Driven Feedback Summarization**
-   - As a professor, I want to generate AI-driven summaries of student feedback, focusing on general overviews, positive aspects, and areas for improvement, so I can quickly assess my teaching performance.
-   - As a professor, I want the AI to answer specific questions like "How fair are my quizzes?" or "What do students think about the difficulty of my class?" to gain deeper insights from the data.
+   - As a professor, I want to generate AI-driven summaries of student feedback, focusing on general overviews, positive aspects, and areas for improvement, so I can quickly assess my teaching performance. **(M)**
+   - As a professor, I want the AI to answer specific questions like "How fair are my quizzes?" or "What do students think about the difficulty of my class?" to gain deeper insights from the data. **(C)**
 3. **Comment Filtering and Data Customization**
-   - As a professor, I would like to have a content moderation filter to control which reviews I want to see (Filter by positive, negative, length, vulgar language, etc.)
-   - As a professor, I want to filter feedback by specific classes and timeframes so that I can perform a targeted analysis.
-   - As a professor, I want to aggregate feedback from multiple reports to identify trends over time and track changes in my teaching effectiveness.
+   - As a professor, I would like to have a content moderation filter to control which reviews I want to see (Filter by positive, negative, length, vulgar language, etc.) **(C)**
+   - As a professor, I want to filter feedback by specific classes and timeframes so that I can perform a targeted analysis. **(M)**
+   - As a professor, I want to aggregate feedback from multiple reports to identify trends over time and track changes in my teaching effectiveness. **(M)**
 4. **Data Reports**
-   - As a professor, I want to download my summarized feedback reports in multiple formats, such as PDF, CSV, and DOCX, for easy sharing and record-keeping.
+   - As a professor, I want to download my summarized feedback reports in multiple formats, such as PDF, CSV, and DOCX, for easy sharing and record-keeping. **(S)**
 5. **User Interface and Ease of Use**
-   - As a professor who is maybe not tech-savvy, I want a user-friendly and intuitive system that I can navigate without difficulty.
-   - As a professor, I want mobile support (Where reasonable to implement) for accessing feedback on-the-go, so I can review insights from anywhere.
+   - As a professor who is maybe not tech-savvy, I want a user-friendly and intuitive system that I can navigate without difficulty. **(M)**
+   - As a professor, I want mobile support (Where reasonable to implement) for accessing feedback on-the-go, so I can review insights from anywhere. **(C)**
 6. **Interaction and Feedback Transparency**
-   - As a professor, I want the prompt used to generate the report - as well as the ability to edit this prompt - included for transparency, so I understand the context of the analysis.
+   - As a professor, I want the prompt used to generate the report - as well as the ability to edit this prompt - included for transparency, so I understand the context of the analysis. **(M)**
 7. **Security and Data Privacy**
-   - As a professor, I want the system to comply with university data privacy policies and FERPA regulations, so I can trust that my feedback is handled responsibly and securely.
+   - As a professor, I want the system to comply with university data privacy policies and FERPA regulations, so I can trust that my feedback is handled responsibly and securely. **(M)**
 # Use Cases
 
 - [ ] Create use case diagrams to visually represent the interactions between users and the system.
@@ -138,7 +138,7 @@ The purpose of this requirements document is to clearly outline the specificatio
 
 *Based on what Erik said in class, I also assume we'll delete this section too. We can move the user stories and associate them with the relevant requirement in the "Requirements" section.*
 
-- As a professor, I want to generate comprehensive summaries of qualitative feedback from my IDEA survey reports so that I can quickly understand overall student feedback.
+- As a professor, I want to generate comprehensive summaries of qualitative feedback from my IDEA survey reports so that I can quickly understand overall student feedback. 
 - As a professor, I want to log in using my university SSO credentials so that I can securely access my IDEA reports without needing to remember another password.
 - As a professor, I want to filter feedback by specific classes and time frames so that I can perform targeted analysis on my teaching performance.
 - As a professor, I want the system to answer key questions like "What is the general overview of the comments?", "What did I do well?", and "What can I do better?" so that I can quickly understand and improve my teaching.
