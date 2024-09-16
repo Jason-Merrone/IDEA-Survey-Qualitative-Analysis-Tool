@@ -56,34 +56,34 @@ The purpose of this requirements document is to clearly outline the specificatio
 ## Functional Requirements
 - What the system should do; features and functionalities.
 
-1. **Authentication and Access Control**  
-   - The system shall allow professors to log in using Utah State University's Single Sign-On (SSO) for secure authentication. **(M)**  
-   - The system shall ensure that professors can only access their own IDEA survey reports after logging in. **(M)**  
+1. **Authentication and Access Control**
+   - The system shall allow professors to log in using Utah State University's Single Sign-On (SSO) for secure authentication. **(M)**
+   - The system shall ensure that professors can only access their own IDEA survey reports after logging in. **(M)**
    - The system shall provide an admin or overseer with permission-based access to the IDEA reports of professors they oversee. **(S)**
 
-2. **AI-Powered Summarization**  
-   - The system shall generate AI-generated summaries of student feedback from external PDFs, focusing on qualitative comments. **(M)**  
+2. **AI-Powered Summarization**
+   - The system shall generate AI-generated summaries of student feedback from external PDFs, focusing on qualitative comments. **(M)**
    - The system shall provide answers to specific key questions, such as:
-     - "What is the general overview of the comments?" **(M)**  
-     - "What did I do well?" **(M)**  
+     - "What is the general overview of the comments?" **(M)**
+     - "What did I do well?" **(M)**
      - "What can I do better?" **(M)**
    - Allow the user to chat directly to the AI/input custom questions. **(C)**
 
-3. **Filtering and Reporting**  
-   - The system shall allow professors to filter feedback by class and time period. **(M)**  
-   - The system shall support the aggregation of multiple IDEA reports over different time periods to detect trends. **(M)**  
-   - The system shall generate a summary report in PDF format based on selected classes and time frames. **(M)**  
+3. **Filtering and Reporting**
+   - The system shall allow professors to filter feedback by class and time period. **(M)**
+   - The system shall support the aggregation of multiple IDEA reports over different time periods to detect trends. **(M)**
+   - The system shall generate a summary report in PDF format based on selected classes and time frames. **(M)**
    - The system shall allow users to download reports in formats like PDF, CSV, and DOCX. **(S)**
 
-4. **Content Moderation and Filtering**  
+4. **Content Moderation and Filtering**
    - The system shall filter out inappropriate or aggressive comments from the AI-generated summaries to protect the emotional well-being of professors. **(M)**
    - Ability to toggle moderation filter **(C)**
 
-5. **Report Generation and Downloading**  
-   - The system shall generate printable reports that can be downloaded in PDF format. **(M)**  
+5. **Report Generation and Downloading**
+   - The system shall generate printable reports that can be downloaded in PDF format. **(M)**
    - The system shall include the initial prompt used to generate each report to maintain transparency. **(M)**
 
-6. **User Interface and Usability**   
+6. **User Interface and Usability**
    - The system shall allow superiors to see which professors are active and using the platform, providing oversight and encouraging engagement. **(C)**
 
 
@@ -95,7 +95,7 @@ The purpose of this requirements document is to clearly outline the specificatio
    - The system will be accessible as a website that is supported across all major web browsers. Mobile devices will be supported. **(S)**
    - The website will be compliant with all relevant accessiblity standards and guildlines set out by Utah State University. **(S)**
 
-2. **Data Privacy and Data Governance Compliance**  
+2. **Data Privacy and Data Governance Compliance**
    - The system will comply with relevant data privacy regulations (such as FERPA) and university policies to protect sensitive information. **(M)**
 
 3. **System Security**
@@ -121,11 +121,21 @@ The purpose of this requirements document is to clearly outline the specificatio
 
 *Based on what Erik said in class, I also assume we'll delete this section too. We can move the user stories and associate them with the relevant requirement in the "Requirements" section.*
 
-- Simple Format: Write user stories in a simple, standardized format.
-  - Template: "As a [role], I want to [action] so that [benefit]."
-  - Example: "As a power-user, I want to quickly navigate the file system so that I can find the files I want to open."
-  - Example: "As a guild captain, I want to choose a righteous quest so that my guild members will be happy with my leadership and not vote me out."
-- Define "done": The story describes a complete interaction with the system from start to finish.
-- Stick to One Actor: If the user story involves multiple users, consider splitting it into separate stories.
-- Review and Update: Continuously review and update user stories as more is learned about the system or the users' needs.
-- Keep stories up-to-date to reflect any changes in requirements.
+- As a professor, I want to generate comprehensive summaries of qualitative feedback from my IDEA survey reports so that I can quickly understand overall student feedback.
+- As a professor, I want to log in using my university SSO credentials so that I can securely access my IDEA reports without needing to remember another password.
+- As a professor, I want to filter feedback by specific classes and time frames so that I can perform targeted analysis on my teaching performance.
+- As a professor, I want the system to answer key questions like "What is the general overview of the comments?", "What did I do well?", and "What can I do better?" so that I can quickly understand and improve my teaching.
+- As a professor, I want to aggregate multiple reports to identify trends over time so that I can track my teaching progress and make informed decisions.
+- As a professor, I want aggressive or inappropriate comments filtered out so that I can review student feedback without unnecessary stress.
+- As a professor, I want to generate automatic printable reports as PDFs based on specified timelines and selected classes so that I can easily share or archive my feedback summaries.
+- As a professor, I want the system to include the prompt used to generate the initial report so that I can understand how the summary was created.
+- As a professor who is not tech-savvy, I want the system to be user-friendly and intuitive so that I can easily navigate and use it without technical difficulties.
+- As a department chair, I want to access the IDEA reports of the professors I oversee so that I can monitor their performance and provide support.
+- As a professor, I want to view a history of my interactions with the chatbot so that I can reference previous insights and questions.
+- As a professor, I want to engage in a chat about specific sections of the report so that I can ask targeted questions and receive detailed insights.
+- As a professor, I want to download reports in multiple formats like PDF, CSV, and DOCX so that I can use them in various applications or share with others.
+- As a professor, I want the AI to include citations of specific comments it used to generate insights so that I can verify and understand the basis of the analysis.
+- As a professor, I want to see the program to have the same "Feel and Vibe" of other USU programs so that it feels familiar and easy to use.
+- As a professor, I want the system to suggest additional questions I can ask so that I can gain more specific feedback.
+- As a professor, I want to access and interact with the system on my mobile device so that I can review feedback on-the-go.
+- As a department chair, I want to see which professors are active and using the platform so that I can provide oversight and encourage engagement.
