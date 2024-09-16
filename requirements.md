@@ -168,3 +168,8 @@ The purpose of this requirements document is to clearly outline the specificatio
 - As a professor, I want the system to suggest additional questions I can ask so that I can gain more specific feedback.
 - As a professor, I want to access and interact with the system on my mobile device so that I can review feedback on-the-go.
 - As a department chair, I want to see which professors are active and using the platform so that I can provide oversight and encourage engagement.
+
+# Use Case Diagram
+
+This is our first use case diagram. Still a work in progress with either added or subtracted use cases.
+![Diagram](images/UseCaseDiagram_1.png)
