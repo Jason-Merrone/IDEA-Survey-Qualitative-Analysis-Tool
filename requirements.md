@@ -10,6 +10,15 @@ The project aims to provide faculty at Utah State University (USU) with enhanced
 
 The system will integrate seamlessly with existing USU systems, allowing professors to log in and generate AI-driven analyses of their IDEA survey reports. Additionally, professors will have the option to ask specific questions to the AI, such as "What do students think about the fairness of my quizzes?" or "How difficult is my class?" to gain deeper insights into student perceptions.
 
+### Stakeholders
+
+Who is impacted by this tool?
+
+0. **USU Office of Data & Analytics**: This office is sponsoring the development of this tool and will own the business operations of the tool once launched. As such, design decisions concering this tool directly impact the Office of Data & Analytics.
+1. **USU Faculty**: professors, instructors, and department heads at USU will form the end userbase of this tool at launch. The behavior of this tool will directly impact the workflow of faculty members using the tool to accomplish tasks they are responsible for.
+2. **University Administration**: It is anticipated that reports generated using this tool will be circulated through and reviewed by various offices at USU. As such, the format and content of reports will directly impact University Administration. It is also anticipated that this tool will increase compliance with university policies concerning course evaluation by professors. As such, the availability of this tool will be of interest to University Administration.
+3. **USU Student Body**: It is anticipated that insights generated from this tool will inform decisions that impact student life. As such, students are indirectly impacted by the rollout of this tool. Although students are not part of the end userbase at launch, their data will be processed by this system. As such, data handling practices will be of interest to students.
+
 ## Purpose of Requirements Document
 
 The purpose of this requirements document is to clearly outline the specifications and expectations for the development of the AI-driven analysis system for IDEA survey reports at Utah State University (USU). This document serves as a comprehensive guide for all developers, faculty members, and Erik Falor ensuring that everyone involved has a clear understanding of the project's objectives, functionalities, and constraints. By detailing the functional, non-functional, technical, and user requirements, this document aims to facilitate effective communication, minimize ambiguities, and provide a solid foundation for the successful implementation and deployment of the system.
