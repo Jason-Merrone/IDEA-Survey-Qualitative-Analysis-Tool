@@ -153,16 +153,6 @@ This document outlines the specifications and expectations for developing the AI
     - The system shall comply with USU’s data privacy policies and FERPA. **(M)**
         - As a professor, I want the system to comply with university data privacy policies and FERPA regulations, so I can trust that my feedback is handled responsibly and securely.
 
-        ## User Requirements
-        1. **Access to IDEA Reports**
-        2. **AI-Driven Feedback Summarization**
-        3. **Comment Filtering and Data Customization**
-        4. **Data Reports**
-        5. **User Interface and Ease of Use**
-        6. **Interaction and Feedback Transparency**
-        7. **Security and Data Privacy**
-
-
 # Won't Do
 
 - Students and the general public will not have access to the reports.
