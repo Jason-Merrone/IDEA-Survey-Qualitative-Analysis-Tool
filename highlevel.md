@@ -3,10 +3,39 @@
 ## 1. **Introduction**
 
 ### 1.1 **Purpose**
-Provide an overview of the purpose of this design document. Describe the intent of this project and how the system will support professors at Utah State University by summarizing IDEA survey reports using AI.
+The purpose of this project is to allow professors to distill the many years of qualatative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly recieve feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
 
 ### 1.2 **Scope**
-Define the scope of the project, including the features, functionalities, and design components that will be covered in this document.
+
+1. **AI-Driven Summarization of Student Feedback:**
+   - Automatically generate summaries of qualitative comments from IDEA survey reports.
+   - Allow professors to input custom questions for more targeted insights.
+
+2. **User Authentication:**
+   - Professors log in using Utah State University’s Single Sign-On (SSO) system.
+   - Admins (e.g., department chairs) can have permission-based access to view reports of the professors they oversee.
+
+3. **Report Filtering and Generation:**
+   - Filter feedback by class and time period.
+   - Aggregate feedback across multiple semesters for trend detection.
+   - Export reports in various formats such as PDF, CSV, and DOCX.
+
+4. **Content Moderation:**
+   - Filter out aggressive or inappropriate comments in student feedback.
+   - Provide a toggle for professors to enable or disable content moderation.
+
+5. **System Accessibility and User Interface:**
+   - Ensure a user-friendly, intuitive interface for non-technical users.
+   - Ensure multi-browser compatibility.
+   - Comply with accessibility standards (e.g., for visually impaired users).
+
+6. **Data Privacy and Security:**
+   - Adhere to FERPA regulations and USU's data privacy policies.
+   - Ensure role-based access control and encryption of sensitive data.
+
+7. **Audit and Logging:**
+   - Track usage and interactions for admins (e.g., login attempts, generations per person).
+
 
 ### 1.3 **Definitions and Acronyms**
 - **SSO**: Single Sign-On
