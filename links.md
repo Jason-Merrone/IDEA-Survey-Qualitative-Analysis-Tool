@@ -8,4 +8,7 @@
 * [Microsoft MFA Integration Request (Old)](https://usu.service-now.com/aggies?sys_kb_id=7fbcf8b11b2ded5086b7415fad4bcb9c&id=kb_article_view&sysparm_rank=5&sysparm_tsqueryId=bd8164bf47e85e54fa9fe1bd416d432a)
 ## USU Branding and Website Design
 * [Web Template Guide](https://www.usu.edu/template/) (USU uses Bootstrap 4 as a basis for UI elements and maintains a library of custom elements on top of Bootstrap)
+  * USU hosts the following static CSS resources:
+    * Bootstrap 4: `https://www.usu.edu/assets/bs4/css/bootstrap.min.css`
+    * USU Branding add-on: `https://www.usu.edu/assets/bs4/css/main.css`
 * [USU Brand](https://www.usu.edu/brand/)
