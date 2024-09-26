@@ -139,16 +139,91 @@ Describe how data moves through the system, from the point of report upload to t
 ## 7. **API Design**
 
 ### 7.1 **Endpoints**
-Define the API endpoints and their functionalities. Example endpoints include:
 - **Login Endpoint**: For authenticating users via SSO.
 - **Upload Endpoint**: For uploading PDF files of IDEA reports.
 - **Summarization Endpoint**: For invoking the AI engine to summarize reports.
 - **Download Endpoint**: For downloading the generated reports.
 
-### 7.2 **Error Handling**
-Define how errors will be handled, ensuring clear error messages are displayed to users.
+#### Login Endpoint
+- [ ] TODO
 
----
+#### Upload Endpoint
+- **URL**: `/api/survey`
+- **Method**: `POST`
+- **Description**: Allows professors to upload PDF files of IDEA reports.
+- **Request Body**:
+  - `file`: The PDF file of the IDEA report.
+
+This endpoint will be used to upload the IDEA reports to the system for processing. The uploaded PDF files will be stored in a database, so that they can be accessed later for summarization. The endpoint will return a success message upon a successful upload. This will upload the file and associate it with current authenticated user.
+
+#### Summarization Endpoint
+- **URL**: `/api/summarize`
+- **Method**: `POST`
+- **Description**: Invokes the AI engine to summarize the uploaded IDEA reports.
+- **Request Body**:
+  ```json
+  {
+    "classIds": ["CS101", "CS102"],
+    "startDate": "2022-01-01",
+    "endDate": "2022-12-31"
+  }
+  ```
+- **Response**:
+  ```json
+  {
+    "summary": "The AI-generated summary of the uploaded reports."
+  }
+  ```
+
+This endpoint will be used to summarize the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will process the qualitative comments and generate a comprehensive feedback summary. The endpoint will return the generated summary in JSON format.
+
+#### Semantic Analysis Endpoint
+- **URL**: `/api/semantic`
+- **Method**: `POST`
+- **Description**: Invokes the AI engine to perform semantic analysis on the uploaded IDEA reports.
+- **Request Body**:
+```json
+{
+  "classIds": ["CS101", "CS102"],
+  "startDate": "2022-01-01",
+  "endDate": "2022-12-31"
+}
+```
+- **Response**:
+```json
+{
+  "data": [
+    {
+      "attribute": "An attribute of the professor's performance",
+      "sentiment": "An value 1, 0, or -1 indicating a positive, neutral, or negative sentiment",
+    },
+    ...
+  ]
+}
+```
+
+This endpoint will be used to perform semantic analysis on the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will analyze the qualitative comments and generate sentiment and attitude scores for each comment. For example, a piece of this data may look like `{"attribute": "exlanatory", "sentiment": 1}`. This would mean that the professor is doing well in explaining the material. As another example, `{"attribute": "grading", "sentiment": -1}` would mean that the students are not happy with the grading.
+
+### 7.2 **Error Handling**
+
+#### Error Codes
+The following error codes may be returned by the API:
+- `400 Bad Request`: Invalid input parameters.
+- `401 Unauthorized`: User is not authenticated.
+- `403 Forbidden`: User does not have permission to access the resource.
+- `404 Not Found`: Resource not found.
+- `500 Internal Server Error`: Unexpected server error.
+
+#### Priority of Error Handling
+- **Authorization Errors**: Unauthorized errors should be handled first to ensure data security. This means that the an unauthenticated user can not determine what resource exists on a server or not by probing for 403 and 404 errors.
+
+- **Validation Errors**: Bad request errors should be handled next to ensure that the user is aware of the invalid input parameters.
+
+- **Permission Errors**: Forbidden errors should be handled next. This ensures that an authenticated user cannot probe around the server to find existing resources that they do not have access to.
+
+- **Not Found Errors**: Not found errors should be handled next. This should only be returned if an authenticated user is trying to access their own resources that do not exist.
+
+- **Server Errors**: Internal server errors should be handled last as they are unexpected and should be logged for debugging purposes.
 
 ## 8. **Security Considerations**
 
