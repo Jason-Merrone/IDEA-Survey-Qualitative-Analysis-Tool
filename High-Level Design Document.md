@@ -2,10 +2,10 @@
 
 ---
 
-## **1. Introduction**
+## **1. Introduction and Definitions**
 
 #### **1.1 Purpose**
-The purpose of this project is to develop an AI-driven system that summarizes qualitative feedback from student surveys. The system will allow professors to efficiently review large volumes of feedback without manually reading each comment, saving time while maintaining valuable insights into student feedback.
+The purpose of this project is to allow professors to distill the many years of qualatative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly recieve feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
 
 #### **1.2 Definitions and Acronyms**
 - **SSO**: Single Sign-On
@@ -18,11 +18,35 @@ The purpose of this project is to develop an AI-driven system that summarizes qu
 ## **2. Design Considerations**
 
 #### **2.1 Scope**
-The system will include the following core functionalities:
-- **AI-Driven Summarization**: Automatically generate summaries of qualitative feedback from IDEA survey reports.
-- **User Authentication**: Professors will securely log in using Utah State University's Single Sign-On (SSO) system.
-- **Report Filtering and Generation**: Professors will be able to filter feedback by class and time period, and aggregate feedback across multiple semesters for trend analysis. Reports can be exported in various formats (PDF, CSV, DOCX).
-- **Content Moderation**: The system will filter inappropriate comments, with a toggle for professors to enable or disable moderation.
+1. **AI-Driven Summarization of Student Feedback:**
+   - Automatically generate summaries of qualitative comments from IDEA survey reports.
+   - Allow professors to input custom questions for more targeted insights.
+
+2. **User Authentication:**
+   - Professors log in using Utah State University’s Single Sign-On (SSO) system.
+   - Admins (e.g., department chairs) can have permission-based access to view reports of the professors they oversee.
+
+3. **Report Filtering and Generation:**
+   - Filter feedback by class and time period.
+   - Aggregate feedback across multiple semesters for trend detection.
+   - Export reports in various formats such as PDF, CSV, and DOCX.
+
+4. **Content Moderation:**
+   - Filter out aggressive or inappropriate comments in student feedback.
+   - Provide a toggle for professors to enable or disable content moderation.
+
+5. **System Accessibility and User Interface:**
+   - Ensure a user-friendly, intuitive interface for non-technical users.
+   - Ensure multi-browser compatibility.
+   - Comply with accessibility standards (e.g., for visually impaired users).
+
+6. **Data Privacy and Security:**
+   - Adhere to FERPA regulations and USU's data privacy policies.
+   - Ensure role-based access control and encryption of sensitive data.
+
+7. **Audit and Logging:**
+   - Track usage and interactions for admins (e.g., login attempts, generations per person).
+
 
 #### **2.2 Assumptions**
 - Professors are familiar with the SSO system for secure login.
