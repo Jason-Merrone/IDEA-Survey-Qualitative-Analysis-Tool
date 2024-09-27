@@ -43,6 +43,12 @@ The purpose of this project is to allow professors to distill the many years of 
 - **IDEA**: Course evaluation survey used at USU
 - **FERPA**: Family Educational Rights and Privacy Act
 
+### 1.4 **Key**
+- **(M)**: Represents a mandatory requirement or a "must-have" feature.
+- **(S)**: Represents a secondary requirement or a "should-have" feature.
+- **(C)**: Represents a nice-to-have or a "could-have" feature.
+- **(W)**: Represents a feature that is out of scope for the current project.
+
 ---
 
 ## 2. **System Overview**
@@ -139,48 +145,11 @@ Describe how data moves through the system, from the point of report upload to t
 ## 7. **API Design**
 
 ### 7.1 **Endpoints**
-- **Login Endpoint**: For authenticating users via SSO.
-- **Upload Endpoint**: For uploading PDF files of IDEA reports.
-- **Summarization Endpoint**: For invoking the AI engine to summarize reports.
-- **Download Endpoint**: For downloading the generated reports.
-
-#### Login Endpoint
-- [ ] TODO
-
-#### Upload Endpoint
-- **URL**: `/api/survey`
-- **Method**: `POST`
-- **Description**: Allows professors to upload PDF files of IDEA reports.
-- **Request Body**:
-  - `file`: The PDF file of the IDEA report.
-
-This endpoint will be used to upload the IDEA reports to the system for processing. The uploaded PDF files will be stored in a database, so that they can be accessed later for summarization. The endpoint will return a success message upon a successful upload. This will upload the file and associate it with current authenticated user.
-
-#### Summarization Endpoint
-- **URL**: `/api/summarize`
-- **Method**: `POST`
-- **Description**: Invokes the AI engine to summarize the uploaded IDEA reports.
-- **Request Body**:
-  ```json
-  {
-    "classIds": ["CS101", "CS102"],
-    "startDate": "2022-01-01",
-    "endDate": "2022-12-31"
-  }
-  ```
-- **Response**:
-  ```json
-  {
-    "summary": "The AI-generated summary of the uploaded reports."
-  }
-  ```
-
-This endpoint will be used to summarize the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will process the qualitative comments and generate a comprehensive feedback summary. The endpoint will return the generated summary in JSON format.
 
 #### Semantic Analysis Endpoint
 - **URL**: `/api/semantic`
 - **Method**: `POST`
-- **Description**: Invokes the AI engine to perform semantic analysis on the uploaded IDEA reports.
+- **Description**: This endpoint will be used to perform semantic analysis on the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will analyze the qualitative comments and generate sentiment and attitude scores for each comment. For example, a piece of this data may look like `{"attribute": "exlanatory", "sentiment": 1}`. This would mean that the professor is doing well in explaining the material. As another example, `{"attribute": "grading", "sentiment": -1}` would mean that the students are not happy with the grading.
 - **Request Body**:
 ```json
 {
@@ -202,7 +171,84 @@ This endpoint will be used to summarize the uploaded IDEA reports using an AI en
 }
 ```
 
-This endpoint will be used to perform semantic analysis on the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will analyze the qualitative comments and generate sentiment and attitude scores for each comment. For example, a piece of this data may look like `{"attribute": "exlanatory", "sentiment": 1}`. This would mean that the professor is doing well in explaining the material. As another example, `{"attribute": "grading", "sentiment": -1}` would mean that the students are not happy with the grading.
+#### Chat Endpoints
+
+The chat endpoints will be used to facilitate communication between professors and the AI engine. Professors can ask questions, provide feedback, or request additional information using the chat feature. Chats will always begin with a system message requesting the initial report summary. The AI engine will then respond with the summary. Following messages will be provided by the professor and responded to by the AI engine.
+
+##### GET a chat
+- **URL**: `/api/chat/<id>`
+- **Method**: `GET`
+- **Description**: Retrieves the chat history for the given chat id as a json object.
+- **Response**:
+```json
+{
+  "id": "The unique identifier for the chat",
+  "messages": [
+    {
+      "sender": "The sender of the message (this will either be a user, ai, or system)",
+      "content": "The content of the message",
+      "timestamp": "The timestamp of the message"
+    },
+    ...
+  ]
+}
+```
+
+##### POST a chat
+- **URL**: `/api/chat`
+- **Method**: `POST`
+- **Description**: Creates a new chat starting with a message from the system followed by a message from the ai engine with the report summary.
+- **Request Body**:
+```json
+{
+  "classIds": ["CS101", "CS102"],
+  "startDate": "2022-01-01",
+  "endDate": "2022-12-31"
+}
+```
+- **Response**:
+```json
+{
+  "id": "The unique identifier for the chat",
+  "messages": [
+    {
+      "sender": "system",
+      "content": "A message to the AI detailing what the user would like to have in the report. This will include requests for the big three questions, \"What is a general summary of the feedback?\", \"What did I do well?\", and \"What can I improve?\". An exact example of this message is not provided as we will be finding a good message to send to the AI during the prototype phase which is not yet determined.",
+      "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+    },
+    {
+      "sender": "ai",
+      "content": "The response from the AI engine with the report summary.",
+      "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+    },
+  ]
+}
+```
+
+##### POST a message
+- **URL**: `/api/chat/<id>/message`
+- **Method**: `POST`
+- **Description**: Sends in a new message from the user to the AI engine and returns the response from the AI engine. When the user sends the json object which only takes in the content field, the server will automatically add the "sender" field and the "timestamp" field to the object before saving it to the database.
+- **Request Body**:
+```json
+{
+  "content": "The content of the message from the user",
+}
+```
+- **Response**:
+```json
+{
+    "sender": "ai"
+    "content": "The content of the message",
+    "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+}
+```
+
+##### GET download summary
+- **URL**: `/api/chat/<id>/download/<format>`
+- **Method**: `GET`
+- **Description**: Downloads the chat history for the given chat id as a file in the specified format (e.g., PDF **(M)**, CSV **(S)**, etc. **(S)**).
+- **Response**: The file in the specified format.
 
 ### 7.2 **Error Handling**
 
@@ -228,15 +274,41 @@ The following error codes may be returned by the API:
 ## 8. **Security Considerations**
 
 ### 8.1 **Authentication and Authorization**
-- Implement role-based access control to restrict users to their own reports.
-- Ensure session management is secure and follows best practices for SSO integration.
+
+#### Login Endpoint
+- **URL**: `/api/login`
+- **Method**: `GET`
+- **Description**: This endpoint will be used to redirect the user to the SSO login page for Utah State University. The user will be redirected back to the application after successful login.
+
+#### Authorization
+
+*More research needs to be done on how to implement roles in this application. We do not currently know whether we will have access to a system that can automatically provide us with the information necessary to determine the roles of the users or if we will have to manually assign roles to users. Nathan will be looking into this and will update this section when he has more information.*
+
+**Roles**: Define roles for users, such as professors, department heads, and administrators, to control access to different features and data.
+
+We will be using Role-Based Access Control (RBAC) to manage user roles and permissions. The following roles will be defined:
+
+- **Professor**: Can access student reports and create new reports and chats for their own classes.
+- **Department Head**: Can access reports and chats for all professors in their department.
+- **Administrator**: Can access all reports and chats for all/some departments and manage user roles within those departments.
+
+Users higher in the hierarchy will have access to the same features as users lower in the hierarchy, as well as additional features. For example, a department head will have access to the same features as a professor, but will also have access to reports and chats for all professors in their department. This also includes the ability to see which professors have created reports and chats for their classes.
+
+More powerful roles will have the ability to create new reports and chats for those they have management over, but they will not be able to create reports and chats for those they do not have management over. Professors will be able to see the reports and chats that they generate for themselves, but will not be able to see the reports and chats that highere roles generate for them.
 
 ### 8.2 **Data Encryption**
-- Encrypt sensitive data both in transit (using HTTPS) and at rest (for stored reports and user data).
 
-### 8.3 **Audit and Logging**
-- Log user interactions, including login attempts, report uploads, and summary generations, for auditing purposes.
-- Allow department heads to monitor system usage by the professors they oversee.
+*More research needs to be done on the actual process of obtaining the pdf reports from the system. It is believed that we will be able to obtain the pdf reports automatically, but we need to confirm this for sure.*
+
+Because login information will be handled by the SSO system, we will not need to worry about encrypting login information.
+
+### 8.3 **Data Privacy**
+
+- **AI Access**: Because users will have the ability to prompt engineer the AI, we will need to ensure that the AI does not have access to any information that it should not have access to. When a request is made, the AI will only have access to the reports that the user has access to and will not have access to any other reports. This will prevent the AI from being able to disclose any information that it should not have access to.
+
+- **Server Side Access**: We will make sure that all information that should not get to the user never leaves the server. This means that we are not filtering reports on the client side, but rather on the server side. This will prevent the user from being able to access any information that they should not have access to.
+
+- **Student Prompt Engineering**: We will make sure that the AI is hardened against potential prompt engineering attempts from students within the comments of their IDEA surveys. *More research and testing needs to be done on this front to determine the best way to prevent this type of prompt engineering.*
 
 ---
 
