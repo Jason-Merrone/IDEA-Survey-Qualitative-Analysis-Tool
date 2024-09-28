@@ -64,9 +64,51 @@ The purpose of this project is to allow professors to distill the many years of 
 
 ## **3. User Interfaces**
 
-- **Intuitive Interface**: The system will have a user-friendly interface, designed for non-technical users (professors). Navigation will be straightforward, with clear steps for logging in, uploading reports, and generating summaries.
-- **Mobile and Desktop Support**: The system will be accessible via both desktop and mobile browsers, ensuring multi-browser compatibility.
-- **Accessibility**: The interface will comply with accessibility standards (such as WCAG 2.0) to ensure usability for visually impaired users.
+### **Intuitive Interface**
+
+#### **3.1 Simple Workflow**
+The user interface is designed with a primary focus on simplicity and ease of use, ensuring that even non-technical users, such as professors who may not have extensive technical experience, can navigate the platform with minimal effort. The interface will offer a logical flow of actions, guiding users step-by-step through the process of generating feedback summaries, reducing potential confusion or errors.
+
+#### **3.2 Key Functions**
+- **Logging in**: User authentication will be handled through Utah State University’s Single Sign-On (SSO) system, which most faculty members are already familiar with. This will streamline the login process, eliminating the need for new credentials and reducing potential barriers to access. Professors will simply use their existing USU credentials to gain access to the system.
+  
+- **IDEA Survey PDFs**: The system will automatically retrieve IDEA survey reports from a centralized database, eliminating the need for professors to manually upload their own documents. This backend process will be invisible to the user, ensuring that the experience is seamless and requires minimal input. By reducing the need for manual data handling, the system minimizes the potential for errors or delays caused by incorrect uploads.
+
+- **Requesting Summaries**: Professors will be able to generate AI-powered feedback summaries using intuitive, clearly labeled buttons, prompts, and drop-down menus. Key actions, such as requesting a summary, will be highlighted in the interface to ensure they are easily identifiable. The system will provide users with the flexibility to generate summaries for specific time periods, courses, or custom queries without overwhelming them with unnecessary complexity.
+
+#### **3.3 Progress Indicators**
+The platform will provide real-time feedback on ongoing processes through visual indicators. For example, when professors request feedback summaries, they will see progress bars for uploads and AI processing times. Depending on the length of the report and the complexity of the request, status messages will display estimated completion times, keeping users informed throughout the entire process. This transparency helps manage user expectations and reduces uncertainty during long-running operations.
+
+#### **3.4 Customization Options**
+Professors will be able to tailor feedback summaries to meet their specific needs. Customization options will include:
+- **Date Range Filters**: Professors can narrow their feedback summaries by selecting specific semesters or academic years.
+- **Class Filters**: They can choose to generate summaries for individual courses or aggregate feedback across multiple classes to identify broader trends.
+   - Class filters will include options for sections. 
+- **Custom Questions**: Professors can input specific questions or topics of interest, allowing the AI to generate more focused summaries based on the custom parameters they provide. This feature enhances the relevance and usefulness of the generated insights.
+   - There will be predetermind options for the questions.
+- **Export Choices**:
+   - Facalty will have options to export the respond into PDF format. 
+
+### **Mobile and Desktop Support**
+
+#### **3.5 Responsive Design**
+The web app will be built using a responsive design framework to ensure that it works optimally across a range of devices, including desktops, laptops, tablets, and smartphones. The layout and components will automatically adjust to fit different screen sizes, providing a consistent, user-friendly experience on any device. Professors will be able to access the system whether they are working from a desktop computer in their office or reviewing feedback on a mobile device while on the go.
+
+#### **3.6 Cross-Browser Compatibility**
+The platform will be compatible with all major web browsers, including Chrome, Firefox, Safari, and Edge. This ensures that regardless of the browser being used, users will experience the same seamless functionality without encountering display or performance issues. The interface will undergo thorough testing across these browsers to prevent inconsistencies that could interfere with the user experience.
+
+
+### **Accessibility**
+
+#### **3.7 Compliance with WCAG 2.1**
+Accessibility is a priority in the design of the platform, ensuring that all users, including those with disabilities, can effectively navigate and utilize the system. The interface will comply with Web Content Accessibility Guidelines (WCAG) 2.1, incorporating features such as:
+- **Screen Reader Compatibility**: For users who rely on screen readers, the platform will be fully navigable, with appropriate semantic markup and alternative text for non-text content.
+- **Keyboard Navigation**: Users will be able to navigate the interface entirely via keyboard if necessary, with focus indicators and logical tab orders.
+   - Most Facalty will just just the mouse.
+
+#### **3.8 Color Contrast and Legibility**
+All design elements will adhere to the official Utah State University color style guide, ensuring visual consistency with institutional branding while maintaining accessibility standards.
+ 
 
 ---
 
