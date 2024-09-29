@@ -137,5 +137,36 @@ All design elements will adhere to the official Utah State University color styl
 
 ---
 
-## **7. Conclusion**
+## 7. **Deployment Considerations**
+
+### 7.1 **Platform**
+
+#### 7.1.1 Frontend
+Because the frontend uses client-side rendering, it will consist of static HTML, CSS, and JS resources that are pre-built either locally or on a CI/CD pipeline and then served over a CDN.
+
+#### 7.1.2 Backend
+The backend for our MVP will be a single Linux machine that runs an HTTP server. SSL will either be handled on the machine itself or on a managed load balancer that is placed in front of the machine. It will be possible to run several instances of the HTTP server in parallel so that scaling remains an option in the future.
+
+It is possible that the server logic will be containerized (e.g. using Docker) to allow for easier deployments and rollbacks, although this design decision will be made after finalizing the server stack (language, framework, etc.).
+
+#### 7.1.3 Database
+A managed database solution that is not internet-facing will be accessible by the backend.
+
+### 7.2 **Hosting**
+The different components of the application outlined above will be hosted on USU’s internal servers or on a secure cloud platform, with the following criteria being the primary concerns when selecting the final hosting solution.
+- Availability: target of 98% uptime
+- Security
+- Price
+- Scalability
+  - Note that although this is not a concern at launch, it is important that a hosting provider provides the tools and services that would enable scaling down the road.
+
+### 7.3 **Environments**
+A working production deployment is out of scope at this point in time while we work to develop an MVP that can be demoed as a proof-of-concept to relevant stakeholders. Limiting our focus to a single environment will reduce the burden of menial dev-ops tasks on developers and better facilitate rapid iteration. As such, we will deploy to a single environment known as `dev`.
+
+### 7.4 **Continuous Integration and Deployment (CI/CD)**
+- Implement a CI/CD pipeline for automated testing, deployment, and updates.
+
+---
+
+## **8. Conclusion**
 In summary, this project aims to streamline the process of analyzing student feedback for professors by automating the summarization of qualitative survey data. The system will offer secure, user-friendly access to feedback reports, ensuring compliance with data privacy regulations while providing customizable reports. Key considerations such as security, accessibility, and efficient data flow have been factored into the design, ensuring that the system meets the needs of its users and adheres to institutional policies.
