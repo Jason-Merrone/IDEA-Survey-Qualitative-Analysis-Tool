@@ -3,7 +3,7 @@
 ## 1. **Introduction**
 
 ### 1.1 **Purpose**
-The purpose of this project is to allow professors to distill the many years of qualatative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly recieve feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
+The purpose of this project is to allow professors to distill the many years of qualitative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly recieve feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
 
 ### 1.2 **Scope**
 
@@ -56,10 +56,16 @@ The purpose of this project is to allow professors to distill the many years of 
 ### 2.1 **System Architecture**
 Provide a high-level overview of the system architecture, showing the various components and how they interact. Use a diagram to represent the flow between users, the web application, AI engines, and databases.
 
-- **Frontend**: Web interface where professors log in, select reports, and view summaries.
-- **Backend**: Manages authentication, data processing, and AI integrations.
-- **AI Engine**: Processes and summarizes student feedback from the IDEA reports.
-- **Database**: Stores user data, authentication credentials, and historical interaction logs.
+- **Frontend**: Web interface where professors log in, select reports, and view summaries. The web interface will make requests to the backend.
+- **Backend**: An HTTP server that is called from the frontend and makes requests to the database and any external services. The server exposes endpoints for the following functions:
+  - Authentication (via an external SSO provider).
+  - Data processing.
+  - Analytics (usage history).
+  - Data retrieval: fetches IDEA reports for authenticated users from an external storage service.
+  - AI integrations. Business logic that formulates prompts for the AI engine and parses responses from the AI engine will live here.
+- **Database**: Stores user data and historical interaction logs.
+- **AI Engine (External)**: A large language model (LLM) that accepts prompts designed to summarize student feedback from the IDEA reports.
+- **IDEA Report Storage (External)**: A service that we rely on for read-only access to IDEA reports.
 
 ### 2.2 **High-Level Use Cases**
 Summarize the key use cases that describe the interactions between users and the system.
@@ -315,11 +321,28 @@ Because login information will be handled by the SSO system, we will not need to
 ## 9. **Deployment Considerations**
 
 ### 9.1 **Platform**
-- Deploy the system as a web-based application accessible via desktop and mobile browsers.
-- Optionally, develop a mobile app for enhanced access.
+
+#### 9.1.1 Frontend
+Because the frontend uses client-side rendering, it will consist of static HTML, CSS, and JS resources that are pre-built either locally or on a CI/CD pipeline and then served over a CDN.
+
+#### 9.1.2 Backend
+The backend for our MVP will be a single Linux machine that runs an HTTP server. SSL will either be handled on the machine itself or on a managed load balancer that is placed in front of the machine. It will be possible to run several instances of the HTTP server in parallel so that scaling remains an option in the future.
+
+It is possible that the server logic will be containerized (e.g. using Docker) to allow for easier deployments and rollbacks, although this design decision will be made after finalizing the server stack (language, framework, etc.).
+
+#### 9.1.3 Database
+A managed database solution that is not internet-facing will be accessible by the backend.
 
 ### 9.2 **Hosting**
-- Host the web application on USU’s internal servers or a secure cloud platform, ensuring high availability and data security.
+The different components of the application outlined above will be hosted on USU’s internal servers or on a secure cloud platform, with the following criteria being the primary concerns when selecting the final hosting solution.
+- Availability: target of 98% uptime
+- Security
+- Price
+- Scalability
+  - Note that although this is not a concern at launch, it is important that a hosting provider provides the tools and services that would enable scaling down the road.
+
+### 9.3 **Environments**
+A working production deployment is out of scope at this point in time while we work to develop an MVP that can be demoed as a proof-of-concept to relevant stakeholders. Limiting our focus to a single environment will reduce the burden of menial dev-ops tasks on developers and better facilitate rapid iteration. As such, we will deploy to a single environment known as `dev`.
 
 ### 9.3 **Continuous Integration and Deployment (CI/CD)**
 - Implement a CI/CD pipeline for automated testing, deployment, and updates.
