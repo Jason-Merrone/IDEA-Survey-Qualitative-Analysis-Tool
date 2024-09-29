@@ -1,11 +1,38 @@
 # **High-Level Design Document**
 
----
+## **Table of Contents**
+
+1. [Introduction and Definitions](#1-introduction-and-definitions)
+   - [1.1 Purpose](#11-purpose)
+   - [1.2 Definitions and Acronyms](#12-definitions-and-acronyms)
+2. [Design Considerations](#2-design-considerations)
+   - [2.1 Scope](#21-scope)
+   - [2.2 Assumptions](#22-assumptions)
+   - [2.3 Dependencies](#23-dependencies)
+   - [2.4 Constraints](#24-constraints)
+3. [User Interfaces](#3-user-interfaces)
+   - [3.1 Simple Workflow](#31-simple-workflow)
+   - [3.2 Key Functions](#32-key-functions)
+   - [3.3 Progress Indicators](#33-progress-indicators)
+   - [3.4 Customization Options](#34-customization-options)
+   - [3.5 Responsive Design](#35-responsive-design)
+   - [3.6 Cross-Browser Compatibility](#36-cross-browser-compatibility)
+   - [3.7 Compliance with WCAG 2.1](#37-compliance-with-wcag-21)
+   - [3.8 Color Contrast and Legibility](#38-color-contrast-and-legibility)
+4. [Data Flow](#4-data-flow)
+5. [API Interactions](#5-api-interactions)
+6. [Security Considerations](#6-security-considerations)
+7. [Deployment Considerations](#7-deployment-considerations)
+   - [7.1 Platform](#71-platform)
+   - [7.2 Hosting](#72-hosting)
+   - [7.3 Environments](#73-environments)
+   - [7.4 Continuous Integration and Deployment (CI/CD)](#74-continuous-integration-and-deployment-cicd)
+8. [Conclusion](#8-conclusion)
 
 ## **1. Introduction and Definitions**
 
 #### **1.1 Purpose**
-The purpose of this project is to allow professors to distill the many years of qualatative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly recieve feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
+The purpose of this project is to allow professors to distill many years of qualitative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly receive feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
 
 #### **1.2 Definitions and Acronyms**
 - **SSO**: Single Sign-On
@@ -47,7 +74,6 @@ The purpose of this project is to allow professors to distill the many years of 
 7. **Audit and Logging:**
    - Track usage and interactions for admins (e.g., login attempts, generations per person).
 
-
 #### **2.2 Assumptions**
 - Professors are familiar with the SSO system for secure login.
 - The AI engine will focus exclusively on summarizing qualitative feedback and will not analyze quantitative data from survey reports.
@@ -85,9 +111,9 @@ Professors will be able to tailor feedback summaries to meet their specific need
 - **Class Filters**: They can choose to generate summaries for individual courses or aggregate feedback across multiple classes to identify broader trends.
    - Class filters will include options for sections. 
 - **Custom Questions**: Professors can input specific questions or topics of interest, allowing the AI to generate more focused summaries based on the custom parameters they provide. This feature enhances the relevance and usefulness of the generated insights.
-   - There will be predetermind options for the questions.
+   - There will be predetermined options for the questions.
 - **Export Choices**:
-   - Facalty will have options to export the respond into PDF format. 
+   - Faculty will have options to export the response into PDF format. 
 
 ### **Mobile and Desktop Support**
 
@@ -97,18 +123,16 @@ The web app will be built using a responsive design framework to ensure that it 
 #### **3.6 Cross-Browser Compatibility**
 The platform will be compatible with all major web browsers, including Chrome, Firefox, Safari, and Edge. This ensures that regardless of the browser being used, users will experience the same seamless functionality without encountering display or performance issues. The interface will undergo thorough testing across these browsers to prevent inconsistencies that could interfere with the user experience.
 
-
 ### **Accessibility**
 
 #### **3.7 Compliance with WCAG 2.1**
 Accessibility is a priority in the design of the platform, ensuring that all users, including those with disabilities, can effectively navigate and utilize the system. The interface will comply with Web Content Accessibility Guidelines (WCAG) 2.1, incorporating features such as:
 - **Screen Reader Compatibility**: For users who rely on screen readers, the platform will be fully navigable, with appropriate semantic markup and alternative text for non-text content.
 - **Keyboard Navigation**: Users will be able to navigate the interface entirely via keyboard if necessary, with focus indicators and logical tab orders.
-   - Most Facalty will just just the mouse.
+   - Most faculty will just use the mouse.
 
 #### **3.8 Color Contrast and Legibility**
 All design elements will adhere to the official Utah State University color style guide, ensuring visual consistency with institutional branding while maintaining accessibility standards.
- 
 
 ---
 
@@ -116,54 +140,54 @@ All design elements will adhere to the official Utah State University color styl
 
 - **Report Upload**: Professors will upload IDEA survey reports via the frontend, which will pass through the backend to be stored securely in the database.
 - **AI Processing**: The system will send the uploaded reports to an external AI service for summarization. Once processed, the summaries will be stored in the database and made available to the professors.
-- **Feedback Retrieval and Display**: Professors will be able to view feedback summaries, filtered by class and time period, directly through the user interface. Reports will also be available for download.
+- **Feedback Retrieval and Display**: Professors will be able to view feedback summaries, filtered by
 
 ---
 
 ## **5. API Interactions**
 
 - **Login API**: Authentication will be handled via the USU SSO system, with the API facilitating secure login sessions for professors and department heads.
-- **Upload API**: Professors will upload PDF versions of IDEA reports via the frontend, which will be handled by an API that sends the reports to the backend for storage and processing.
+- **Upload API**: Professors will upload PDF versions of IDEA reports via the frontend, which will be managed by an API that sends the reports to the backend for storage and processing.
 - **Summarization API**: The AI engine will be accessed via an external API that processes the feedback data and returns summarized reports. The API will handle both text processing and custom queries.
-- **Download API**: Professors will download the summarized reports in various formats (PDF, CSV, DOCX) via an API endpoint, ensuring ease of use and accessibility.
+- **Download API**: Professors will download the summarized reports in various formats (PDF, CSV, DOCX) through an API endpoint, ensuring ease of use and accessibility.
 
 ---
 
 ## **6. Security Considerations**
 
 - **Compliance with FERPA**: All user data, including feedback and credentials, must comply with FERPA regulations. User information must be encrypted both in transit and at rest using modern encryption standards (e.g., AES-256).
-- **Role-Based Access Control (RBAC)**: Professors will only have access to their own feedback data, while department heads may access reports of professors they oversee. Role-based permissions will be enforced.
+- **Role-Based Access Control (RBAC)**: Professors will only have access to their own feedback data, while department heads may access reports of the professors they oversee. Role-based permissions will be enforced.
 - **Audit Logs**: The system will log user interactions (e.g., logins, report generation) for auditing purposes, ensuring that unauthorized access attempts are tracked.
 
 ---
 
-## 7. **Deployment Considerations**
+## **7. Deployment Considerations**
 
-### 7.1 **Platform**
+### **7.1 Platform**
 
-#### 7.1.1 Frontend
+#### **7.1.1 Frontend**
 Because the frontend uses client-side rendering, it will consist of static HTML, CSS, and JS resources that are pre-built either locally or on a CI/CD pipeline and then served over a CDN.
 
-#### 7.1.2 Backend
+#### **7.1.2 Backend**
 The backend for our MVP will be a single Linux machine that runs an HTTP server. SSL will either be handled on the machine itself or on a managed load balancer that is placed in front of the machine. It will be possible to run several instances of the HTTP server in parallel so that scaling remains an option in the future.
 
-It is possible that the server logic will be containerized (e.g. using Docker) to allow for easier deployments and rollbacks, although this design decision will be made after finalizing the server stack (language, framework, etc.).
+It is possible that the server logic will be containerized (e.g., using Docker) to allow for easier deployments and rollbacks, although this design decision will be made after finalizing the server stack (language, framework, etc.).
 
-#### 7.1.3 Database
+#### **7.1.3 Database**
 A managed database solution that is not internet-facing will be accessible by the backend.
 
-### 7.2 **Hosting**
-The different components of the application outlined above will be hosted on USU’s internal servers or on a secure cloud platform, with the following criteria being the primary concerns when selecting the final hosting solution.
+### **7.2 Hosting**
+The different components of the application outlined above will be hosted on USU’s internal servers or on a secure cloud platform, with the following criteria being the primary concerns when selecting the final hosting solution:
 - Availability: target of 98% uptime
 - Security
 - Price
 - Scalability
-  - Note that although this is not a concern at launch, it is important that a hosting provider provides the tools and services that would enable scaling down the road.
+  - Note that although this is not a concern at launch, it is important that a hosting provider offers the tools and services that would enable scaling down the road.
 
-### 7.3 **Environments**
-A working production deployment is out of scope at this point in time while we work to develop an MVP that can be demoed as a proof-of-concept to relevant stakeholders. Limiting our focus to a single environment will reduce the burden of menial dev-ops tasks on developers and better facilitate rapid iteration. As such, we will deploy to a single environment known as `dev`.
+### **7.3 Environments**
+A working production deployment is out of scope at this point in time while we work to develop an MVP that can be demoed as a proof of concept to relevant stakeholders. Limiting our focus to a single environment will reduce the burden of menial dev-ops tasks on developers and better facilitate rapid iteration. As such, we will deploy to a single environment known as `dev`.
 
-### 7.4 **Continuous Integration and Deployment (CI/CD)**
+### **7.4 Continuous Integration and Deployment (CI/CD)**
 - Implement a CI/CD pipeline for automated testing, deployment, and updates.
 
 ---
