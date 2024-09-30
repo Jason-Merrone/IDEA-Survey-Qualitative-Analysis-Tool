@@ -45,6 +45,7 @@
 5. [API Interactions](#5-api-interactions)
    - [5.1 Endpoints](#51-endpoints)
    - [5.2 Error Handling](#52-error-handling)
+   - [5.3 API Diagram](#53-api-diagram)
 6. [Security Considerations](#6-security-considerations)
    - [6.1 Authentication and Authorization](#61-authentication-and-authorization)
    - [6.2 Data Encryption](#62-data-encryption)
@@ -590,6 +591,8 @@ The following error codes may be returned by the API:
 - `404 Not Found`: Resource not found.
 - `500 Internal Server Error`: Unexpected server error.
 
+### 5.3 **API Diagram**
+![Diagram](images/API Tree Diagram.png)
 ---
 
 ## **6. Security Considerations**
