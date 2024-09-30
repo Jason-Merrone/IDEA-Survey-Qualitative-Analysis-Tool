@@ -166,6 +166,11 @@ The purpose of this project is to allow professors to distill many years of qual
    - The AI models processing time is largely influenced by the size of the feedback data. Which means generating reports will take longer in some cases.
    - System should provide feedback on processing status and completion
 
+9. **Retrieving qualitative data** 
+   - The system will be designed to support both manual PDF uploads and automatic retrieval of PDFs, ensuring flexibility depending on the available method.
+   - A core function will handle the PDF processing, regardless of whether the data comes from a manual upload or an automatic retrieval process.
+   - The system will dynamically adjust the source URL based on whether the PDF is uploaded manually or automatically retrieved from an external source (e.g., through an authenticated GET request).
+   - This approach ensures that the core functionality of processing the qualitative data remains consistent, while the input method (manual vs. automatic) is adaptable.
 
 ---
 
