@@ -256,6 +256,15 @@ The chat endpoints will be used to facilitate communication between professors a
 - **Description**: Downloads the chat history for the given chat id as a file in the specified format (e.g., PDF **(M)**, CSV **(S)**, etc. **(S)**).
 - **Response**: The file in the specified format.
 
+#### Report Endpoints
+
+##### POST a idea report
+- **URL**: `/api/idea`
+- **Method**: `POST`
+- **Description**: An endpoint to upload an IDEA report to the server. This endpoint will be exposed either to the end user or to the system that is responsible for storing the reports if possible. The endpoint will take in the IDEA report as a PDF file, parse it to text, and store it in the database.
+- **Request Body**: A form data object with the IDEA report as a PDF file.
+- **Response**: A 200 status code if the report was successfully uploaded.
+
 ### 7.2 **Error Handling**
 
 #### Error Codes
