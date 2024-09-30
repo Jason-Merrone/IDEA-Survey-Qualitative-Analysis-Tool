@@ -5,6 +5,7 @@
 1. [Introduction and Definitions](#1-introduction-and-definitions)
    - [1.1 Purpose](#11-purpose)
    - [1.2 Definitions and Acronyms](#12-definitions-and-acronyms)
+   - [1.3 Background Information](#13-background-information)
 2. [Design Considerations](#2-design-considerations)
    - [2.1 Scope](#21-scope)
    - [2.2 Assumptions](#22-assumptions)
@@ -19,7 +20,7 @@
    - [3.6 Cross-Browser Compatibility](#36-cross-browser-compatibility)
    - [3.7 Compliance with WCAG 2.1](#37-compliance-with-wcag-21)
    - [3.8 Color Contrast and Legibility](#38-color-contrast-and-legibility)
-4. [Data Flow](#4-data-flow)
+4. [Data Design](#4-data-design)
 5. [API Interactions](#5-api-interactions)
 6. [Security Considerations](#6-security-considerations)
 7. [Deployment Considerations](#7-deployment-considerations)
@@ -31,20 +32,24 @@
 
 ## **1. Introduction and Definitions**
 
-#### **1.1 Purpose**
+### **1.1 Purpose**
 The purpose of this project is to allow professors to distill many years of qualitative feedback in their courses into a quick and effective summary using AI. This will assist teachers by helping them quickly receive feedback from what could be hundreds of students each semester/course without spending hours reading through each individual comment.
 
-#### **1.2 Definitions and Acronyms**
+### **1.2 Definitions and Acronyms**
 - **SSO**: Single Sign-On
 - **PDF**: Portable Document Format
-- **IDEA**: Course evaluation survey used at USU
-- **FERPA**: Family Educational Rights and Privacy Act
+- **IDEA**: **I**ndividual **D**evelopment and **E**ducational **A**ssessment evaluation survey used at USU 
+- [**FERPA**](https://www.usu.edu/registrar/records/control/ferpa): Family Educational Rights and Privacy Act
+
+### **1.3 Background Information**
+1. **Use of IDEA surveys**:
+   - Our system leverages the IDEA (Individual Development and Educational Assessment) Surveys, which are commonly used to gather student feedback on courses and instructors. These surveys provide both quantitative data (e.g., numeric ratings) and qualitative data (e.g., written comments). This software specifically focuses on interpreting the **qualitative** data. By analyzing the qualitative feedback from the IDEA surveys, our system aims to produce clear, actionable summaries that highlight key themes such as course strengths, areas for improvement, and overall sentiment. 
 
 ---
 
 ## **2. Design Considerations**
 
-#### **2.1 Scope**
+### **2.1 Scope**
 1. **AI-Driven Summarization of Student Feedback:**
    - Automatically generate summaries of qualitative comments from IDEA survey reports.
    - Allow professors to input custom questions for more targeted insights.
@@ -74,17 +79,67 @@ The purpose of this project is to allow professors to distill many years of qual
 7. **Audit and Logging:**
    - Track usage and interactions for admins (e.g., login attempts, generations per person).
 
-#### **2.2 Assumptions**
-- Professors are familiar with the SSO system for secure login.
-- The AI engine will focus exclusively on summarizing qualitative feedback and will not analyze quantitative data from survey reports.
+### **2.2 Assumptions**
+1.  **User Knowledge**
+      - We assume that the Professor, Department Head, and Administrator all know the purpose of what IDEA surveys do. 
+      - Professors, Department Head, and Administrator are familiar with the SSO system for secure login.
+      - We must assume that users may not be tech savvy
 
-#### **2.3 Dependencies**
-- The system relies on Utah State University’s SSO system for user authentication.
-- External AI services will be used for natural language processing and summarization tasks.
+### **2.3 Dependencies**
 
-#### **2.4 Constraints**
-- The system must adhere to **FERPA regulations**, ensuring the privacy of user data and implementing secure role-based access controls.
-- The system must filter out inappropriate feedback to protect the emotional well-being of professors using the system.
+1. **SSO Authentication System**
+   - The system relies on Utah State University’s **Single Sign-On (SSO)** system for user authentication. Any issues with the SSO system (e.g., downtime or changes in authentication protocols) may impact the users' ability to access the system.
+   - The SSO integration is assumed to continue being supported by the University's IT infrastructure without needing major changes to the authentication window.
+   - The security of SSO is vial to ensuring user data and access rights are maintained securely
+
+2. **AI Model**
+   - The core functionality of the system depends on an external **AI model** for analyzing and summarizing qualitative data from IDEA surveys. 
+   - The system requires that this AI model continues to function as intended and be available for use.
+   - If the AI model updates, we must ensure that cross over compatibility is still accurate and relevent.
+   - The AI's performance may vary depending on traffic of the AI during peak usage periods.
+
+3. **Data Storage**
+   - The system requires a reliable and secure data storage to store our IDEA survey data and the generated AI summaries. This storage infrastructure must be accessible and maintained to ensure smooth system operation.
+   - Data storage must comply with FERPA and other privacy regulations, with proper encryption and access control
+
+4. **Continued Use of IDEA Surveys**
+   - The system depends on the ongoing use of IDEA surveys by Utah State University to gather student feedback. Any change or discontinuation of IDEA surveys would require modifications to the system to accommodate new feedback mechanisms.
+   - Changes to the structure of how we get IDEA survey qualitative data would necessitate how the data is processed and analyzed.
+
+### **2.4 Constraints**
+1. **FERPA Compliance**:
+   - The system must adhere to **FERPA regulations**, ensuring the privacy of user data and implementing secure role-based access controls.
+   - Role-based access control must be implemented, allowing only authorized personnel (e.g., professors, department heads) to access specific feedback and reports.
+   - Data sharing with external services (e.g., the AI model) must be done securely, and no personally identifiable information (PII) of students should be transmitted unnecessarily.
+  
+2. **Content Moderation** 
+   - The system must filter out inappropriate feedback, such as offensive or harmful comments, before it is displayed to professors, ensuring that only constructive feedback is shown.
+   - The AI model must be trained or programmed to identify and flag inappropriate comments for review or discard.
+   - Content moderation must be done in a way that ensures sensitive or emotional comments are handled appropriately, protecting professors from potential emotional distress.
+
+3. **Data Dependency**
+   - The system is dependent on the **quality of data** provided by the IDEA surveys. Inconsistent, incomplete, or poor-quality feedback may affect the accuracy and usefulness of AI-generated summaries.
+   - If the survey data is missing or incorrect, the system may not be able to generate accurate or meaningful reports.
+
+4. **System Availability**
+   - The system’s availability and performance are constrained by external dependencies, such as the availability of the **SSO system**, **AI service**, and **data storage infrastructure**. Any downtime in these services will directly impact the system's functionality.
+   - Maintenance, updates, or outages in third-party services may temporarily limit system functionality.
+
+5. **Scalability**
+   - While the system is designed for current usage levels, future scalability may require additional resources (e.g., AI processing power, data storage) if usage increases significantly, particularly during peak times (e.g., end of semester).
+   - Scalability concerns must be addressed if the system is adopted by many departments at the university, potentially increasing the volume of data processed.
+
+6. **Data Security**
+   - All data processed by the system, including **student feedback** and **AI-generated summaries**, must be encrypted both **in transit** and **at rest** to ensure data security and protect sensitive information.
+   - The system must implement strict access controls, ensuring that only authorized personnel can access or modify data.
+
+7. **User Access Rights**
+   - The system must enforce role-based access controls, meaning professors can only access data relevant to their own classes. Department Heads and Administrators may have access to broader datasets, but access rights must be carefully managed to prevent unauthorized access.
+
+8. **Processing time**
+   - The AI models processing time is largely influenced by the size of the feedback data. Which means generating reports will take longer in some cases. 
+   - System should provide feedback on processing status and completion
+
 
 ---
 
@@ -136,11 +191,20 @@ All design elements will adhere to the official Utah State University color styl
 
 ---
 
-## **4. Data Flow**
+## **4. Data Design**
 
-- **Report Upload**: Professors will upload IDEA survey reports via the frontend, which will pass through the backend to be stored securely in the database.
-- **AI Processing**: The system will send the uploaded reports to an external AI service for summarization. Once processed, the summaries will be stored in the database and made available to the professors.
-- **Feedback Retrieval and Display**: Professors will be able to view feedback summaries, filtered by
+### 4.1 **Database Schema**
+Outline the schema for the database, including:
+- **Users Table**: To store professor and admin data.
+- **Reports Table**: To store uploaded IDEA reports and their metadata.
+- **Summaries Table**: To store AI-generated summaries and interaction logs.
+- **Permissions Table**: To store role-based access data for department heads.
+
+### 4.2 **Data Flow**
+Describe how data moves through the system, from the point of report upload to the generation and downloading of summaries. Use a diagram to show data flow between the frontend, backend, AI engine, and database.
+
+### 4.3 **AI Implementation**
+Which AI to use and how we will interact with it.
 
 ---
 
