@@ -111,7 +111,7 @@ The purpose of this project is to allow professors to distill many years of qual
 1. **SSO Authentication System**
    - The system relies on Utah State University’s **Single Sign-On (SSO)** system for user authentication. Any issues with the SSO system (e.g., downtime or changes in authentication protocols) may impact the users' ability to access the system.
    - The SSO integration is assumed to continue being supported by the University's IT infrastructure without needing major changes to the authentication window.
-   - The security of SSO is vial to ensuring user data and access rights are maintained securely
+   - The security of SSO is vital to ensuring user data and access rights are maintained securely
 
 2. **AI Model**
    - The core functionality of the system depends on an external **AI model** for analyzing and summarizing qualitative data from IDEA surveys. 
@@ -291,8 +291,8 @@ The data flow within the system encompasses the journey of IDEA survey reports f
 #### **4.2.1 Data Upload and Storage**
 1. **Report Upload:**
    - Professors log in using the USU SSO system.
-   - They navigate to the upload section and submit their IDEA survey reports in PDF format.
-   *This assumes professors need to upload their reports manually.*
+   - The system will automatically retrieve IDEA survey reports from a centralized database depending on selected semesters and classes.
+   
    
 2. **Backend Processing:**
    - The **Upload API** receives the PDF and stores it in a secure file storage system.
@@ -300,7 +300,7 @@ The data flow within the system encompasses the journey of IDEA survey reports f
 
 #### **4.2.2 AI Processing and Summary Generation**
 1. **Triggering AI Processing:**
-   - A professor can choose to generate a summary of a specific report or group of reports (Filtering may be done through criteria such as time period, speicifc course, etc.)
+   - A professor can choose to generate a summary of a specific report or group of reports (Filtering may be done through criteria such as time period, specific course, etc.)
    
 2. **Data Analysis:**
    - The AI system analyzes the qualitative feedback, performing tasks such as summarization and sentiment analysis. This will be done through one of the below potential systems (This has not yet been decided).
@@ -309,7 +309,7 @@ The data flow within the system encompasses the journey of IDEA survey reports f
      3. A proprietary AI model via API (Also with custom instructions dependent on task).
    
 3. **Summary Creation:**
-   - The AI generates a summary report, which includes overall summaries, sentiment scores, and potentially other releavnt data.
+   - The AI generates a summary report, which includes overall summaries, sentiment scores, and potentially other relevant data.
    - The summary is stored in the **Summaries Table**.
    - The association between the summary and the relevant reports is managed through the **SummaryReports Table**.
 
@@ -456,7 +456,6 @@ The data architecture is designed to accommodate future growth in data volume an
 ## **5. API Interactions**
 
 - **Login API**: Authentication will be handled via the USU SSO system, with the API facilitating secure login sessions for professors and department heads.
-- **Upload API**: Professors will upload PDF versions of IDEA reports via the frontend, which will be managed by an API that sends the reports to the backend for storage and processing.
 - **Summarization API**: The AI engine will be accessed via an external API that processes the feedback data and returns summarized reports. The API will handle both text processing and custom queries.
 - **Download API**: Professors will download the summarized reports in various formats (PDF, CSV, DOCX) through an API endpoint, ensuring ease of use and accessibility.
 
@@ -502,4 +501,8 @@ A working production deployment is out of scope at this point in time while we w
 ---
 
 ## **8. Conclusion**
-In summary, this project aims to streamline the process of analyzing student feedback for professors by automating the summarization of qualitative survey data. The system will offer secure, user-friendly access to feedback reports, ensuring compliance with data privacy regulations while providing customizable reports. Key considerations such as security, accessibility, and efficient data flow have been factored into the design, ensuring that the system meets the needs of its users and adheres to institutional policies.
+This high-level design document outlines a robust and scalable system to enhance the efficiency of processing and analyzing student feedback for professors. By leveraging automation to generate AI-powered summaries of survey reports, the system will streamline workflows and reduce the time needed to interpret qualitative data. The design prioritizes security, compliance with data privacy regulations, and user accessibility, ensuring that sensitive information is managed responsibly while providing flexible reporting features tailored to user needs.
+
+The system architecture supports future scalability, with considerations for containerization, multi-instance deployment, and potential cloud hosting, all while maintaining a focus on performance, security, and simplicity. Though the initial deployment will focus on a development environment as an MVP, the design is well-positioned to evolve into a production-ready solution that can meet institutional demands.
+
+In conclusion, this system aims to empower professors by delivering a secure, user-friendly, and efficient platform for feedback analysis, while maintaining flexibility for future growth and adaptation as the project progresses.
