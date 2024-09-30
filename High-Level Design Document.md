@@ -447,8 +447,6 @@ The data architecture is designed to accommodate future growth in data volume an
 - **Database Optimization:** The database has been designed efficiently to ensure efficient data retrieval as the dataset grows.
   
 - **AI Processing:** In the case of SLMs, they are small and easy to process, making scaling them to more user releatively easy. Scaling using a proprietary model would be as simple as paying for more tokens.
-  
-- **Cloud Integration:** Leveraging cloud-based services for storage and processing can facilitate seamless scaling without significant architectural changes if needed.
 
 ### **4.7 High Level UML Diagram**
 ![Diagram](images/HighLevelDataDiagram.png)
