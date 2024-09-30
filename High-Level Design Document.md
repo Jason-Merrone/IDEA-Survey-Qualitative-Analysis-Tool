@@ -41,7 +41,7 @@
    - [4.4 Data Privacy and Security](#44-data-privacy-and-security)
    - [4.5 Data Backup and Recovery](#45-data-backup-and-recovery)
    - [4.6 Scalability Considerations](#46-scalability-considerations)
-   - [4.7 High Level UML Diagram](#47-high-level-uml-diagram) 
+   - [4.7 High Level UML Diagram](#47-high-level-uml-diagram)
 5. [API Interactions](#5-api-interactions)
 6. [Security Considerations](#6-security-considerations)
 7. [Deployment Considerations](#7-deployment-considerations)
@@ -59,12 +59,12 @@ The purpose of this project is to allow professors to distill many years of qual
 ### **1.2 Definitions and Acronyms**
 - **SSO**: Single Sign-On
 - **PDF**: Portable Document Format
-- **IDEA**: **I**ndividual **D**evelopment and **E**ducational **A**ssessment evaluation survey used at USU 
+- **IDEA**: **I**ndividual **D**evelopment and **E**ducational **A**ssessment evaluation survey used at USU
 - [**FERPA**](https://www.usu.edu/registrar/records/control/ferpa): Family Educational Rights and Privacy Act
 
 ### **1.3 Background Information**
 1. **Use of IDEA surveys**:
-   - Our system leverages the IDEA (Individual Development and Educational Assessment) Surveys, which are commonly used to gather student feedback on courses and instructors. These surveys provide both quantitative data (e.g., numeric ratings) and qualitative data (e.g., written comments). This software specifically focuses on interpreting the **qualitative** data. By analyzing the qualitative feedback from the IDEA surveys, our system aims to produce clear, actionable summaries that highlight key themes such as course strengths, areas for improvement, and overall sentiment. 
+   - Our system leverages the IDEA (Individual Development and Educational Assessment) Surveys, which are commonly used to gather student feedback on courses and instructors. These surveys provide both quantitative data (e.g., numeric ratings) and qualitative data (e.g., written comments). This software specifically focuses on interpreting the **qualitative** data. By analyzing the qualitative feedback from the IDEA surveys, our system aims to produce clear, actionable summaries that highlight key themes such as course strengths, areas for improvement, and overall sentiment.
 
 ---
 
@@ -102,7 +102,7 @@ The purpose of this project is to allow professors to distill many years of qual
 
 ### **2.2 Assumptions**
 1.  **User Knowledge**
-      - We assume that the Professor, Department Head, and Administrator all know the purpose of what IDEA surveys do. 
+      - We assume that the Professor, Department Head, and Administrator all know the purpose of what IDEA surveys do.
       - Professors, Department Head, and Administrator are familiar with the SSO system for secure login.
       - We must assume that users may not be tech savvy
 
@@ -114,7 +114,7 @@ The purpose of this project is to allow professors to distill many years of qual
    - The security of SSO is vital to ensuring user data and access rights are maintained securely
 
 2. **AI Model**
-   - The core functionality of the system depends on an external **AI model** for analyzing and summarizing qualitative data from IDEA surveys. 
+   - The core functionality of the system depends on an external **AI model** for analyzing and summarizing qualitative data from IDEA surveys.
    - The system requires that this AI model continues to function as intended and be available for use.
    - If the AI model updates, we must ensure that cross over compatibility is still accurate and relevent.
    - The AI's performance may vary depending on traffic of the AI during peak usage periods.
@@ -132,8 +132,8 @@ The purpose of this project is to allow professors to distill many years of qual
    - The system must adhere to **FERPA regulations**, ensuring the privacy of user data and implementing secure role-based access controls.
    - Role-based access control must be implemented, allowing only authorized personnel (e.g., professors, department heads) to access specific feedback and reports.
    - Data sharing with external services (e.g., the AI model) must be done securely, and no personally identifiable information (PII) of students should be transmitted unnecessarily.
-  
-2. **Content Moderation** 
+
+2. **Content Moderation**
    - The system must filter out inappropriate feedback, such as offensive or harmful comments, before it is displayed to professors, ensuring that only constructive feedback is shown.
    - The AI model must be trained or programmed to identify and flag inappropriate comments for review or discard.
    - Content moderation must be done in a way that ensures sensitive or emotional comments are handled appropriately, protecting professors from potential emotional distress.
@@ -158,7 +158,7 @@ The purpose of this project is to allow professors to distill many years of qual
    - The system must enforce role-based access controls, meaning professors can only access data relevant to their own classes. Department Heads and Administrators may have access to broader datasets, but access rights must be carefully managed to prevent unauthorized access.
 
 8. **Processing time**
-   - The AI models processing time is largely influenced by the size of the feedback data. Which means generating reports will take longer in some cases. 
+   - The AI models processing time is largely influenced by the size of the feedback data. Which means generating reports will take longer in some cases.
    - System should provide feedback on processing status and completion
 
 
@@ -173,7 +173,7 @@ The user interface is designed with a primary focus on simplicity and ease of us
 
 #### **3.2 Key Functions**
 - **Logging in**: User authentication will be handled through Utah State University’s Single Sign-On (SSO) system, which most faculty members are already familiar with. This will streamline the login process, eliminating the need for new credentials and reducing potential barriers to access. Professors will simply use their existing USU credentials to gain access to the system.
-  
+
 - **IDEA Survey PDFs**: The system will automatically retrieve IDEA survey reports from a centralized database, eliminating the need for professors to manually upload their own documents. This backend process will be invisible to the user, ensuring that the experience is seamless and requires minimal input. By reducing the need for manual data handling, the system minimizes the potential for errors or delays caused by incorrect uploads.
 
 - **Requesting Summaries**: Professors will be able to generate AI-powered feedback summaries using intuitive, clearly labeled buttons, prompts, and drop-down menus. Key actions, such as requesting a summary, will be highlighted in the interface to ensure they are easily identifiable. The system will provide users with the flexibility to generate summaries for specific time periods, courses, or custom queries without overwhelming them with unnecessary complexity.
@@ -185,11 +185,11 @@ The platform will provide real-time feedback on ongoing processes through visual
 Professors will be able to tailor feedback summaries to meet their specific needs. Customization options will include:
 - **Date Range Filters**: Professors can narrow their feedback summaries by selecting specific semesters or academic years.
 - **Class Filters**: They can choose to generate summaries for individual courses or aggregate feedback across multiple classes to identify broader trends.
-   - Class filters will include options for sections. 
+   - Class filters will include options for sections.
 - **Custom Questions**: Professors can input specific questions or topics of interest, allowing the AI to generate more focused summaries based on the custom parameters they provide. This feature enhances the relevance and usefulness of the generated insights.
    - There will be predetermined options for the questions.
 - **Export Choices**:
-   - Faculty will have options to export the response into PDF format. 
+   - Faculty will have options to export the response into PDF format.
 
 ### **Mobile and Desktop Support**
 
@@ -292,8 +292,8 @@ The data flow within the system encompasses the journey of IDEA survey reports f
 1. **Report Upload:**
    - Professors log in using the USU SSO system.
    - The system will automatically retrieve IDEA survey reports from a centralized database depending on selected semesters and classes.
-   
-   
+
+
 2. **Backend Processing:**
    - The **Upload API** receives the PDF and stores it in a secure file storage system.
    - Metadata about the report (such as `course_id`, `semester`, `year`) is extracted and stored in the **Reports Table**.
@@ -301,13 +301,13 @@ The data flow within the system encompasses the journey of IDEA survey reports f
 #### **4.2.2 AI Processing and Summary Generation**
 1. **Triggering AI Processing:**
    - A professor can choose to generate a summary of a specific report or group of reports (Filtering may be done through criteria such as time period, specific course, etc.)
-   
+
 2. **Data Analysis:**
    - The AI system analyzes the qualitative feedback, performing tasks such as summarization and sentiment analysis. This will be done through one of the below potential systems (This has not yet been decided).
      1. LoRa fine-tuned models loaded for specific tasks.
      2. A base SLM with custom instructions.
      3. A proprietary AI model via API (Also with custom instructions dependent on task).
-   
+
 3. **Summary Creation:**
    - The AI generates a summary report, which includes overall summaries, sentiment scores, and potentially other relevant data.
    - The summary is stored in the **Summaries Table**.
@@ -316,14 +316,14 @@ The data flow within the system encompasses the journey of IDEA survey reports f
 #### **4.2.3 Data Retrieval and Reporting**
 1. **Generating Reports:**
    - Professors can request summaries through the user interface, applying filters such as date range or course.
-   
+
 2. **Fetching Summaries:**
    - Professors may choose to access previously generated summaries through the user interface.
-   
+
 3. **Exporting Reports:**
    - Summaries can be exported in formats like PDF, CSV, or DOCX via the **Download API**.
    - The exported reports are accessible through the user interface for professors to review and download.
-   
+
 4. **Access Control:**
    - Role-based access ensures that professors can only access their own summaries and associated reports, while department heads and administrators can access broader datasets as per their permissions.
 
@@ -415,9 +415,9 @@ The AI component is central to the system's functionality, responsible for analy
 Given the project's objectives and constraints, **System 1** is the preferred choice despite its higher implementation complexity. The reasons include:
 
 - **Customization and Performance:** System 1 offers the highest level of customization and potentially better performance for specific tasks like sentiment analysis.
-  
+
 - **Data Privacy:** Processing data locally ensures strict adherence to FERPA regulations, mitigating risks associated with sending sensitive data to external services.
-  
+
 - **Efficiency:** The ability to hotswap LoRa modules allows for efficient task management, enhancing the system's responsiveness and user experience.
 
 - **Learning Experience:** System 1 provides the best overall learning experience being more hands on and invloved than the other options, which is appealing from the perspective of a team who loves to learn new things!
@@ -429,9 +429,9 @@ However, the team is still considering the resources and expertise required to i
 The system incorporates multiple layers of security measures aligned with FERPA regulations:
 
 - **Data Encryption:** All data - both in transit and at rest - is encrypted using industry-standard protocols.
-  
+
 - **Access Controls:** Strict role-based access controls (RBAC) is enforced, ensuring that users can only access data pertinent to their roles.
-  
+
 - **Audit Trails:** Comprehensive logging of all data access and processing activities is maintained to facilitate audits and monitor for unauthorized access attempts.
 
 ### **4.5 Data Backup and Recovery**
@@ -445,7 +445,7 @@ To safeguard against data loss and ensure system resilience, the following strat
 The data architecture is designed to accommodate future growth in data volume and user base:
 
 - **Database Optimization:** The database has been designed efficiently to ensure efficient data retrieval as the dataset grows.
-  
+
 - **AI Processing:** In the case of SLMs, they are small and easy to process, making scaling them to more user releatively easy. Scaling using a proprietary model would be as simple as paying for more tokens.
 
 ### **4.7 High Level UML Diagram**
@@ -455,17 +455,171 @@ The data architecture is designed to accommodate future growth in data volume an
 
 ## **5. API Interactions**
 
-- **Login API**: Authentication will be handled via the USU SSO system, with the API facilitating secure login sessions for professors and department heads.
-- **Summarization API**: The AI engine will be accessed via an external API that processes the feedback data and returns summarized reports. The API will handle both text processing and custom queries.
-- **Download API**: Professors will download the summarized reports in various formats (PDF, CSV, DOCX) through an API endpoint, ensuring ease of use and accessibility.
+### 5.1 **Endpoints**
+
+#### Semantic Analysis Endpoint
+- **URL**: `/api/semantic`
+- **Method**: `POST`
+- **Description**: This endpoint will be used to perform semantic analysis on the uploaded IDEA reports using an AI engine. The endpoint will optionally take the class names, start date, and end date as input parameters to filter the reports. The AI engine will analyze the qualitative comments and generate sentiment and attitude scores for each comment. For example, a piece of this data may look like `{"attribute": "exlanatory", "sentiment": 1}`. This would mean that the professor is doing well in explaining the material. As another example, `{"attribute": "grading", "sentiment": -1}` would mean that the students are not happy with the grading.
+- **Request Body**:
+```json
+{
+  "classIds": ["CS101", "CS102"],
+  "startDate": "2022-01-01",
+  "endDate": "2022-12-31"
+}
+```
+- **Response**:
+```json
+{
+  "data": [
+    {
+      "attribute": "An attribute of the professor's performance",
+      "sentiment": "An value 1, 0, or -1 indicating a positive, neutral, or negative sentiment",
+    },
+    ...
+  ]
+}
+```
+
+#### Chat Endpoints
+
+The chat endpoints will be used to facilitate communication between professors and the AI engine. Professors can ask questions, provide feedback, or request additional information using the chat feature. Chats will always begin with a system message requesting the initial report summary. The AI engine will then respond with the summary. Following messages will be provided by the professor and responded to by the AI engine.
+
+##### GET a chat
+- **URL**: `/api/chat/<id>`
+- **Method**: `GET`
+- **Description**: Retrieves the chat history for the given chat id as a json object.
+- **Response**:
+```json
+{
+  "id": "The unique identifier for the chat",
+  "messages": [
+    {
+      "sender": "The sender of the message (this will either be a user, ai, or system)",
+      "content": "The content of the message",
+      "timestamp": "The timestamp of the message"
+    },
+    ...
+  ]
+}
+```
+
+##### POST a chat
+- **URL**: `/api/chat`
+- **Method**: `POST`
+- **Description**: Creates a new chat starting with a message from the system followed by a message from the ai engine with the report summary.
+- **Request Body**:
+```json
+{
+  "classIds": ["CS101", "CS102"],
+  "startDate": "2022-01-01",
+  "endDate": "2022-12-31"
+}
+```
+- **Response**:
+```json
+{
+  "id": "The unique identifier for the chat",
+  "messages": [
+    {
+      "sender": "system",
+      "content": "A message to the AI detailing what the user would like to have in the report. This will include requests for the big three questions, \"What is a general summary of the feedback?\", \"What did I do well?\", and \"What can I improve?\". An exact example of this message is not provided as we will be finding a good message to send to the AI during the prototype phase which is not yet determined.",
+      "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+    },
+    {
+      "sender": "ai",
+      "content": "The response from the AI engine with the report summary.",
+      "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+    },
+  ]
+}
+```
+
+##### POST a message
+- **URL**: `/api/chat/<id>/message`
+- **Method**: `POST`
+- **Description**: Sends in a new message from the user to the AI engine and returns the response from the AI engine. When the user sends the json object which only takes in the content field, the server will automatically add the "sender" field and the "timestamp" field to the object before saving it to the database.
+- **Request Body**:
+```json
+{
+  "content": "The content of the message from the user",
+}
+```
+- **Response**:
+```json
+{
+    "sender": "ai"
+    "content": "The content of the message",
+    "timestamp": "The timestamp of the message in ISO 8601 format (ex. 2024-09-27T14:41:52Z)"
+}
+```
+
+##### GET download summary
+- **URL**: `/api/chat/<id>/download/<format>`
+- **Method**: `GET`
+- **Description**: Downloads the chat history for the given chat id as a file in the specified format (e.g., PDF **(M)**, CSV **(S)**, etc. **(S)**).
+- **Response**: The file in the specified format.
+
+#### Report Endpoints
+
+##### POST a idea report
+- **URL**: `/api/idea`
+- **Method**: `POST`
+- **Description**: An endpoint to upload an IDEA report to the server. This endpoint will be exposed either to the end user or to the system that is responsible for storing the reports if possible. The endpoint will take in the IDEA report as a PDF file, parse it to text, and store it in the database.
+- **Request Body**: A form data object with the IDEA report as a PDF file.
+- **Response**: A 200 status code if the report was successfully uploaded.
+
+### 5.2 **Error Handling**
+
+#### Error Codes
+The following error codes may be returned by the API:
+- `400 Bad Request`: Invalid input parameters.
+- `401 Unauthorized`: User is not authenticated.
+- `403 Forbidden`: User does not have permission to access the resource.
+- `404 Not Found`: Resource not found.
+- `500 Internal Server Error`: Unexpected server error.
 
 ---
 
 ## **6. Security Considerations**
 
-- **Compliance with FERPA**: All user data, including feedback and credentials, must comply with FERPA regulations. User information must be encrypted both in transit and at rest using modern encryption standards (e.g., AES-256).
-- **Role-Based Access Control (RBAC)**: Professors will only have access to their own feedback data, while department heads may access reports of the professors they oversee. Role-based permissions will be enforced.
-- **Audit Logs**: The system will log user interactions (e.g., logins, report generation) for auditing purposes, ensuring that unauthorized access attempts are tracked.
+### 6.1 **Authentication and Authorization**
+
+#### Login Endpoint
+- **URL**: `/login`
+- **Method**: `GET`
+- **Description**: This endpoint will be used to redirect the user to the SSO login page for Utah State University. The user will be redirected back to the application after successful login.
+
+#### Authorization
+
+*More research needs to be done on how to implement roles in this application. We do not currently know whether we will have access to a system that can automatically provide us with the information necessary to determine the roles of the users or if we will have to manually assign roles to users. Nathan will be looking into this and will update this section when he has more information.*
+
+**Roles**: Define roles for users, such as professors, department heads, and administrators, to control access to different features and data.
+
+We will be using Role-Based Access Control (RBAC) to manage user roles and permissions. The following roles will be defined:
+
+- **Professor**: Can access student reports and create new reports and chats for their own classes.
+- **Department Head**: Can access reports and chats for all professors in their department.
+- **Administrator**: Can access all reports and chats for all/some departments and manage user roles within those departments.
+
+Users higher in the hierarchy will have access to the same features as users lower in the hierarchy, as well as additional features. For example, a department head will have access to the same features as a professor, but will also have access to reports and chats for all professors in their department. This also includes the ability to see which professors have created reports and chats for their classes.
+
+More powerful roles will have the ability to create new reports and chats for those they have management over, but they will not be able to create reports and chats for those they do not have management over. Professors will be able to see the reports and chats that they generate for themselves, but will not be able to see the reports and chats that highere roles generate for them.
+
+### 6.2 **Data Encryption**
+
+*More research needs to be done on the actual process of obtaining the pdf reports from the system. It is believed that we will be able to obtain the pdf reports automatically, but we need to confirm this for sure.*
+
+Because login information will be handled by the SSO system, we will not need to worry about encrypting login information.
+
+### 6.3 **Data Privacy**
+
+- **AI Access**: Because users will have the ability to prompt engineer the AI, we will need to ensure that the AI does not have access to any information that it should not have access to. When a request is made, the AI will only have access to the reports that the user has access to and will not have access to any other reports. This will prevent the AI from being able to disclose any information that it should not have access to.
+
+- **Server Side Access**: We will make sure that all information that should not get to the user never leaves the server. This means that we are not filtering reports on the client side, but rather on the server side. This will prevent the user from being able to access any information that they should not have access to.
+
+- **Student Prompt Engineering**: We will make sure that the AI is hardened against potential prompt engineering attempts from students within the comments of their IDEA surveys. *More research and testing needs to be done on this front to determine the best way to prevent this type of prompt engineering.*
 
 ---
 
