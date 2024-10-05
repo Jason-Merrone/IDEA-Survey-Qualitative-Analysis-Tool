@@ -4,6 +4,8 @@
 - Brief overview of the project.
 - Purpose of the low-level design document.
 
+![Diagram](images/InformationFlowchart.png)
+
 ## 2. Module Breakdown
 
 ### 2.1. User Interface (UI/UX)
