@@ -64,28 +64,89 @@
 
 ### 2.3. Database Normalization
 #### 2.3.1. Description
-- Detail how the database schema is designed to ensure data consistency, avoid redundancy, and maintain integrity.
+The database schema is designed to ensure consistency, avoid redundancy, and maintain data integrity by adhering to third normal form (3NF). We are using **Prisma** as the Object-Relational Mapping (ORM) tool to manage the database interactions efficiently.
+
+### 2.3. Database Design for Tracking User Activity and Request History
+#### 2.3.1. Description
+The database schema is designed to track user activities and maintain a history of their requests, including key entities like users, requests, AI-generated summaries, and logs of user actions. The schema is implemented using **Prisma ORM**, ensuring the structure is easy to maintain, consistent, and efficient in terms of query performance and data relationships.
+
+The design adheres to third normal form (3NF) to minimize redundancy and ensure data integrity across the system, which handles user interactions, request processing, and summary generation.
 
 #### 2.3.2. Key Considerations
 1. **Performance:**
-   - Use optimized database queries and indexes to speed up lookups.
-   - Ensure that normalized data structures (e.g., relational models) do not result in slow join operations by designing efficient keys.
+   - **Indexed Queries**: Prisma allows the creation of indexed fields to optimize query performance. For example, indexing on the `userId` field in the `Request` and `ActivityLog` tables ensures quick lookups when fetching all requests or logs related to a user:
+     ```prisma
+     model Request {
+       id        Int      @id @default(autoincrement())
+       userId    Int      @index
+       requestType  Enum
+       status    Enum
+       requestData JSON
+       createdAt DateTime @default(now())
+     }
+     ```
+   - **Efficient Querying**: Prisma's lazy loading and `include` options allow fetching related data (like a user’s requests and associated summaries) in a single query to avoid N+1 problems:
+     ```javascript
+     const userRequests = await prisma.user.findUnique({
+       where: { id: 1 },
+       include: { requests: true },
+     });
+     ```
 
 2. **Maintainability:**
-   - Design the database schema with third normal form (3NF) to reduce redundancy.
-   - Simplify schema updates by using clear foreign key relationships and appropriate constraints.
+   - **Schema Evolution**: Prisma’s migration system ensures that changes to the schema can be smoothly introduced. For example, adding a new field like `responseTime` to the `Request` table will automatically generate a migration:
+     ```bash
+     npx prisma migrate dev --name add_response_time_to_request
+     ```
+   - **Schema Modularity**: Each entity (User, Request, Summary, ActivityLog) is modularly designed, making updates easier without disrupting other parts of the system. New fields or entities can be added without affecting the overall data flow.
 
 3. **Integration:**
-   - Ensure that the database integrates well with both the AI summarization engine and the user interface.
-   - Link to external systems, such as the SSO service, for seamless data sharing and access logging.
+   - **AI Summarization and Requests**: Prisma will store the results of AI-driven requests (e.g., summaries) and maintain links between user requests and the AI outputs. For example, after a summary is generated, it will be associated with the request and stored:
+     ```javascript
+     const newSummary = await prisma.summary.create({
+       data: {
+         requestId: requestId,
+         summaryText: generatedSummary,
+         sentimentScore: 0.75,
+       },
+     });
+     ```
+   - **User Activity Logging**: Prisma will track user actions (e.g., logging in, submitting requests) through the `ActivityLog` table. This allows detailed tracking of user behavior, improving auditing and debugging.
 
 4. **Complexity:**
-   - Keep database design straightforward, focusing on clear relationships (e.g., between classes, professors, and reports).
-   - Reduce unnecessary complexity by avoiding deep nesting and focusing on simple, readable tables.
+   - **Relational Simplicity**: The schema avoids unnecessary complexity by focusing on clear, direct relationships between key entities. For instance, a `User` can have many `Requests`, and each `Request` may have one associated `Summary`. This straightforward relational mapping reduces the complexity of joins and simplifies queries.
+   - **Many-to-One and One-to-Many Relationships**: The relationships between `User`, `Request`, `Summary`, and `ActivityLog` are kept simple to maintain data clarity. For example:
+     ```prisma
+     model User {
+       id       Int      @id @default(autoincrement())
+       email    String   @unique
+       requests Request[]
+     }
+     
+     model Request {
+       id       Int      @id @default(autoincrement())
+       userId   Int
+       summary  Summary?
+     }
+     ```
 
 5. **Object-Oriented Design:**
-   - Use Object-Relational Mapping (ORM) tools (e.g., Hibernate) to model database tables as classes, making interaction with the database easier through object instances.
-   - Define classes like `Professor`, `Report`, `Comment`, and `Department` that correspond to tables and relationships in the database.
+   - **ORM-Driven Models**: Prisma automatically generates strongly-typed models based on the database schema. Each entity (e.g., `User`, `Request`, `Summary`) is mapped to a class-like structure in the application code, allowing object-oriented interaction with the database:
+     ```typescript
+     const user = await prisma.user.findUnique({
+       where: { id: userId },
+     });
+     ```
+   - **Encapsulation**: Each entity's behavior is encapsulated within the ORM models, allowing high-level interactions like creating, updating, or querying records without needing to write raw SQL. Transactions between related entities (e.g., `User` creating a `Request` and generating a `Summary`) are managed in a clear, object-oriented way:
+     ```typescript
+     await prisma.$transaction(async (prisma) => {
+       const request = await prisma.request.create({...});
+       const summary = await prisma.summary.create({...});
+     });
+     ```
+
+By leveraging Prisma’s powerful ORM features, this schema is optimized for performance, maintainability, and integration, allowing for efficient tracking of user activity and the history of their requests. The use of object-oriented design principles and clean, modular relationships ensures that the system remains flexible and scalable as requirements evolve.
+
 
 ---
 
