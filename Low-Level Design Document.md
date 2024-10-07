@@ -1,5 +1,28 @@
 # Low-Level Design Document Outline
 
+## Table of Contents
+1. [Introduction](#1-introduction)
+2. [Module Breakdown](#2-module-breakdown)
+   - [2.1 User Interface (UI/UX)](#21-user-interface-uiux)
+     - [2.1.1 Description](#211-description)
+     - [2.1.2 Key Considerations](#212-key-considerations)
+   - [2.2 Security](#22-security)
+     - [2.2.1 Description](#221-description)
+     - [2.2.2 Key Considerations](#222-key-considerations)
+   - [2.3 Database Normalization](#23-database-normalization)
+     - [2.3.1 Description](#231-description)
+     - [2.3.2 Key Considerations](#232-key-considerations)
+3. [Module Focus on Key Design Elements](#3-module-focus-on-key-design-elements)
+   - [3.1 PDF Parsing Module](#31-pdf-parsing-module)
+     - [3.1.1 Key Considerations](#311-key-considerations)
+4. [API Design](#4-api-design)
+   - [4.1 API Descriptions](#41-api-descriptions)
+     - [4.1.1 Client-Server API](#411-client-server-api)
+     - [4.1.2 Server-Database API](#412-server-database-api)
+     - [4.1.3 Server-AI API](#413-server-ai-api)
+       - [4.1.3.1 Semantic Analysis API](#4131-semantic-analysis-api)
+       - [4.1.3.2 Report Summarization API](#4132-report-summarization-api)
+
 ## 1. Introduction
 - Brief overview of the project.
 - Purpose of the low-level design document.
