@@ -6,6 +6,7 @@
    - [2.1 User Interface (UI/UX)](#21-user-interface-uiux)
      - [2.1.1 Description](#211-description)
      - [2.1.2 Key Considerations](#212-key-considerations)
+     - [2.1.3 Example Component](#213-example-component-for-reportviewer)
    - [2.2 Security](#22-security)
      - [2.2.1 Description](#221-description)
      - [2.2.2 Key Considerations](#222-key-considerations)
@@ -27,35 +28,130 @@
 - Brief overview of the project.
 - Purpose of the low-level design document.
 
-![Diagram](images/InformationFlowchart.png)
+<!-- ![Diagram](images/InformationFlowchart.png) -->
 
 ## 2. Module Breakdown
 
 ### 2.1. User Interface (UI/UX)
 #### 2.1.1. Description
-- Define how the user interface will provide intuitive interactions for professors with minimal technical expertise.
+The user interface (UI) should provide an intuitive, user-friendly, experience for professors and department heads. We must keep in mind that user is computer literate, so making everything intuitive/familiar is key in our development. We want to make it easy to view reports, generate summaries, talk to the AI, and analyze data without complex workflows.
 
 #### 2.1.2. Key Considerations
 1. **Performance:**
-   - Ensure lightweight, responsive design.
-   - Use efficient rendering frameworks (e.g., React, Angular) to minimize load times and improve speed.
+   - We are going to be using Next.js's static generation and server-side(SSR) capabilities to improve performance by loading pages faster and reducing load times.
+   - Leverage TypeScript for ensuring performance optimizations via stricter type-checking and minimizing runtime errors
+   - Optimize the components using React's Virtual Document Object Model (VDOM) for efficient rendering
 
 2. **Maintainability:**
-   - Modular design for UI components, allowing for easy updates without disrupting other parts.
-   - Use component-based architecture (e.g., reusable widgets) to simplify future updates.
+   - Design the UI with **modular components**:
+      - Button, InputField, Card, and ReportCard to minimize redundant code.
+      - Organize componnents into separate folders based on their role (e.g. `/components`, `/pages`, `/layout`)
+   - Use CSS modules to scope CSS styles to individual components, making them easy to refactor and maintain in the future.
+   - Use USU's design standards to keep in line with what USU will want, defined [here](https://www.usu.edu/brand/standards/web/web-logos).
+      - We will be using this color palette provided, mainly these colors: `#0F2439`, `##FFFFFF`, `#384660`, `#CED4DA`. If more colors are needed we will refer to USU Brand Standards.
+      - When it comes to font we will use System UI fonts as described in the USU brand standards. Then a basic web fallback of: `Helvetica Neue, Arial, and sans-serif`.
+      - Text Font size will be `16px`, and will use appropriate heading sizes when it's relevent.
+   - Leverage TypeScript interfaces and types to ensure consistent propps across components, making them easy to refactor and maintain in the future.
+   - Write unit tests for key components using **Jest** and **React Testing Library** to ensure they function correctly.
+   - Ensure testing for different states (loading, success, error) for components that depend on asynchronous data fetching.
+
 
 3. **Integration:**
-   - Ensure smooth integration with the authentication system (SSO).
-   - Embed report generation and data display seamlessly within the UI to avoid manual processes.
+   - **SSO Integration**: integrate with the Utah State University SSO system via the Next.js API routes for secure login (NOTE: we may need to switch to native login if we can't use SSO). Utilize Next.js built-in API routes for handling the authentication flow. 
+   - Embed utilization features like **report generation** and **text chat** directly with the UI. Components like `ReportViewer` should dynamically fetch data using React Hooks (`useEffect`. `useState`) and display it efficiently.
+   - Use `Next.js dynamic routing` to enable professors to navigate easily between pages like dashboards, reports, and settings.
 
 4. **Complexity:**
-   - Limit unnecessary complexity; keep the UI straightforward.
-   - Implement navigation menus, buttons, and filters that allow professors to easily find and analyze feedback.
+   - Focus on creating a clean and simple design, sticking to USU's brand standards. While still creating new elements for loading screens and potential visual data.
+   - Implement intuitive navigation:
+      - a `navbar` for easy access to key sections like reports, messages, and settings.
+      - Filters on report pages for professors to easily filter by class, date, and type. 
+      - a chat text box that is intuitive that the user can interact with.
+   -  Design components like `DropdownMenu`, `SearchBox`, and `Button` to simplify interactions.
+   - Keep user interactions straightforward by offering well-labeled buttons like `Talk to ChatBot`, `Generate Report`, and `Export PDF` to reduce confusion.
+   - Avoid unnecessary text to overwhelm the user. Keeping it clean as to naturally direct the user to the tools.
 
 5. **Object-Oriented Design:**
-   - Break the UI down into objects like `LoginPage`, `Dashboard`, `ReportViewer`, and `SettingsPanel`.
-   - Each object/class represents a part of the user flow, ensuring cohesion between visual elements.
+   - Break down the interface into individual **UI components** that correspond to different sections of the app. Use **Next.js** pages to handle routing and React components for reusability.
+   - Component Scructure:
+      - **LoginPage**: Handles authentication and login logic using the SSO system.
+      - **Dashboard**: Displays an overview of reports, summaries, and quick access to actions.
+      - **ReportViewer**: A detailed view for reports, including filters and summaries.
+      - **ChatBot**: A text box used to send data to our API for AI processing.
+      - **SettingsPanel**: Provides the ability for professors to adjust preferences, filters, and notification settings.
+      - **NavBar and Sidebar**: Persistent navigation components to provide easy access across the UI.
 
+6. **Accessibility**:
+   - Ensure the UI is accessible by adhering to WCAG 2.1 standards.
+   - Use semantic HTML elements (e.g., `<header>` `<main>` `<footer>`) and aria-labels for screen readers.
+   - Ensure components like `Button`, `DropdownMenu`, and `NavBar` are navigable using a keyboard and visually distinguishable with proper focus states.
+
+7. **Responsive Design**:
+   - Ensure that the UI is responsive and adapts to different screen sizes (e.g., desktop, tablet, mobile).
+   - Use **CSS media queries** and **responsive layouts** to create a consistent experience across devices.
+
+8. **Testing**
+      - Write unit tests for key components using **Personal Tests** and **React Testing Library** to ensure they function correctly.
+      - Ensure testing covers different states (e.g., loading, success, error) for components that depend on asynchronous data fetching.
+      - Use snapshot testing for UI consistency and regression testing.
+
+9. **Error Considerations**
+    - **Error Handling:**
+      - Use **React Error Boundaries** to catch JavaScript errors in the component tree and display a fallback UI instead of crashing.
+      - Implement **try-catch blocks** for API calls using `fetch` to handle network errors.
+      - Provide meaningful, user-friendly error messages for form validation and server-side errors.
+    - **Error Feedback to Users:**
+      - Show error messages or modals when issues arise, such as failed API calls or form validation errors (e.g., “Invalid credentials”).
+      - Display loading spinners or skeleton loaders when fetching data, and use toast notifications to communicate success or failure for user actions.
+      - Create custom error pages for **404 (Not Found)** and **500 (Internal Server Error)** using Next.js's error page functionality.
+
+---
+#### 2.1.3. Example Component for ReportViewer
+- NOTE: subject to change due to different requirements. Not stuck to this.
+```typescript
+import React, { useState, useEffect } from 'react';
+
+interface Report {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+}
+
+const ReportViewer: React.FC = () => {
+  const [reports, setReports] = useState<Report[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Fetch reports using Next.js API routes
+  useEffect(() => {
+    const fetchReports = async () => {
+      setLoading(true);
+      const response = await fetch('/api/reports');
+      const data = await response.json();
+      setReports(data);
+      setLoading(false);
+    };
+    fetchReports();
+  }, []);
+
+  if (loading) return <div>Loading reports...</div>;
+
+  return (
+    <div className="report-list">
+      {reports.map((report) => (
+        <div key={report.id} className="report-card">
+          <h3>{report.title}</h3>
+          <p>{report.date}</p>
+          <p>{report.summary}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ReportViewer;
+
+```
 ---
 
 ### 2.2. Security
