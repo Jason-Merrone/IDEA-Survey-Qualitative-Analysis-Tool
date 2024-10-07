@@ -37,29 +37,83 @@
 
 ### 2.2. Security
 #### 2.2.1. Description
-- Explain the security protocols implemented to protect user data and maintain access control.
+- Given the various regulatory requirements that any final product would be expected to meet, security is a large task for this project. By utilizing single sign-on (SSO) capability through USU's Azure instance, we can ensure that university data is only shared with users affiliated with USU that are allowed to see protected data. We will also ensure that input data is correct and non-harmful to system security.
 
 #### 2.2.2. Key Considerations
-1. **Performance:**
-   - Use lightweight encryption algorithms and minimize security-related bottlenecks (e.g., secure token caching).
-   - Optimize secure database queries to avoid performance hits when authenticating users.
+1. **Single Sign-On Integration:**
+   - The system will integrate with the university's Single Sign-On (SSO) system, which uses Microsoft Azure, to provide seamless authentication for users. This will allow them to log in once with their A-Number and password to access resources. The SSO system will handle authentication, while the service itself will manage authorization. Additionally, user attributes can be passed to the service, and authentication will use the SAML protocol.
+   - Access to the USU SSO Service can be requested on [ServiceNow](https://usu.service-now.com/aggies?id=sc_cat_item&sys_id=4dd14c19b0988200b5864eba133a1e81)
+   - Example SAML response: 
+      ```xml
+      <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+         <saml:Subject>
+            <saml:NameID>anumber@usu.edu</saml:NameID>
+         </saml:Subject>
+         <saml:AttributeStatement>
+            <saml:Attribute Name="cn">
+                  <saml:AttributeValue>Anumber</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="sAMAccountName">
+                  <saml:AttributeValue>Anumber</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="givenName">
+                  <saml:AttributeValue>First Name</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="sn">
+                  <saml:AttributeValue>Last Name</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="displayName">
+                  <saml:AttributeValue>First Name Last Name</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="eduPersonNickname">
+                  <saml:AttributeValue>Preferred First Name</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="usuPreferredEmail">
+                  <saml:AttributeValue>preferred.email@usu.edu</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="usuEmailIDAddress">
+                  <saml:AttributeValue>emailid@usu.edu</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="mail">
+                  <saml:AttributeValue>mail@usu.edu</saml:AttributeValue>
+            </saml:Attribute>
+            <saml:Attribute Name="memberOf">
+                  <saml:AttributeValue>group1</saml:AttributeValue>
+                  <saml:AttributeValue>group2</saml:AttributeValue>
+            </saml:Attribute>
+         </saml:AttributeStatement>
+      </saml:Assertion>
+      ```
 
-2. **Maintainability:**
-   - Ensure security measures, like token authentication and password policies, are modular and upgradable without needing extensive codebase rewrites.
-   - Implement role-based access control to adjust permissions easily.
+2. **Front-End Data Checking:**
+   - To ensure the security of the system, data checking and verification on the front-end will be utilized to ensure that good data is being passed to the back-end and prevent bad input from being given.
+   - Example Pseudocode:
+   ``` javascript
+      async function validateInput() {
+         await the results from user inputs
+         validate the results
+            - if good, set the data to the on screen refs and rerender
+            - if bad, put up error on screen for user
+      }
+   ```
 
-3. **Integration:**
-   - Seamless integration with the university's Single Sign-On (SSO) system.
-   - Link to data governance tools and alert systems for unauthorized access detection.
+3. **AI Hardening**
+   - As we are using AI systems for this project, ensuring they are robust against malicious or bad prompts is critical for maintaining security, privacy, and safety. Here are some ways to harden our AI against misuse:
+      - Input Validation and Sanitization
+         - AI systems must have mechanisms to validate and sanitize inputs before processing them. This can involve filtering out harmful, inappropriate, or anomalous inputs that may lead to misuse (e.g., injection attacks, attempts to access confidential information).
+         - Using predefined rules, filters, or regular expressions, systems can ensure prompts adhere to expected formats and exclude prohibited language.
+      - Prompt Moderation and Filtering
+         - Develop and implement content moderation policies that scan inputs for sensitive or harmful content (e.g., hate speech, phishing attempts, harmful commands). Leveraging third-party APIs or in-house moderation tools to automatically detect and flag questionable inputs can help.
+         - Additionally, integrating ethical guidelines or filters in the model can reduce the chance of generating responses that exacerbate bad prompts.
+      - Rate Limiting and Throttling
+         - Prevent AI abuse by implementing rate limiting for user inputs. By limiting the number of prompts a user can send within a certain timeframe, it reduces the risk of spamming, prompt injection, or overwhelming the system with malicious content.
 
-4. **Complexity:**
-   - Simplify security checks by grouping similar functionality into distinct modules (e.g., an `AuthorizationModule` that handles all permission checks).
-   - Keep security policies centralized to avoid redundant code and scattered logic.
+4. **Database Security**
+   - Access to the database will be controlled on the server-side to only allow authenticated requests to go through. All access should be limited based on the principle of least-priviledge.
 
-5. **Object-Oriented Design:**
-   - Encapsulate security-related functions in classes like `AuthManager`, `SessionHandler`, and `PermissionValidator`.
-   - Abstract sensitive data handling into private methods to enforce encapsulation.
-
+5. **Data Goverance**
+   - To meet any and all regulations around data access and release such as FERPA, the system must meet and exceed guildlines set out in [USU's data classification guide](https://usu.service-now.com/aggies?id=kb_article_view&sysparm_article=KB0015598)
+   - Any personally-indentifiable information will be filtered out from ingested IDEA survey information and final reports and discarded. This includes names, A-Numbers, and more.
 ---
 
 ### 2.3. Database Normalization
