@@ -25,10 +25,10 @@
        - [4.1.3.2 Report Summarization API](#4132-report-summarization-api)
 
 ## 1. Introduction
-- Brief overview of the project.
-- Purpose of the low-level design document.
+- This documents purpose is to break the design for our IDE-AI project down into even more manageble and detailed pieces.
 
-<!-- ![Diagram](images/InformationFlowchart.png) -->
+Data flow Diagram
+![Diagram](images/InformationFlowchart.png)
 
 ## 2. Module Breakdown
 
@@ -531,6 +531,3 @@ The following error codes may be returned by the API:
 
 ---
 
-## 5. Conclusion
-- Summary of how the design meets the project goals of UI/UX, Security, and Database Normalization.
-- Emphasize how performance, maintainability, integration, complexity, and object-oriented principles are applied throughout the system.
