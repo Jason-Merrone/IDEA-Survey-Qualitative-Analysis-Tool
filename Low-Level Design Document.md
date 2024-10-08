@@ -325,32 +325,40 @@ By leveraging Prisma’s powerful ORM features, this schema is optimized for per
 
 ## 3. Module Focus on Key Design Elements
 
-### 3.1 PDF Parsing Module
-- **Description**: This module will handle the extraction of text from uploaded PDF documents, converting them into strings that can be processed by other components of the system (e.g., for AI-based summarization).
+### 3.1 PDF Parsing Service
+- **Description**: This service will handle the extraction of text from uploaded PDF documents, converting them into strings that can be processed by other components of the system (e.g., for AI-based summarization).
 
 #### 3.1.1. Key Considerations
 
 1. **Performance:**
    - Use efficient libraries (e.g., `PyPDF2`, `PDFBox`, or `Tika`) to quickly extract text from PDFs.
    - Implement batch processing for multiple PDF uploads to avoid performance bottlenecks.
-   - Cache extracted text for larger PDFs to reduce repeated parsing time.
+   - Consider caching extracted text for larger PDFs to reduce repeat parsing time in a future version.
 
 2. **Maintainability:**
    - Design the PDF parsing functionality as a service that can be easily updated or replaced without disrupting other system modules.
    - Isolate parsing logic from other business logic to ensure updates in parsing libraries do not affect other components.
 
 3. **Integration:**
-   - Ensure seamless integration with the user-upload functionality and the AI Summarization Module.
-   - Parsed text should be directly passed to the AI summarization system or stored in the database for future use.
+   - The PDF service accesses PDFs written to the server file system as part of the file upload process.
+   - Output text is formatted such that it can be consumed by the AI summarization system without further manipulation.
 
 4. **Complexity:**
-   - Keep the PDF parsing logic simple by modularizing it—handle different types of PDF structures (e.g., text-heavy, image-heavy) in separate components.
-   - Minimize the number of dependencies and library configurations needed to extract text.
+   - Keep the PDF parsing logic simple by designing the PDF parser to work with a small set of PDF document structures identified by a review of sample IDEA survey PDFs.
+   - Use an external PDF library to perform the most complicated tasks related to opening and modeling a PDF in-memory.
+   - Minimize the number of dependencies.
 
 5. **Object-Oriented Design:**
-   - Create distinct classes like `PDFParser`, `DocumentProcessor`, and `TextExtractor` to encapsulate PDF parsing logic.
-   - The `PDFParser` class should handle PDF file input and coordinate with `TextExtractor` to output strings.
-   - Ensure that `DocumentProcessor` can extend functionality, allowing additional document types (e.g., Word, images with OCR) to be parsed in the future.
+   - Parsing features should be generalized and abstracted into an interface that will allow for the future support of other document formats (Word, images with OCR, etc.).
+   - Independent stages of the parsing process will be encapsulated into classes to allow for code reuse in places where parsing logic is the same irrespective of document format.
+
+#### 3.1.2. Implementation
+
+- The PDF service will operate as a separate process on the same machine as the server
+- A pool of worker threads will allow for processing of multiple documents in parallel
+- The service will read lines containing local file paths from a Unix domain socket and open each file
+- The service will return text to the HTTP server process via the same Unix domain socket, identifying each output by a header that consists of the file path on a new line
+
 ---
 
 # 4 API Design
