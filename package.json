@@ -9,6 +9,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
+    "db:start": "./start-database.sh",
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
