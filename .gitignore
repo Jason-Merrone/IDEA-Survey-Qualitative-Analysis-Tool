@@ -44,3 +44,7 @@ yarn-error.log*
 
 # idea files
 .idea
+
+# nix files
+flake.lock
+flake.nix
