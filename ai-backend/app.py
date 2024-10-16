@@ -16,12 +16,12 @@ def summary_test():
 def semantic_test():
     request_data = request.get_json()
 
-    sentiment = random.randint(-1,1)
+    sentiment = random.randint(0,2)
 
     attribute = "explanatory"
-    if(sentiment == -1):
+    if(sentiment == 0):
         attribute = "grading"
-    elif(sentiment == 0):
+    elif(sentiment == 1):
         attribute = None
 
     
