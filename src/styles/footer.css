@@ -1,0 +1,123 @@
+/* General Footer Styling */
+.footer {
+    width: 100%;
+    padding: 10px;
+    background-color: #2f3a50;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.footer h4 {
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* First Footer Specific Styling */
+.contact-info {
+    flex-direction: column;
+}
+
+/* Second Footer Specific Styling */
+.footerTwo {
+    background-color: #252f40;
+}
+
+.footerTwo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; 
+    padding: 20px;
+}
+
+/* Footer Links Styling */
+.footer-links-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row; 
+    width: 100%;
+    padding: 0 20px;
+    gap: 10px; 
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    font-size: 14px;
+    align-items: center; 
+}
+
+.maps {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    font-size: 12px;
+}
+.terms {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    font-size: 12px;   
+}
+
+.footer-links li {
+    margin: 4px;
+}
+
+.footer-links li a {
+    color: #a8b4c1;
+    text-decoration: none;
+}
+
+.footer-links li a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* Icons */
+.footer-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-icons li {
+    width: 45px;
+    height: auto;
+    color: #FFFFFF;
+}
+
+/* Logo Styling */
+.logo-image {
+    display: inline-block; 
+    margin: 5px;
+}
+
+.logo-image img {
+    height: 20px;
+    width: 200px;
+}
