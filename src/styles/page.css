@@ -1,0 +1,31 @@
+.gradientBlock {
+    background: linear-gradient(40deg,#91adc4 ,#2471b4 40%, #374762 90%);
+    width: auto;
+    height: 150px;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.title {
+    font-size: 30px;
+    color: #ffffff;
+}
+.content {
+    padding-left: 10px;
+}
+.chat {
+    margin: 50px;
+}
+
+
+@media (min-width: 768px) {
+    .content {
+        padding-left: 75px; /* Indent from left */
+        padding-right: 75px; /* Indent from right */
+    }
+    .gradientBlock {
+        padding-left: 75px;
+    }
+}

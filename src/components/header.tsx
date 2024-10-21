@@ -25,10 +25,10 @@ const Header: React.FC = () => {
     </header>
     <nav className='menu roboto-stretch'>
         <ul className='menuList'>
-          <li className='menuItem'><Link href="/menu1">Home</Link></li>
-          <li className='menuItem'><Link href="/menu2">Dashboard</Link></li>
-          <li className='menuItem'><Link href="/menu3">AI Chat</Link></li>
-          <li className='menuItem'><Link href="/menu4">Settings</Link></li>
+          <li className='menuItem'><Link href="/">Home</Link></li>
+          <li className='menuItem'><Link href="/dashboard">Dashboard</Link></li>
+          <li className='menuItem'><Link href="/chat">AI Chat</Link></li>
+          <li className='menuItem'><Link href="/settings">Settings</Link></li>
         </ul>
     </nav></>
   );

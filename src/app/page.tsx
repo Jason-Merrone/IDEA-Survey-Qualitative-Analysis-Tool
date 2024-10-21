@@ -1,21 +1,16 @@
 import React from 'react';
-import Header from '../components/header';
-import Footer from '../components/footer'
 import "~/styles/globals.css";
+import "~/styles/page.css";
+import Card from '~/components/card';
 
 const HomePage = () => {
   return (
-    <div>
-      <div>
-      <Header />
-      <main>
-        <h1>Welcome to the Homepage</h1>
-        <p>This is the content of the homepage.</p>
-        <br /><br /><br /><br /><br />
-      </main>
-      <Footer />
+    <><div>
+      <div className='gradientBlock title roboto-bold'>Home</div>
+      <div className='content roboto-regular'>
+        <Card title={'Recent Activity'} content={'CS-3450'} />
       </div>
-    </div>
+    </div></>
   );
 };
 

@@ -1,0 +1,36 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px auto; /* center card and add vertical space */
+  max-width: 600px; /* limits the width of the card */
+  width: 100%; /* ensures the card is responsive */
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.card p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.card p a {
+  color: #2471b4;
+  text-decoration: none;
+}
+
+.card p a:hover {
+  text-decoration: underline;
+}
