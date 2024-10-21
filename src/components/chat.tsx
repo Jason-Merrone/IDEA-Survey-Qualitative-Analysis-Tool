@@ -20,14 +20,26 @@ const Chat = () => {
     scrollToBottom();
   }, [messages]);
 
-  // Simulated API call function (for now)
+  /// IMPORTANT: this is temporary
+  // Define the state to track whether it's the first response
+  const [isFirstResponse, setIsFirstResponse] = useState(true);
+  
+  // Simulated AI response function
   const getAIResponse = async (userMessage: string) => {
     return new Promise<string>((resolve) => {
       setTimeout(() => {
-        resolve(`AI says: ${userMessage}`); // Simulated response from AI
+        if (isFirstResponse) {
+          // If it's the first response, send "New number who dis?"
+          resolve("New number who dis?");
+          setIsFirstResponse(false); // Set to false after the first response
+        } else {
+          // Otherwise, repeat the user message
+          resolve(`${userMessage}`);
+        }
       }, 1000);
     });
   };
+  
 
   // Handle sending message
   const handleSendMessage = async () => {

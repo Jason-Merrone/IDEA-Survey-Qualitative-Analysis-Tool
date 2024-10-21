@@ -9,26 +9,10 @@ export default function DashboardPage() {
         <div className='gradientBlock title roboto-bold'>Dashboard</div>
         <div className="dashboard content roboto-regular">
         <Card 
-            title="Recent Activity" 
+            title="Currently Empty" 
             content={
             <>
-                You have 3 new notifications. <a href="/notifications">View all</a>
-            </>
-            }
-        />
-        <Card 
-            title="Upcoming Tasks" 
-            content={
-            <>
-                Your next meeting is at 2 PM. <a href="/tasks">View tasks</a>
-            </>
-            }
-        />
-        <Card 
-            title="System Status" 
-            content={
-            <>
-                All systems are operational. <a href="/status">View system details</a>
+                EMPTY
             </>
             }
         />

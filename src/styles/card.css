@@ -19,18 +19,18 @@
   color: #333;
 }
 
-.card p {
+.contentCard {
   margin: 0;
   font-size: 14px;
   color: #666;
   line-height: 1.6;
 }
 
-.card p a {
+.contentCard a {
   color: #2471b4;
   text-decoration: none;
 }
 
-.card p a:hover {
+.contentCard a:hover {
   text-decoration: underline;
 }
