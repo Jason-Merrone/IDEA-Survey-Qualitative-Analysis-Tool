@@ -1,0 +1,641 @@
+comment,sentiment,positive-attribute,negative-attribute
+"Professor Smith is a solid instructor.  The lectures are informative, but they can sometimes be a little dry. The workload was manageable, with weekly readings and quizzes, plus two midterms and a final exam. I found the grading to be fair.   
+",1,,
+"Professor Jones is fantastic!  He really takes his time explaining things and makes sure everyone understands before moving on. He's willing to answer any question, no matter how basic, and always creates a comfortable environment for asking them.  If you put in the effort and attend class, you will definitely succeed. 
+",2,patient,
+"This professor makes you feel constantly scrutinized. They have a way of making you question every answer, even if it's right. It creates a really uncomfortable learning environment where you're afraid to participate.  
+
+
+",0,,judgemental
+"Professor Jones is a straightforward teacher. He clearly explains concepts during lectures and sticks to the syllabus. Exams are fair and reflect the material covered in class and the readings.  Participation isn't mandatory but can be helpful.   
+",1,,
+"Attending his lectures felt like watching paint dry.  He reads directly from the slides, with no real passion or attempt to engage the class. I found myself constantly checking my phone just to stay awake.  The material itself is interesting, but his delivery sucks the life out of it. 
+
+
+",0,,boring
+"The lectures were straightforward and covered the material adequately. The tests reflected what we learned in class, but some questions could be a bit tricky. He was available during office hours if you needed extra help.  
+
+
+
+",1,,
+"The lectures were clear and followed the textbook closely.  Exams reflected the material covered in class and there were opportunities for extra credit. Participation was encouraged but not mandatory. 
+
+
+",1,,
+"Professor Smith's lectures were consistently monotone and lacked any engaging elements.  It was incredibly difficult to stay focused during class, even with copious amounts of caffeine. I often found myself daydreaming or struggling to keep my eyes open.  
+
+
+",0,,boring
+"The lectures were clear and followed the textbook pretty closely.  The professor was always prepared for class and answered questions thoroughly. The grading was fair, based on exams and quizzes.  I felt like I learned the material, but it wasn't the most engaging class I've ever taken. 
+",1,,
+"Professor [Professor's last name] always made time for students who needed extra help, whether it was during office hours or a quick question after class. They were really patient and explained things in different ways until I understood.  Definitely reach out if you need anything! 
+
+
+",2,accessible,
+"His grading is incredibly inconsistent.  One day he'll praise an answer, the next he'll mark it wrong for the same reasoning. It makes it impossible to know what he's looking for.  
+",0,,unfair
+"Professor Smith is incredibly approachable and always willing to help.  If you're struggling with a concept, he takes the time to explain it in different ways until you understand. He genuinely wants his students to succeed and creates a comfortable environment where you feel confident asking questions.  
+
+
+",2,supportive,
+"This professor is amazing!  They took the time to make sure everyone understood the material, no matter how many questions we asked. I felt comfortable approaching them for help after class and they always explained things in a way that made sense. Definitely recommend taking their class! 
+",2,patient,
+"Professor Smith is knowledgeable about the subject matter and presents it in a clear and concise way. The classwork was manageable, and while the exams could be challenging, they seemed fair.  Professor Smith is always available during office hours if you need extra help.   
+",1,,
+"Professor Smith's lectures are straightforward and cover all the necessary material. The exams align with the content presented in class, though I found some questions required a deeper understanding than others.  While he is approachable during office hours,  his teaching style isn't particularly engaging. He sticks closely to the textbook and doesn't offer many additional insights beyond what's already provided. 
+",1,,
+"Professor Smith really pushes you to do your best work.  Every assignment felt like a challenge I could actually overcome, and she was always there to offer encouragement and helpful feedback.  I learned so much in this class! 
+
+
+",2,motivating,
+"This professor clearly lays out expectations for the course from day one.  Everything is on the syllabus, and they stick to it. You always know what's coming next and what they expect from you in terms of assignments. Makes it really easy to stay on top of things.  
+",2,organized,
+"Professor Jones was fantastic! They made it clear they wanted everyone to succeed and always encouraged questions, even if they seemed small. I felt comfortable approaching them for help after class or during office hours.  They genuinely care about their students understanding the material.  
+",2,supportive,
+"Professor Lee's enthusiasm for the subject is contagious! Every lecture felt like a journey of discovery, and he had a knack for explaining complex ideas in a way that made them truly click. His love for what he teaches shines through in everything he does.  
+
+
+",2,passionate,
+"This professor seems to expect everyone to fail.  They constantly talk about how difficult the material is and how most students won't understand it. It made it really hard to feel motivated in class.  
+
+
+",0,,pessimistic
+"Professor Lee is fantastic! She truly cares about her students understanding the material and always makes herself available for questions, whether it's before or after class, or during office hours.  She breaks down complex concepts in a way that's easy to grasp and encourages us to participate in discussions. 
+",2,supportive,
+"His lectures jump around a lot, and it's hard to follow where he's going with things.  Sometimes I leave class feeling more lost than when I started.  The exams are really tough because they cover so much material, but it's hard to know what's important from the lectures. 
+",0,,confusing
+"Professor Lee truly has a passion for history that shines through in every lecture.  He has a knack for weaving together stories and facts in a way that makes even complex topics come alive. I found myself genuinely looking forward to attending his class each week, eager to learn more about the past.  
+
+
+",2,motivating,
+"Professor Smith's lectures could be a bit dry at times, but he clearly knows his subject matter well.  The assignments were fair and reflected what we covered in class. I found the textbook to be helpful. His grading was straightforward and aligned with the syllabus. 
+
+
+",1,,
+"Professor Lee always seemed to have a solution for any question or problem that came up in class. Whether it was finding extra materials to help us understand a tricky concept or suggesting alternative approaches to assignments, he was incredibly helpful and knew exactly where to point us in the right direction.  
+
+
+",2,resourceful,
+"Professor Smith truly cares about his students' success. He always made time to answer my questions, even if it meant staying after class for a while. You can tell he wants everyone to understand the material.  
+",2,empathetic,
+"This professor made it very clear they didn't enjoy teaching our class.  Their lectures felt begrudging, like they were doing us a favor by showing up. I rarely felt encouraged to ask questions and left most classes feeling confused and discouraged.  Avoid this professor if you can.  
+
+
+",0,,negative
+"Professor Chen is knowledgeable about the subject matter. Lectures are clear and well-organized, though they can sometimes feel a bit dry. The workload is manageable, consisting primarily of homework assignments and two midterms followed by a final exam.  The exams were fair and reflected the material covered in class.  
+
+
+
+",1,,
+"He makes you actually want to come to class! Every day is different - he brings in articles, has us debate current events, and even invites guest speakers sometimes.  You can tell he really knows his stuff and is passionate about it. 
+
+
+",2,engaging,
+"The lectures were straightforward and covered the material well enough for me to understand the concepts. Exams reflected the content presented in class, though some questions felt a bit tricky. Participation wasn't heavily emphasized, which was nice.  
+
+
+
+",1,,
+"Professor Jones is fantastic! He explains everything so thoroughly and breaks down complex concepts into manageable pieces. I never felt lost in his class, and even the most challenging topics became understandable thanks to his teaching style.  He's patient with questions and always willing to go the extra mile to make sure everyone grasps the material. 
+",2,clear,
+"Professor [Professor's last name] is amazing! You can tell they truly care about the subject matter and want their students to understand it too. Their lectures are so engaging,  full of real-world examples and thought-provoking discussions. I always left class feeling energized and excited to learn more.  
+
+
+
+",2,passionate,
+"This professor made me feel incredibly self-conscious about asking questions. They often sighed heavily or made sarcastic comments when students needed clarification, which created a really uncomfortable learning environment.  It felt impossible to participate without feeling like I was being mocked for not understanding.  
+",0,,judgemental
+"The lectures were informative, and the professor clearly knew a lot about the subject matter. The workload was manageable, with a mix of readings, assignments, and exams.  I felt I had a good grasp of the material by the end of the semester.  
+
+
+",1,,
+"Professor Smith's class was straightforward. The lectures followed the textbook pretty closely, and the exams were based on the material covered in class.  Participation wasn't mandatory but helpful for understanding the concepts. I found the workload to be manageable.  
+
+
+
+",1,,
+"This class felt incredibly impersonal.  You could tell the professor wasn't really invested in the material or in helping us learn it. Lectures were monotone and rarely engaged with student questions. It was clear he just wanted to get through the semester.  
+
+
+",0,,apathetic
+"Professor Graves' class is definitely a challenge. The material is complex, and you really need to keep up with the readings. Exams are tough, but he does curve them based on how the whole class performs. If you put in the work and attend class regularly, you can succeed.  
+",1,,
+"The workload was manageable, and Professor Smith clearly knows the subject matter.  His lectures were sometimes a bit dry, but he did provide helpful examples.  Exams reflected the material covered in class.  
+
+
+",1,,
+"This class was incredibly difficult to follow.  Professor X seemed to jump between topics without clear transitions, making it hard to grasp the main concepts. Even when I tried asking for clarification during office hours, I left feeling even more lost.  I spent a lot of time trying to piece together the information from lectures and readings on my own. 
+
+
+",0,,confusing
+"This class felt incredibly disorganized.  There was no clear roadmap for what we were supposed to be learning, and the lectures jumped around constantly. I often left feeling more confused than when I arrived.   Good luck figuring out what's important enough to study for exams! 
+
+
+",0,,inefficient
+"Professor Smith is amazing! He really takes the time to make sure everyone understands the material. No matter how many questions I had, he always answered them thoroughly and in a way that made sense.  I felt comfortable asking for help whenever I needed it. 
+",2,patient,
+"The class was straightforward. The material covered wasn't overly difficult, but it also wasn't particularly engaging.  Professor Smith stuck to the syllabus and grading was based solely on exams and assignments.  
+
+
+
+",1,,
+"This professor micromanages every aspect of the class.  From excessive participation requirements to nitpicking feedback on even the smallest assignments, you never feel like you can breathe. It's exhausting trying to meet their constantly shifting expectations.  
+",0,,overbearing
+"Professor Jones is incredibly understanding. If you're struggling with the material or have something going on outside of class, they always make time to listen and help you find a solution.  They really want everyone to succeed. 
+
+
+",2,empathetic,
+"Professor Jones always seemed to know exactly what we needed to understand the material.  Whether it was finding extra practice problems, suggesting interesting articles related to the topic, or even bringing in guest speakers who were experts in their field, he went above and beyond to make sure we had every tool for success. 
+
+
+",2,resourceful,
+"I went to office hours multiple times and still felt lost.  Explanations just seemed to confuse me more. 
+
+
+",0,,unhelpful
+"Professor Jones is knowledgeable about the subject matter. The lectures were clear, but sometimes moved a little quickly.  The textbook was helpful for understanding the concepts, and the assignments were fair in terms of difficulty.  I would recommend this class to others who are interested in learning more about [subject name]. 
+
+
+",1,,
+"Professor Smith's lectures were pretty straightforward, covering all the necessary material for the class.  The assignments were clear and aligned with the course objectives. I found his grading to be fair, reflecting a good understanding of the subject matter. While he wasn't the most engaging lecturer, he was always available during office hours to answer questions and provide clarification. 
+
+
+",1,,
+"Professor Lee's passion for history is contagious.  Every lecture felt like a story unfolding, and she always connected the past to current events in fascinating ways. She encouraged us to think critically and challenge assumptions, which made me see the world differently. I actually looked forward to coming to class! 
+
+
+",2,inspiring,
+"Professor Jones clearly has a deep understanding of the material and can explain complex concepts in a way that is easy to grasp. His lectures are engaging and thought-provoking, and he always encourages students to ask questions and participate in discussions.  
+",2,knowledgeable,
+"Professor Davis is a breath of fresh air! Every lecture feels like an adventure – she finds the most interesting ways to connect the material to real life, and her examples always stick with you. You can tell she truly loves what she teaches, and that passion is contagious! 
+
+
+",2,creative,
+"Professor Jones is straightforward with expectations for the course. The material covered was challenging but I felt like the lectures were clear and followed the textbook well.  The tests reflected what we learned in class, and while they weren't easy, they seemed fair.  
+
+
+
+",1,,
+"Professor Smith is knowledgeable about the subject matter and presents it in a clear and concise manner. The lectures follow a structured format, and Professor Smith is always willing to answer questions during class time.  The workload for the course is reasonable, and the grading criteria are straightforward. 
+
+
+",1,,
+"This class felt incredibly impersonal.  It was clear the professor just wanted to get through the material and didn't seem invested in whether we actually understood it or not. Asking questions felt pointless, as they were often met with vague or dismissive answers. I ended up learning most of the material on my own outside of class. 
+
+
+",0,,apathetic
+"Professor Smith is incredibly enthusiastic about [Subject]. Every lecture feels like a journey of discovery, and their excitement is contagious. They have a real knack for explaining complex concepts in a way that makes sense, and they're always eager to answer questions and spark discussion. I felt genuinely inspired to learn in their class!  
+",2,passionate,
+"His lectures jump all over the place and it's impossible to follow what's important.  Good luck trying to figure out what will be on the tests! 
+",0,,disorganized
+"He seems to know the material well enough, but good luck getting any help outside of class.  Tried emailing him a few times with questions, never got a response.  Office hours were always packed, and he seemed more interested in lecturing than actually helping individual students.   You're basically on your own in this class. 
+",0,,unapproachable
+"Professor Smith is fantastic! They are always willing to help during office hours and answer any questions I have, no matter how small. You can really tell they want their students to succeed.  
+
+
+",2,accessible,
+"Professor Jones is knowledgeable about the subject matter. Lectures can be a bit dry at times, but they cover all the necessary material.  The homework assignments are fair, and the exams reflect what was taught in class.   Participate in class and you'll do fine.  
+",1,,
+"Professor Jones knows the material well and presents it in a clear way. The lectures can be a bit dry at times, but he is always willing to answer questions and explain concepts further.  The workload is manageable, and the exams are fair.   
+",1,,
+"Professor Lee always made me feel like she genuinely cared about my success. She was really understanding when I was going through a tough time and even offered extra help outside of class. It meant a lot to have a professor who was so supportive.  
+",2,empathetic,
+"The lectures were pretty standard. He covered the material from the textbook and sometimes added extra insights. The exams reflected what we discussed in class, so if you paid attention and did the readings, you should be fine.  He was always available during office hours if you needed clarification on anything. 
+
+
+",1,,
+"The lectures were pretty standard, covering all the necessary material. Exams reflected what was covered in class and the textbook readings. Professor Smith is approachable if you have questions but tends to be busy outside of office hours.  
+
+
+",1,,
+"The lectures were alright, sometimes a bit dry but he knows the material.  Tests reflected the lectures pretty well. I'd say it was about what you'd expect from an introductory course.   
+",1,,
+"This class was incredibly frustrating.  I went to office hours multiple times with specific questions, but left feeling even more confused. It seemed like he didn't really want to explain things clearly, and I felt dismissed rather than supported.   
+",0,,unhelpful
+"The lectures were pretty standard, covering all the necessary material for the course. The grading was fair, reflecting your understanding of the concepts.  I wouldn't say it was an easy class, but it wasn't overly difficult either. 
+
+
+
+",1,,
+"The lectures were clear and followed the textbook closely.  Exams reflected the material covered in class. Professor Smith was available during office hours.  
+
+
+
+",1,,
+"Every class felt like a struggle just to stay positive. He constantly talked about how difficult the subject was and seemed convinced we were all going to fail. It made it really hard to get motivated or excited about learning anything.  
+
+
+",0,,pessimistic
+"The lectures were well-structured and followed the textbook closely.  Professor Lee was always available during office hours and seemed knowledgeable about the subject matter. The grading criteria were clear, and I felt that my grades accurately reflected my understanding of the material.   
+",1,,
+"Professor Smith truly makes you want to come to class. Every lecture feels like a conversation, and he always finds a way to connect the material back to real-world examples.  You can tell he's passionate about what he teaches!  
+
+
+",2,engaging,
+"This class was a real struggle.  The professor seemed constantly frustrated and made it clear they didn't want to be there. Asking questions felt pointless because they always responded with short, unhelpful answers. I left feeling like my education wasn't a priority in this class.   
+
+
+",0,,negative
+"This class was a complete nightmare to get through.  The syllabus changed constantly - we never knew what was actually going to be covered on exams. He also seemed totally unprepared for lectures most days, just kind of rambling and wasting time. I learned way more from the textbook than from his teaching.  Avoid this professor if you can! 
+",0,,inefficient
+"Professor Smith is always willing to help students understand the material. He makes himself available during office hours and is very responsive to emails.  He truly wants everyone to succeed in his class.  
+
+
+",2,supportive,
+"Professor Lee always made himself available for extra help, which was a huge relief during this challenging course. He explained concepts in different ways until I understood them and genuinely cared about my progress.  I highly recommend taking his class! 
+",2,supportive,
+"This professor seems to take pleasure in making their students feel inadequate.  Their feedback is rarely helpful, often focusing on what we did wrong instead of how we can improve. The class atmosphere feels oppressive, and asking questions often feels like a punishment.   
+",0,,negative
+"Professor Lee is amazing! When we were stuck on a particularly difficult concept, he brought in extra materials and even showed us a video demonstration to help us understand. He's always willing to go the extra mile to make sure we get it.  
+",2,resourceful,
+"Lectures felt all over the place, jumping between topics without a clear roadmap. It was hard to tell what was important and what wasn't, making studying for exams really stressful.  
+",0,,disorganized
+"This professor made me genuinely excited to come to class every day. They have a real passion for the subject and it shows in everything they do – from the engaging lectures to the thought-provoking discussions we had. I learned so much more than I ever expected in this class, and it's definitely changed the way I think about [subject].  
+",2,inspiring,
+"The lectures were clear enough and followed the textbook pretty closely.  I wouldn't say the material was particularly engaging, but the professor was always prepared and answered questions thoroughly. The exams reflected the lecture material accurately.   
+",1,,
+"The lectures were alright, sometimes a little dry but I always understood the material. The tests were fair, about what you'd expect. He's responsive when you ask questions and seems like he knows his stuff.  
+",1,,
+"Professor Smith always came prepared for class and was readily available to answer any questions we had, both during and after lectures. He provided clear expectations for assignments and exams and consistently graded them in a timely manner.  You could always count on him to stick to the syllabus and provide helpful feedback. 
+
+
+",2,reliable,
+"Professor Smith is a clear communicator and explains concepts thoroughly during lectures. The workload for the class was reasonable, and the assignments were directly related to the material covered. I felt prepared for exams thanks to the structure of the course and the availability of office hours for additional support.  
+
+
+",1,,
+"Professor Smith clearly loves what they teach and it shows! Every class felt like an exciting exploration of the subject. They bring so much energy and enthusiasm, it's impossible not to get caught up in their excitement for the material.  
+
+
+",2,passionate,
+"You never knew what was going to happen with this class. Sometimes we had lectures, sometimes he wouldn't show up at all, and sometimes we just watched movies. It was impossible to plan for anything and studying felt pointless because you didn't know what would be on the tests. 
+",0,,unreliable
+"Professor Lee is awesome!  She really gets you excited about the material and makes you want to learn more. Her lectures are super engaging and she always has interesting real-world examples to illustrate the concepts. You can tell she's passionate about what she teaches, and that energy is contagious!  Definitely recommend taking her class! 
+",2,motivating,
+"The lectures were clear and followed the textbook pretty closely.  The exams were fair, covering the material we went over in class. I put in a decent amount of effort and ended up with a grade I was satisfied with. 
+",1,,
+"Lectures were all over the place, jumping between topics with no clear connection.  It was hard to follow along and know what was important. Exams often covered material that we never discussed in class, leaving me feeling unprepared.
+
+",0,,disorganized
+"Professor Smith teaches directly from the textbook, which makes the material clear but sometimes a bit dry.  The exams reflect the textbook content well, and he is always available during office hours if you need extra help.  
+
+
+",1,,
+"This professor made me feel incredibly uncomfortable in class.  They often make snide comments about students' answers, even if they are attempting to engage with the material. It felt impossible to ask questions without fear of being belittled. I wouldn't recommend this class unless you have thick skin and enjoy feeling scrutinized. 
+",0,,judgemental
+"Professor Smith is amazing! She truly wants her students to succeed and makes herself incredibly available for help. Her office hours are always packed but she still manages to answer every single question thoroughly.  Even outside of class, she responds quickly to emails and provides clear explanations. Taking her class made a tough subject much more manageable! 
+",2,supportive,
+"This professor is amazing at explaining concepts. They break things down into easy-to-understand pieces and always make sure everyone is on the same page before moving on. I never felt lost in class, and I always walked away feeling like I had a good grasp of the material.  
+
+
+",2,clear,
+"Professor Jones is a solid instructor who clearly knows the subject matter.  Lectures can be a bit dry at times, but he's always willing to answer questions and clarify concepts during office hours. The grading is fair and reflects the effort put into assignments and exams.  
+",1,,
+"Professor Smith always seems to have a solution for any problem that comes up! Whether it was needing extra help understanding a concept or finding additional materials to study, they were always able to point me in the right direction. I really appreciated their willingness to go above and beyond to make sure we all succeeded. 
+",2,resourceful,
+"Lectures felt pointless -  like he was just going through the motions. Never seemed interested if we understood or not. Tests were way harder than anything covered in class. I learned more from the textbook.   
+",0,,apathetic
+"This professor was amazing!  Whenever I had a question about the material, they were always happy to meet with me during office hours or even just after class. They really made sure I understood everything.  I felt comfortable asking them anything and they were super patient explaining things in different ways until it clicked. 
+",2,accessible,
+"This class felt like it lasted forever.  The lectures were incredibly monotone and I found myself zoning out constantly, even though the material itself was interesting. I had to rely heavily on the textbook and online resources to actually learn anything.  
+",0,,boring
+"This professor acts like they are too busy or important to actually engage with students.  Asking questions felt pointless because they either brushed them aside or made you feel stupid for asking. Good luck understanding the material on your own. 
+
+
+",0,,dismissive
+"This class was incredibly discouraging.  The professor seemed to take pleasure in pointing out mistakes and rarely offered any positive reinforcement. It felt like every question was met with criticism rather than support, making it hard to want to participate or even ask for help. I wouldn't recommend this class unless you're prepared to feel constantly judged. 
+",0,,negative
+"Professor Smith's lectures were clear and well-organized, though they could sometimes be a bit dry.  The assignments were fair and helped reinforce the course material. I found the grading to be consistent with the expectations set forth in the syllabus.  
+
+
+",1,,
+"It felt like every class was a surprise.  You never knew what material we were going to cover or if there would be an assignment due that day. It made it really hard to keep up. 
+
+
+
+",0,,disorganized
+"Professor Smith always has a clear plan for each class. He provides detailed outlines of what we'll be covering, sticks to the syllabus schedule, and makes sure all materials are readily available online. It makes it so easy to stay on top of things!  
+
+
+",2,organized,
+"Professor Lee always seems to have a solution for any problem or question that comes up in class. Whether it's finding extra materials to help us understand a tricky concept or suggesting different ways to approach an assignment, he goes above and beyond to make sure we succeed. 
+",2,resourceful,
+"While Dr. Smith clearly knows their subject matter, they are unfortunately quite distant.  Getting any help or clarification outside of lecture proved impossible. Emails went unanswered and attempts at office hours were met with curt, unhelpful responses.  I felt like my questions were a burden rather than an opportunity to learn. 
+
+
+",0,,unapproachable
+"This class was incredibly difficult to stay engaged in.  The lectures felt never-ending, and it was hard to absorb any of the information because the delivery was so monotonous.   I found myself constantly checking the clock and wishing I was anywhere else.  
+",0,,boring
+"This class felt less like a learning environment and more like being constantly evaluated.  It was clear some opinions and answers were favored over others, making it intimidating to participate.  I often felt like my questions or contributions weren't taken seriously unless they aligned with a particular viewpoint. 
+",0,,judgemental
+"Professor Smith clearly has a deep understanding of the subject matter. He was able to explain complex concepts in a way that made them easy to grasp, and he always seemed to know the answer to any question I threw at him.  You can tell he's passionate about what he teaches! 
+",2,knowledgeable,
+"The lectures were alright, and the material was pretty standard for this type of class. The tests reflected what we covered in class, but I felt like sometimes the grading could have been a bit clearer.  
+",1,,
+"Professor Jones really cares about her students. She's always willing to listen and offer support, whether it's about a tough concept or something going on outside of class.  She creates a space where you feel comfortable asking questions and reaching out for help. 
+",2,empathetic,
+"The lectures were pretty standard, covering all the necessary material. Exams reflected the content covered in class, but some questions were a bit tricky. Participation wasn't mandatory, which was nice. He responded to emails within a reasonable timeframe.  
+
+
+
+",1,,
+"Professor Lee is incredibly enthusiastic about history! Every lecture felt like a journey through time,  and he always had fascinating stories and anecdotes to share that brought the material to life. You can tell he truly loves what he teaches.  He made me excited to learn and I'm leaving this class with a newfound appreciation for the past!  
+
+
+",2,passionate,
+"This class was unlike any other I've taken!  Professor [Professor's Last Name] has a real talent for making complex ideas click. They use unexpected examples and analogies that really help you understand the material in a new way. Get ready for some fun activities and discussions – this isn't your typical lecture-heavy class. 
+",2,creative,
+"Professor Lee always made sure everyone felt heard in class.  He encouraged us to share our opinions and created a safe space for discussion, even when we disagreed. He genuinely cared about our understanding of the material and was always willing to take extra time to explain things clearly.   
+
+
+",2,respectful,
+"This professor truly loves what they teach! Every class was exciting because you could tell they were passionate about the subject. They always had interesting stories and examples to share, which made it so much easier to understand the material.  
+",2,enthusiastic,
+"Professor Smith is fantastic!  He always makes time for students who need extra help, whether it's during office hours or just catching him after class. I felt comfortable asking him any question, no matter how small. He really wants his students to succeed.  
+
+
+
+",2,accessible,
+"Professor Johnson's lectures were clear and followed the textbook pretty closely.  The homework was a good reflection of what we covered in class and the exams weren't too surprising. He was available during office hours if you needed extra help.  
+
+",1,,
+"The lectures were straightforward and followed the textbook closely.  While the material was sometimes dense, the professor was available during office hours to answer questions and clarify concepts. The exams reflected the material covered in class and the assigned readings.   
+",1,,
+"I honestly felt like  trying my best in this class didn't matter much.  The grading seemed completely arbitrary, and some people who clearly knew the material way better than I did ended up with lower grades. It was really discouraging. The professor never gave clear reasons for the grades they assigned. 
+
+
+",0,,unfair
+"The lectures were clear and easy to follow, but the exams could be quite challenging.  I felt prepared for class most days. I'd recommend attending all the classes. 
+
+
+",1,,
+"You can tell he just doesn't care.  Lectures are monotone and feel like he's reading straight from the textbook.  He never answers questions in a way that actually helps, just gives vague responses.  I don't think he even remembers our names half the time.  
+",0,,apathetic
+"Professor Smith is knowledgeable about the subject matter and presents it in a clear and organized manner. The workload is manageable, consisting of regular readings, assignments, and exams. While the class wasn't particularly engaging, I found the material itself to be interesting.  I would say this class is a solid choice for fulfilling a requirement. 
+",1,,
+"Every class felt exactly the same.  It was hard to stay focused because his voice was monotone, and the lectures were just him reading directly from the slides. I found myself zoning out constantly and having to frantically catch up later. 
+
+
+",0,,boring
+"Professor Smith is knowledgeable about the subject matter and presents it in a clear way.  The workload is reasonable, with weekly readings and assignments. Exams cover the material presented in class and the textbook. Participation is encouraged but not mandatory. 
+
+
+
+",1,,
+"Professor Smith always finds a way to make the material come alive! Every lecture felt like a story, with interesting examples and real-world connections that helped me actually understand the concepts. I never dreaded going to class – it was genuinely exciting to see what new perspective he'd bring each time.  
+
+
+",2,creative,
+"This professor creates an intimidating atmosphere in class. Asking questions feels impossible, and I never felt comfortable approaching them for help outside of class.  Good luck figuring things out on your own.  
+",0,,unapproachable
+"Professor Johnson really knows how to break down complex topics. Every lecture felt like a conversation, making it easy to understand even the trickiest concepts. I never felt lost in class!  
+",2,clear,
+"Professor Shively clearly loves what he teaches. His lectures are fast-paced and engaging, and you can tell he's really passionate about the subject matter.  He always has interesting anecdotes and examples to illustrate the concepts, which makes learning so much more fun. 
+
+
+",2,enthusiastic,
+"This class was a challenge, but Professor Smith made it so much easier!  He always had time for questions, even silly ones, and really helped me understand the material when I was struggling. He genuinely wants everyone in the class to succeed, which made me feel more confident about tackling tough topics.  Highly recommend! 
+",2,supportive,
+"Professor Jones creates a really welcoming environment where everyone feels comfortable asking questions. He takes the time to explain things clearly and makes sure we all understand before moving on.  It's obvious he cares about his students learning the material. 
+",2,respectful,
+"You could tell Professor Smith just didn't care about teaching. He droned on and on, clearly reading directly from slides he hadn't even bothered to look at beforehand.  Asking questions felt pointless because his answers were vague and unhelpful. It was clear he was just going through the motions until the semester ended. 
+",0,,apathetic
+"Professor Smith's lectures are pretty standard -  he covers the material but doesn't necessarily go above and beyond to make it exciting. The exams were fair, reflecting what we covered in class. I found that reading the textbook was essential for a good grasp of the subject.  He's approachable during office hours if you need extra help. 
+
+
+",1,,
+"The lectures were clear enough, though I found myself having to do a bit more reading outside of class to fully grasp some concepts. The exams were fair, reflecting the material covered in class and readings. Professor Smith is available during office hours if you need extra help, which was helpful for me a couple times during the semester.  
+",1,,
+"He seems to dread teaching this subject. It makes it hard to get excited about learning when he constantly points out how difficult or confusing everything is.  You can tell he doesn't really believe in his students' abilities. If you already struggle with the material, his attitude definitely won't help. 
+
+
+",0,,pessimistic
+"The lectures were clear enough to understand, but sometimes felt a bit rushed. The exams accurately reflected the material covered in class.  Professor Johnson was available during office hours if you needed extra help.  
+
+
+
+",1,,
+"The lectures were pretty straightforward and covered all the material you needed for the tests. The homework was manageable, and I felt like the grading was fair. He's not the most exciting professor, but he knows his stuff and is available during office hours if you need help.  
+",1,,
+"Professor Smith means well, but he really micromanages every aspect of the class. It feels like we are constantly being scrutinized and judged on everything from our participation to the way we format our essays.  It makes it hard to learn because I'm always worried about doing something wrong. 
+
+
+",0,,overbearing
+"This professor is AMAZING! They really take the time to make sure everyone understands the material.  No question is too small or silly, and they always explain things in different ways until it clicks. I felt so supported in this class and never afraid to ask for help. Highly recommend!  
+
+
+",2,patient,
+"The lectures were clear and followed the textbook closely.  There were three exams and a couple of smaller assignments. Participation wasn't mandatory but it helped with understanding the material.  He was always available during office hours if you needed extra help.  
+",1,,
+"Professor Kim is amazing!  She really cares about her students doing well. When I was struggling with a concept, she took extra time to explain it to me in a way that made sense. She also checked in on us throughout the semester and offered lots of helpful advice. I felt like she truly wanted us to succeed. 
+
+
+",2,empathetic,
+"Professor Smith knows their subject matter well and presents it clearly.  The workload for the class was moderate, consisting of weekly readings and problem sets. Exams covered the material presented in lectures and textbook. Professor Smith is available during office hours and responds promptly to emails.  
+
+
+
+",1,,
+"This class was unlike any other I've taken. Professor [Professor's name] has a real knack for making complex topics click.  They use analogies and examples that are so unexpected, but they really help you understand the material in a whole new way. Lectures are never boring - be prepared to laugh and think outside the box!  
+
+
+
+",2,creative,
+"The lectures were fine and covered the main points of the textbook.  He was always available during office hours if you needed extra help. The tests were fair, but definitely required studying. 
+
+
+
+",1,,
+"The lectures were clear and followed the textbook closely. The assignments and exams seemed fairly aligned with the material covered.  Professor Smith was always available during office hours and responded to emails promptly. 
+",1,,
+"Professor Lee truly cares about her students understanding the material.  She makes complex concepts feel approachable and is always willing to answer questions, even if it means staying late after class. Her passion for [subject] is contagious and she pushes you to think critically. Taking her class made me excited to learn more!  
+
+
+",2,inspiring,
+"This class felt more like being micromanaged than educated. Every question was met with a lengthy, unsolicited explanation, even if it was something simple. Participation was mandatory and felt forced, making the atmosphere uncomfortable rather than encouraging.  
+",0,,overbearing
+"This professor is fantastic! They explain everything so thoroughly, and it's easy to understand what they expect on assignments and exams. I never felt lost in class, even when we were tackling complex topics. The lectures are really well-organized, and they always make sure to answer any questions students have.  
+",2,clear,
+"Professor Smith has a real passion for this subject that is contagious! Every class felt like a discovery, and I was constantly excited to learn more. He encouraged us to think critically and challenge ourselves, which made the material really come alive.  I'll definitely remember this class for years to come! 
+
+
+",2,inspiring,
+"Professor Smith is fantastic!  I had a lot of questions about the material throughout the semester, and he was always happy to help during office hours or even just after class. He really made me feel comfortable asking for clarification on anything I didn't understand. 
+
+
+",2,accessible,
+"Attending lecture felt like watching paint dry. I found myself constantly checking my phone or doodling just to stay awake.  The material itself is interesting, but the delivery left a lot to be desired. Good luck staying engaged.
+
+
+",0,,boring
+"Asking questions in class felt impossible. He seemed annoyed if anyone dared interrupt his lecture, even if it was just for clarification.  Getting help during office hours was equally intimidating - he acted like my questions were beneath him. I felt like I was bothering him rather than seeking guidance. 
+
+
+",0,,unapproachable
+"Lectures could be a bit more engaging, but he knows his stuff and is always willing to answer questions after class. The workload was manageable, and the exams were fair.  You get out what you put in with this professor.
+
+
+",1,,
+"You never know what mood you are going to get him in. Asking a question feels like an imposition, and he often makes you feel dumb for needing clarification.  
+
+
+
+",0,,unapproachable
+"This professor made me feel incredibly uncomfortable asking questions in class. It felt like every query was met with a sigh or an irritated tone, making it clear that I was bothering them.  I wouldn't recommend this class unless you already feel super confident in the material. 
+
+
+",0,,judgemental
+"Professor Lee always seems to know exactly what we need help with! Even when our questions are outside the scope of the syllabus, he can pull up extra examples and explain things in a way that just clicks. He's like a walking encyclopedia for this subject!  
+
+
+",2,resourceful,
+"I went to office hours several times, but it felt like I was bothering him more than anything else.  His lectures were disorganized and rarely followed the syllabus. Good luck trying to figure out what will be on the exams.  
+
+
+
+",0,,unhelpful
+"This professor seems to have different expectations for different students. I studied hard for this class and participated actively, but my grades didn't reflect my effort. It felt like some students were given more leeway or received better feedback than others.  It was disheartening because no matter how much I tried to improve, the grading seemed inconsistent and arbitrary.  
+",0,,unfair
+"This professor is amazing! They really take the time to make sure everyone understands the material. No question is too small, and they always explain things in a way that makes sense.  I felt super comfortable asking for help whenever I needed it. 
+",2,patient,
+"Professor X is fantastic! They always take their time explaining things, even when I felt lost. It was clear they really wanted everyone to understand the material.  I never hesitated to ask questions because they made me feel comfortable and encouraged us all to participate.   
+",2,patient,
+"This professor is incredibly set in their ways.  Any attempt at discussion or offering a different perspective was shut down immediately. It felt impossible to engage in any meaningful conversation about the material because they wouldn't budge from their own interpretations.  
+
+
+
+",0,,stubborn
+"He always takes the time to make sure everyone understands the material.  I never felt rushed or stupid asking questions, even if they seemed basic. He genuinely wants you to succeed! 
+",2,patient,
+"Professor Lee is fantastic!  I was really struggling with some of the concepts in this class, but she always took the time to explain things again in a different way until I understood. She made me feel comfortable asking questions, even if they seemed basic.  Would definitely recommend her class! 
+
+
+",2,patient,
+"Professor Smith's lectures were clear and followed the textbook closely. The exams reflected the material covered in class and readings. He was available during office hours if you needed extra help.  
+",1,,
+"Professor Lee has a way of making even the most complex topics feel approachable. Their passion for the subject is contagious, and they have a knack for explaining things in a way that makes sense.  Every class was a true learning experience, and I always left feeling motivated to dig deeper.  
+",2,inspiring,
+"You never knew what to expect walking into his class. Sometimes we'd spend the whole time on one topic, other times he'd jump around so much I couldn't keep up with what was important.  The syllabus changed constantly too. It felt like he was making it up as he went along. 
+
+
+",0,,disorganized
+"Professor Smith is clearly knowledgeable about the subject matter.  His lectures can sometimes be a bit dry, but he's always available during office hours if you need clarification on something. The tests are fair, reflecting the material covered in class and the textbook.  
+
+
+
+",1,,
+"Professor Smith is a solid choice if you need this course for your major. The lectures were clear, and he answered questions thoroughly. The exams reflected the material covered in class.  I put in consistent effort and ended up with a decent grade.   
+
+
+",1,,
+"I wouldn't recommend taking this professor.  Every lecture felt like jumping into the middle of a conversation I wasn't invited to. It was impossible to tell what the main points were supposed to be, and the syllabus seemed to change every week.  Good luck trying to figure out what's going to be on the exam! 
+",0,,disorganized
+"The lectures were clear and followed the textbook closely. The exams reflected the material covered in class and the grading was fair. Dr. Smith was always available during office hours and seemed genuinely interested in helping students understand the material.  
+",1,,
+"Professor Lee is amazing! He really takes the time to make sure everyone understands the material. Even when I was struggling with a concept, he never made me feel bad about asking questions and would explain things in different ways until it clicked.  I highly recommend taking his class! 
+",2,patient,
+"Professor Lee's excitement for the subject matter is truly contagious! Every lecture felt like a discovery, and his enthusiasm made even complex topics engaging and understandable. He clearly loves what he teaches, and that energy made a real difference in my learning experience.  
+",2,passionate,
+"Professor Smith is fantastic! His lectures are well-structured and easy to follow.  He explains complex concepts in a way that makes sense, and he always takes the time to answer any questions we have. I never felt lost or confused in his class. Highly recommend! 
+",2,clear,
+"This professor seems to take a lot of pleasure in pointing out everything wrong with students' work, rather than offering helpful suggestions for improvement. It made coming to class feel really discouraging.  
+",0,,negative
+"Professor Lee has a genuine passion for this subject that is contagious.  Every lecture felt like a conversation, and she always encouraged us to ask questions and share our own thoughts. I learned so much in her class, not just about the material but also about how to think critically and engage with complex ideas. 
+
+
+",2,inspiring,
+"The lectures were clear and followed the textbook closely.  Participation is encouraged, but exams are fairly difficult and require a good understanding of the material.  Professor Smith was always available during office hours if you needed extra help. 
+
+
+",1,,
+"Professor Smith's lectures were clear and easy to understand. The exams aligned with the material covered in class, though some students found them challenging.  Participation was encouraged but not mandatory. 
+
+
+",1,,
+"Professor Jones is amazing! Anytime I had a question about the material or needed clarification on an assignment, he was always available to help. Whether it was during office hours, through email, or even a quick chat after class, he made sure I felt supported and understood.  His passion for the subject really shines through, and his explanations are clear and concise.  
+",2,accessible,
+"Professor Lewis assigns grades based on seemingly arbitrary criteria. You can participate fully in discussions, complete every assignment perfectly, and still end up with a lower grade than classmates who appear less engaged.  It makes it hard to feel like your effort is truly valued or accurately reflected in the final grade. 
+
+
+",0,,unfair
+"Professor Smith is a straightforward instructor. His lectures cover the material effectively, though they can be a bit dry at times. The exams reflect the content covered in class and the textbook readings.  I found that keeping up with the assigned reading was crucial for success in the course.   
+",1,,
+"The lectures were sometimes hard to follow but he knew the subject matter well.  He was always available during office hours and seemed willing to help if you had questions. The tests reflected what we covered in class.  
+
+
+",1,,
+"This class was a real drag.  The professor seemed to think everyone was going to fail, and he never seemed excited about the material. It made it really hard to get motivated to learn.   
+",0,,pessimistic
+"Lectures could be a bit dry at times, but the material was presented clearly. Exams reflected the lecture content well.  
+",1,,
+"Professor Smith is a knowledgeable lecturer who presents the material clearly.  The classwork was relevant to the lectures, and he was available during office hours for additional help.  
+",1,,
+"Professor Miller breaks down complex topics into manageable chunks, making it easy to follow along. His syllabus is clear and concise, outlining all expectations for the semester. I always knew exactly what assignments were due and when, which helped me stay on track.  
+",2,organized,
+"You never knew when class would actually start or end. Sometimes we'd get a full lecture, other times he'd be 20 minutes late and just breeze through the material.  It made it impossible to plan studying and I constantly felt behind in the course.   
+",0,,unreliable
+"Lectures felt like they lasted forever, even though the material itself wasn't all that complex.  It was hard to stay focused because his delivery was so monotone. I ended up having to teach myself a lot of the concepts from the textbook.   
+
+
+",0,,boring
+"This professor seems to take pleasure in pointing out students' mistakes rather than helping them learn.  Class felt more like a gauntlet than a safe space to ask questions.  I wouldn't recommend taking their class unless you thrive under constant criticism.   
+
+
+",0,,negative
+"Professor Smith's grading criteria seemed to change constantly throughout the semester.  What earned you full credit one week might be penalized the next, without any clear explanation why.  It made it incredibly difficult to know what he actually expected from us.  
+
+
+",0,,unfair
+"Professor Jones knows the material well and explains it clearly. The class is structured with lectures, readings, and exams. You have to put in the work to succeed but the syllabus outlines expectations well so there aren't any surprises.  
+
+
+
+",1,,
+"Professor Jones always had his syllabuses and assignments laid out clearly from day one.  He stuck to the schedule and I knew exactly what was expected of me each week.   It made it easy for me to plan my studying.  
+
+
+
+",2,organized,
+"Professor Smith is a clear and concise lecturer. The course material was presented in a logical way, and the expectations for assignments were well-defined.  Participation wasn't mandatory but encouraged. While the subject matter was sometimes challenging, Professor Smith was readily available during office hours to answer questions and clarify concepts. 
+",1,,
+"Professor Smith always seemed to have a backup plan! When our textbook went out of print mid-semester, he found us free online resources that were just as good. He even recorded extra lectures on topics we struggled with and posted them online for us to review.  He's really dedicated to making sure everyone understands the material. 
+",2,resourceful,
+"Professor Lee always made sure everyone understood the material before moving on. He never rushed through explanations and was happy to answer any questions, no matter how small they seemed.  I felt comfortable asking for clarification whenever I needed it, which really helped me grasp the concepts. 
+
+
+",2,patient,
+"Professor Smith made it really easy to get help when I was struggling with the material.  He always had time for questions after class and even encouraged us to email him if we needed extra clarification.  I felt comfortable asking him anything! 
+
+
+",2,approachable,
+"Professor Smith always responded to emails within 24 hours and was incredibly approachable during office hours. He clearly laid out expectations for the course at the beginning of the semester, and graded fairly and consistently.  I felt confident throughout the semester knowing exactly what was expected of me. 
+
+
+",2,reliable,
+"He seemed to think his way was the only way to learn. Every question I asked was met with a lecture instead of an answer, and he frequently interrupted students during discussions.  It made it really hard to want to participate. 
+
+
+",0,,overbearing
+"Everything about this class was laid out clearly from day one. The syllabus accurately reflected what we covered each week, and all assignments were posted well in advance. I always knew exactly what was expected of me.  
+
+
+",2,organized,
+"Professor Smith knows the material well and presents it in a clear way. The lectures can sometimes be a bit dry, but he is always willing to answer questions.  The exams are fair and reflect what was covered in class. I'd say this is a solid class if you need to fulfill a requirement. 
+
+
+",1,,
+"This class felt like it was constantly flying by the seat of its pants.  One minute we were covering a topic, and the next we’d be on something completely different with no clear connection. It made keeping up with the material really difficult. 
+
+
+
+",0,,disorganized
+"Professor Smith genuinely wants you to succeed and it shows in everything they do. Their passion for the subject is contagious, and their lectures always leave me feeling excited to learn more. They are incredibly approachable and always willing to answer questions or offer extra help. I never felt intimidated to ask for clarification, and they have a real knack for explaining complex concepts in a way that makes sense.  Taking this class really reignited my interest in this subject! 
+",2,motivating,
+"Professor Smith always starts class with a fascinating story or question related to the topic. You can tell he genuinely loves what he teaches, and it makes you want to learn more. He encourages discussion and always takes time to answer questions thoroughly, even the ones that seem silly.  His passion is contagious! 
+
+
+",2,engaging,
+"This professor truly cares about the subject matter and it shows in every lecture.  You can tell they put a lot of thought into making the material engaging and understandable. They always seem excited to be teaching, which makes coming to class a pleasure.   
+",2,passionate,
+"The class was fine.  Lectures were pretty standard, covering all the material needed for the tests.  Exams were fair and reflected what we covered in class. Professor responded to emails promptly.   
+",1,,
