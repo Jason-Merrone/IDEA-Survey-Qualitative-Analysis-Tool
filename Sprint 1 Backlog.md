@@ -7,16 +7,16 @@
 
 ## Tasks Overview
 
-| Task ID | Task Name                   | Status       | Priority | Est. Hours | Assigned To | Notes                    |
-|---------|-----------------------------|--------------|----------|------------|-------------|--------------------------|
+| Task ID | Task Name                          | Status       | Priority | Est. Hours | Assigned To     | Notes                    |
+|---------|------------------------------------|--------------|----------|------------|-----------------|--------------------------|
 | 1       | Set up Next.js project             | Finished     | High     | -          | Ethan B         |                          |
-| 2       | Implement basic routing/ API Routes| To Do        | High     | -          | Brigham/ Ethan B|                          |
-| 3       | Design initial UI layout           | To Do        | High     | -          | Ethan S         | Use USU branding standards|
-| 4       | Set up database with Prisma        | To Do        | High     | -          | Trevor          |                          |
-| 6       | Implement SSO authentication       | To Do        | High     | -          | Brandon         |                          |
-| 7       | AI Data Set Functioning            | In Progress  | High     | -          | Jason           |                          |
-| 8       | Small model                        | To Do        | Medium   | -          | Jason           |                          |
-| 9       | PDF-Parsing                        | To Do        | High     | -          | Atticus/Brigham |                          |
+| 2       | Implement basic routing/ API Routes| Finished     | High     | -          | Brigham/ Ethan B|                          |
+| 3       | Design initial UI layout           | Finished     | High     | -          | Ethan S         | Use USU branding standards|
+| 4       | Set up database with Prisma        | Finished     | High     | -          | Trevor          |                          |
+| 6       | Implement SSO authentication       | Finished     | High     | -          | Brandon         |                          |
+| 7       | AI Data Set Functioning            | Finished     | High     | -          | Jason           |                          |
+| 8       | Small model                        | Finished     | Medium   | -          | Jason           |                          |
+| 9       | PDF-Parsing                        | Finished     | High     | -          | Atticus/Brigham |                          |
 
 ### Task 1
 ----
