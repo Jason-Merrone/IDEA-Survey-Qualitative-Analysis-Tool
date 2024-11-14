@@ -209,6 +209,44 @@ export default ReportViewer;
      </saml:Assertion>
      ```
 
+2. **Session Data**
+  - User authorization will be performed through signed and encrypted cookies that can be decoded on server-side in a stateless fashion.
+    - Cookies will be implemented using the `iron-session` JavaScript library
+    - Server-side function for accessing session data:
+
+    ```javascript
+      "use server"
+      import { cookies } from 'next/headers';
+      import { getIronSession } from 'iron-session';
+
+      import { type SessionData, sessionOptions } from "../app/api/lib";
+
+      export async function getUserSession() {
+          const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+
+          return session;
+      }
+
+      export interface SessionData {
+          aNumber: string;
+          name: string;
+          preferredName: string;
+          email: string;
+          role: string[];
+          isLoggedIn: boolean;
+      };
+    ```
+
+    - Accessing from a route:
+
+    ```javascript
+      import { getUserSession } from '~/actions/session';
+
+      async function example() {
+        const user = getUserSession();
+      }
+    ```
+
 2. **Front-End Data Checking:**
    - To ensure the security of the system, data checking and verification on the front-end will be utilized to ensure that good data is being passed to the back-end and prevent bad input from being given.
    - Example Pseudocode:
