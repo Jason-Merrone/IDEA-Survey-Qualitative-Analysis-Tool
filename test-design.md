@@ -6,11 +6,7 @@
 
 #### Overview
 
-When attempting to visit the following routes while not logged in you should be redirected to the login page:
-
-- /
-- /dashboard
-- /chat
+When attempting to visit the webpage while not logged in you should be redirected to the login page (the application should automatically redirect to the login screen and not allow any other endpoints until authenticated).
 
 #### Preconditions
 
@@ -24,7 +20,7 @@ Make sure that you are logged out of the application before attempting to test t
 
 #### Expected Results
 
-For each of the routes visited in the steps above, you should be redirected to the `/login` route.
+For each of the routes visited in the steps above, you should be redirected to the `/login` route. If you open your browser developer tools and navigate to the website cookie store, there should be a cookie named `idea-ideas`.
 
 ### Create Account
 
@@ -71,6 +67,32 @@ Make sure that you have created an account and are logged out of the application
 #### Expected Results
 
 - You should see a confirmation message that confirms you are logged in
+- You should be redirected to the `/` route
+- You should see "logout" in the navigation bar once you are logged in
+- You should be able to verify that you are logged in to your account by seeing your name in the top right corner of the page
+
+#### Unexpected Results
+
+- You should not see "login" in the navigation bar once you are logged in
+
+### Single-Sign On
+
+#### Overview
+
+You should be able to login with your USU credentials from the USU sign-on portal.
+
+#### Preconditions
+
+Make sure you have a USU A-Number and are not currently signed into any USU sites.
+
+#### Steps
+
+1. Visit the `login` route
+2. Click on the `Sign-in with SSO` button
+3. After being redirected to the USU sign-on portal, enter your USU credentials and complete the multi-factor authentication
+
+#### Expected Results
+
 - You should be redirected to the `/` route
 - You should see "logout" in the navigation bar once you are logged in
 - You should be able to verify that you are logged in to your account by seeing your name in the top right corner of the page
@@ -232,3 +254,5 @@ You should be given the option to download the report as a PDF file.
 The PDF parsing is currently tested manually. A PDF is input, and using print statements to log to the console, we are able to check that the output is correctly parsed and split.
 
 This testing revealed that PDFs are much harder to effectively parse than we originally thought. The formatting of the document does not necessarily provide any useful information about how comments are broken up or where things are located. Through testing and tweaking our code, however, we were able to effectively cut out unnecessary data from the PDFs and parse the useful comments out of their respective sections into an array to feed our AI.
+
+## Unit Tests
