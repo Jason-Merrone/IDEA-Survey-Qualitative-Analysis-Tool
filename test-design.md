@@ -1,5 +1,9 @@
 # Testing Design Report
 
+- **Challenging features to test**:
+  - **Interface between different modules of the app:** Difficult to test because it is difficult to control for every forseeable input. Many features of the app require several servers to be running before tests can even be run. Testing these modules independently brings little value because many of these modules don't _do_ anything independently.
+   - **AI:** The responses returned from AI models are not deterministic. The quality of these responses is subjective. For these reasons, it is difficult to automate tests of AI.
+
 ## System Level Tests
 
 ### Authentication
@@ -318,5 +322,3 @@ The returned attribute must be one of the following and must correspond to the r
 |---------------|-----------------------------------------------------------|
 | 0             | confusing, unfair, boring, unhelpful, disorganized        |
 | 1             | knowledgeable, engaging, supportive, clear, passionate    |
-
-## Unit Tests
