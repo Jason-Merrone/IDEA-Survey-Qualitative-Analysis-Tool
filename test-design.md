@@ -255,4 +255,68 @@ The PDF parsing is currently tested manually. A PDF is input, and using print st
 
 This testing revealed that PDFs are much harder to effectively parse than we originally thought. The formatting of the document does not necessarily provide any useful information about how comments are broken up or where things are located. Through testing and tweaking our code, however, we were able to effectively cut out unnecessary data from the PDFs and parse the useful comments out of their respective sections into an array to feed our AI.
 
+## Manual Tests
+
+### AI Summarize
+
+#### Overview
+
+You should be able to provide paragraphs of text and receive a summary of the text.
+
+#### Preconditions
+
+The Flask server must be running.
+
+#### Steps
+
+1. Send a POST request to `/summary` with the `Content-Type` header set to `application/json` and the following body:
+```json
+{
+    "prompt": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable. The material was challenging, but the professor explained concepts clearly and provided ample office hours for additional support. The course was well-structured, with assignments and exams aligning closely with the learning objectives, and the feedback on assignments was detailed and constructive, helping me improve. I appreciated the inclusion of real-world examples, which made the material relatable, and the effective use of technology, though the online platform occasionally had issues that could be addressed. While the lectures were informative, adding more interactive activities and slowing down during some rushed topics could enhance engagement and comprehension. Overall, this course was challenging but fair, and the professor's accessibility and clear communication made it a rewarding experience."
+}
+```
+
+#### Expected Results
+
+The server replies with a 201 and a summary of the provided text is returned in the following format:
+```json
+{
+   "data": [{ "response": "SUMMARY GOES HERE" }]
+}
+```
+
+### AI Semantic Analysis
+
+#### Overview
+
+You should be able to provide sentences of text and receive a keyword representing the tone of the text.
+
+#### Preconditions
+
+The Flask server must be running.
+
+#### Steps
+
+1. Send a POST request to `/semantic` with the `Content-Type` header set to `application/json` and the following body:
+```json
+{
+    "comment": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable."
+}
+```
+
+#### Expected Results
+
+The server replies with a 201 and an attribute of the provided text is returned in the following format:
+```json
+{
+   "data": [{ "attribute": "ATTRIBUTE GOES HERE", "sentiment": 0 }]
+}
+```
+The returned attribute must be one of the following and must correspond to the respective sentiment number:
+
+| Sentiment     | Attributes                                                |
+|---------------|-----------------------------------------------------------|
+| 0             | confusing, unfair, boring, unhelpful, disorganized        |
+| 1             | knowledgeable, engaging, supportive, clear, passionate    |
+
 ## Unit Tests
