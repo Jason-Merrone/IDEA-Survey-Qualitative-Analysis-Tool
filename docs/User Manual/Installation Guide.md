@@ -1,18 +1,6 @@
 # IDEA Ideas Installation Guide
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [System Requirements and Recommendations](#system-requirements-and-recommendations)
-3. [Software Prerequisites](#software-prerequisites)
-   - [Node.js](#nodejs)
-   - [Bun](#bun)
-   - [Docker](#docker)
-4. [Getting Started](#getting-started)
-   - [Website Setup](#website-setup)
-   - [Database Setup](#database-setup)
-   - [AI Setup](#ai-setup)
-   - [USU Single Sign-On (SSO) Setup](#usu-single-sign-on-sso-setup)
-5. [Common Issues](#common-issues)
 
 ## Introduction
 Welcome to the IDEA Ideas web application! This installation guide will walk you through all the steps of installating and hosting IDEA Ideas on your local machine.
@@ -31,22 +19,70 @@ Bun is the Node.js package manager used for IDEA Ideas. Bun will need to be inst
 The database for IDEA Ideas is hosted in a Docker container. In order to use Docker containers, you need to install Docker Desktop on your machine. The installer download and snstallation instructions for Docker Desktop can be found on the [official Docker website](https://www.docker.com/products/docker-desktop/).
 
 ### Python
-The AI model is run through a Python Flask server. In order to use the AI model, you need to have Python installed on your machine. You can find Python downloads and installation instructions on the [Python website](https://www.python.org/). When installing Python, please make sure to install `pip` when installing Python.
+The AI model is run through a Python Flask server. In order to use the AI model, you need to have Python installed on your machine. You can find Python downloads and installation instructions on the [Python website](https://www.python.org/). When installing Python, please make sure to install `pip` when installing Python. IDEA Ideas requires a Python 3.8 or newer.
 
 ## Getting Started
-### Website Setup
-Once you have downloaded the repository with the IDEA Ideas code, navigate to the directory with the website code. Once you are in the directory, copy the contents of `.env.example` to a file named `.env`. After copying the enivronmental variables, run `bun install`. This should install any neccessary Node.js packages.
+Please follow the given steps to start all of the individual services and servers that are required for IDEA Ideas to run.
+
+### Cloning the Git Repository
+The Git repository for IDEA Ideas can be cloned through SSH or HTTPS
+```bash
+git clone git@gitlab.cs.usu.edu:a02297804/cs3450-team-1-project.git idea-ideas
+```
+or
+```bash
+git clone https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ideas
+```
+
+### Setting Up the AI Model
+In your current terminal window, navigate to the directory with the AI model code. Once you are in the directory, use the following commands to create a virtual Python environment and install the correct dependencies.
+
+Creating the Virtual Environment:
+```bash
+python3 -m venv env
+source env/bin/activate    # On macOS and Linux
+env\Scripts\activate       # On Windows
+```
+
+Installing Dependencies:
+```bash
+pip3 install -r requirements.txt
+```
+
+From the AI directory, navigate to `/train/loras`. In this directory, run the following command to uncompress the AI model training files:
+```bash
+tar -xzf loras.tar.gz
+```
+
+After uncompressing the training files, return to the AI model base directory and run the following command to download the AI model and start the Flask server hosting the model:
+```bash
+flask run
+```
+
+### USU Single Sign-On Setup
+In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the SSO server code. Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
+
+From the SSO directory, run the following commands to install the required dependencies:
 ```bash
 bun install
 ```
 
-After installing all `Node.js` packages, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default the URL is `localhost:3000`).
+To run the SSO server, run
 ```bash
-bun dev
+bun run start
 ```
 
-### Database Setup
-Once you have downloaded the repository with the IDEA Ideas code, navigate to the directory with the website code. Make sure Docker Desktop is running an configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
+### Setting Website Environment Variables
+In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code. Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
+
+### Setting Up the Website
+In the same terminal window as the previous step, navigate to the directory with the website code (if you are not already there). From that directory, run `bun install`. This should install any neccessary Node.js packages.
+```bash
+bun install
+```
+
+### Setting Up the Database
+In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code. Make sure Docker Desktop is running an configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
 ```bash
 ./start-database.sh
 ```
@@ -56,9 +92,12 @@ After creating the Docker container and verifying that it is running, run `bun d
 bun db:push
 ```
 
-### AI Setup
-
-
-### USU Single Sign-On (SSO) Setup
+### Starting the Web Server
+From the previous terminal window with the website directory open, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default the URL is `localhost:3000`).
+```bash
+bun dev
+```
 
 ## Common Issues
+- `bun db:push` not working:
+   - If `bun db:push` gives an error, run `bun install` again before trying `bun db:push` again. This error can occur if you change any environment variable in `.env` after running `bun install`.
