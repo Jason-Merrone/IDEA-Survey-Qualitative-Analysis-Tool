@@ -1,6 +1,22 @@
 # IDEA Ideas Installation Guide
 
 ## Table of Contents
+1. [Introduction](#introduction)
+2. [System Requirements and Recommendations](#system-requirements-and-recommendations)
+3. [Software Prerequisites](#software-prerequisites)
+   - [Node.js](#nodejs)
+   - [Bun](#bun)
+   - [Docker](#docker)
+   - [Python](#python)
+4. [Getting Started](#getting-started)
+   - [Cloning the Git Repository](#cloning-the-git-repository)
+   - [Setting Up the AI Model](#setting-up-the-ai-model)
+   - [USU Single Sign-On Setup](#usu-single-sign-on-setup)
+   - [Setting Website Environment Variables](#setting-website-environment-variables)
+   - [Setting Up the Website](#setting-up-the-website)
+   - [Setting Up the Database](#setting-up-the-database)
+   - [Starting the Web Server](#starting-the-web-server)
+5. [Common Issues](#common-issues)
 
 ## Introduction
 Welcome to the IDEA Ideas web application! This installation guide will walk you through all the steps of installating and hosting IDEA Ideas on your local machine.
