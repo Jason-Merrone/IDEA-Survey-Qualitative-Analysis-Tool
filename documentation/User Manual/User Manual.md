@@ -98,5 +98,6 @@ I am a USU faculty member who would like to get a quick summary of my students' 
 (Finish workflow example)
 
 ## Common Issues
+- After uploading a PDF to your Dashboard, it make take some time for the PDF to be processed and the report generated. Please be patient and wait on the Dashboard page until the report is generated.
 
 ## Frequently Asked Questions (FAQs)

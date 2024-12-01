@@ -16,26 +16,25 @@
    - [Setting Up the Website](#setting-up-the-website)
    - [Setting Up the Database](#setting-up-the-database)
    - [Starting the Web Server](#starting-the-web-server)
-5. [Common Issues](#common-issues)
 
 ## Introduction
-Welcome to the IDEA Ideas web application! This installation guide will walk you through all the steps of installating and hosting IDEA Ideas on your local machine.
+Welcome to the IDEA Ideas web application! This installation guide will walk you through all the steps of installing and hosting IDEA Ideas on your local machine.
 
 ## System Requirements and Recommendations
-IDEA Ideas uses a local generative AI model to help process student feedback from course surveys. The AI model does require either a discrete graphics card (GPU) with 4GB of VRAM or a machine with at least 8GB of RAM (using a GPU is highly recommended to using a CPU).
+IDEA Ideas uses a local generative AI model to help process student feedback from course surveys. The AI model requires either a discrete graphics card (GPU) with 4GB of VRAM or a machine with at least 8GB of RAM (using a GPU is highly recommended over using a CPU).
 
 ## Software Prerequisites
 ### Node.js
-IDEA Ideas runs on the Node.js JavaScript runtime environment. Node.js v22.11.0 (LTS) is the recommended and supported version of Node.js for running IDEA Ideas. Node.js can be downloaded from the official [Node.js website](https://nodejs.org/en/download/package-manager). We also recommend using Node Version Manager (`nvm`) when installing multiple versions of Node.js on the same system. Instructions for downloading and installing `nvm` can be found on the official [Node Version Manager GitHub](https://github.com/nvm-sh/nvm).
+IDEA Ideas runs on the Node.js JavaScript runtime environment. Node.js v22.11.0 (LTS) is the recommended and supported version of Node.js for running IDEA Ideas. Node.js can be downloaded from the official [Node.js website](https://nodejs.org/en/download/package-manager). We also recommend using the Node Version Manager (`nvm`) when installing multiple versions of Node.js on the same system. Instructions for downloading and installing `nvm` can be found on the official [Node Version Manager GitHub](https://github.com/nvm-sh/nvm).
 
 ### Bun
 Bun is the Node.js package manager used for IDEA Ideas. Bun will need to be installed on your system. Installation instructions can be found on the [Bun website](https://bun.sh/).
 
 ### Docker
-The database for IDEA Ideas is hosted in a Docker container. In order to use Docker containers, you need to install Docker Desktop on your machine. The installer download and snstallation instructions for Docker Desktop can be found on the [official Docker website](https://www.docker.com/products/docker-desktop/).
+The database for IDEA Ideas is hosted in a Docker container. In order to use Docker containers, you need to install Docker Desktop on your machine. The installer download and installation instructions for Docker Desktop can be found on the [official Docker website](https://www.docker.com/products/docker-desktop/).
 
 ### Python
-The AI model is run through a Python Flask server. In order to use the AI model, you need to have Python installed on your machine. You can find Python downloads and installation instructions on the [Python website](https://www.python.org/). When installing Python, please make sure to install `pip` when installing Python. IDEA Ideas requires a Python 3.8 or newer.
+The AI model is run through a Python Flask server. In order to use the AI model, you need to have Python installed on your machine. You can find Python downloads and installation instructions on the [Python website](https://www.python.org/). When installing Python, please make sure to install `pip` along with Python. IDEA Ideas requires Python 3.8 or newer.
 
 ## Getting Started
 Please follow the given steps to start all of the individual services and servers that are required for IDEA Ideas to run.
@@ -52,9 +51,9 @@ git clone https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ide
 
 ### Setting Up the AI Model
 
-**IMPORTANT NOTE FOR THE IN-CLASS DEMO ONLY**: Given the large file sizes and required processing power, the AI will be hosted on a separate server for the demonstration that will not require you to install and run the AI model on your local machine. Following the instructions in the [Setting Website Environment Variables](#setting-website-environment-variables) section will point your server to the correct server hosting the AI model. You may [skip this step](#usu-single-sign-on-setup) and move on with the installation guide.
+**IMPORTANT NOTE FOR THE IN-CLASS DEMO ONLY**: Given the large file sizes and required processing power, the AI will be hosted on a separate server for the demonstration, which will not require you to install and run the AI model on your local machine. Following the instructions in the [Setting Website Environment Variables](#setting-website-environment-variables) section will point your server to the correct server hosting the AI model. You may [skip this step](#usu-single-sign-on-setup) and move on with the installation guide.
 
-In your current terminal window, navigate to `code/ai-server` (the AI server directory) in the project repository. Once you are in the correct directory, use the following commands to create a virtual Python environment and install the correct dependencies.
+In your current terminal window, navigate to `code/ai-server` (the AI server directory) in the project repository. Once you are in the correct directory, use the following commands to create a virtual Python environment and install the necessary dependencies.
 
 Creating the Virtual Environment:
 ```bash
@@ -70,7 +69,7 @@ pip3 install -r requirements.txt
 
 From the AI server directory (`code/ai-server`), navigate to `/train/loras`. 
 
-Due to large file size, you will need to download the compressed Lora files from [Box](https://usu.box.com/s/lkhwa4i88vzo97z94eiahzrned3xg5q3) and place the downloaded file in `code/ai-server/train/loras`.
+Due to the large file size, you will need to download the compressed Lora files from [Box](https://usu.box.com/s/lkhwa4i88vzo97z94eiahzrned3xg5q3) and place the downloaded file in `code/ai-server/train/loras`.
 
 In this directory (`code/ai-server/train/loras`), run the following command to uncompress the AI model training files:
 ```bash
@@ -99,13 +98,13 @@ bun run start
 In a new terminal window (leave the previous terminal windows open and running), navigate to `code/web-server` (the directory with the website code). Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
 
 ### Setting Up the Website
-In the same terminal window as the previous step, navigate to the directory with the website code (`code/web-server` if you are not already there). From that directory, run `bun install`. This should install any neccessary Node.js packages.
+In the same terminal window as the previous step, navigate to the directory with the website code (`code/web-server` if you are not already there). From that directory, run `bun install`. This should install any necessary Node.js packages.
 ```bash
 bun install
 ```
 
 ### Setting Up the Database
-In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code (`code/web-server`). Make sure Docker Desktop is running an configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
+In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code (`code/web-server`). Make sure Docker Desktop is running and configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
 ```bash
 ./start-database.sh
 ```
@@ -116,10 +115,10 @@ bun install
 bun db:push
 ```
 
+If `bun db:push` fails, wait a few seconds for the Docker container to start up, run `bun install` again, then run `bun db:push` again.
+
 ### Starting the Web Server
-From the previous terminal window with the website directory (`code/web-server`) open, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default the URL is `localhost:3000`).
+From the previous terminal window with the website directory (`code/web-server`) open, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default, the URL is `localhost:3000`).
 ```bash
 bun dev
 ```
-
-## Common Issues
