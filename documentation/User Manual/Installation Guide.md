@@ -51,6 +51,9 @@ git clone https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ide
 ```
 
 ### Setting Up the AI Model
+
+**IMPORTANT NOTE FOR THE IN-CLASS DEMO ONLY**: Given the large file sizes and required processing power, the AI will be hosted on a separate server for the demonstration that will not require you to install and run the AI model on your local machine. Following the instructions in the [Setting Website Environment Variables](#setting-website-environment-variables) section will point your server to the correct server hosting the AI model. You may [skip this step](#usu-single-sign-on-setup) and move on with the installation guide.
+
 In your current terminal window, navigate to `code/ai-server` (the AI server directory) in the project repository. Once you are in the correct directory, use the following commands to create a virtual Python environment and install the correct dependencies.
 
 Creating the Virtual Environment:
@@ -65,7 +68,11 @@ Installing Dependencies:
 pip3 install -r requirements.txt
 ```
 
-From the AI server directory (`code/ai-server`), navigate to `/train/loras`. In this directory, run the following command to uncompress the AI model training files:
+From the AI server directory (`code/ai-server`), navigate to `/train/loras`. 
+
+Due to large file size, you will need to download the compressed Lora files from [Box](https://usu.box.com/s/lkhwa4i88vzo97z94eiahzrned3xg5q3) and place the downloaded file in `code/ai-server/train/loras`.
+
+In this directory (`code/ai-server/train/loras`), run the following command to uncompress the AI model training files:
 ```bash
 tar -xzf loras.tar.gz
 ```
@@ -116,5 +123,3 @@ bun dev
 ```
 
 ## Common Issues
-- `bun db:push` not working:
-   - If `bun db:push` gives an error, run `bun install` again before trying `bun db:push` again. This error can occur if you change any environment variable in `.env` after running `bun install`.
