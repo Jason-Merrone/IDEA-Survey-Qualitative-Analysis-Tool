@@ -1,0 +1,39 @@
+.flex-wrap {
+  display: flex;
+  gap:8px;
+}
+.chat-card {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Puts the delete button on the right */
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.418);
+}
+
+/* Clickable chat link */
+.chat-link {
+  cursor: pointer;
+  margin: 0;
+}
+
+.chat-link:hover {
+  text-decoration: underline;
+}
+
+.card-button {
+  padding: 5px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  background-color: rgb(252, 88, 88);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.card-button.red:hover {
+  background-color: rgb(233, 37, 37);
+}

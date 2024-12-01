@@ -1,0 +1,20 @@
+# Virtual Environments
+env/
+.venv/
+venv/
+inference-env/
+train/train-env/
+
+# Pycache
+__pycache__/
+
+# Base Model
+base-model/LLama3.21B/
+
+# Loras:
+train/loras/negativeattr-llama3-full
+train/loras/posattr-llama3-full
+train/loras/sentiment-llama3-full
+
+# Datasets
+train/dataset

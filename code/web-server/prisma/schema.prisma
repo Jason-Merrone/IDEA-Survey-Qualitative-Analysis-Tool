@@ -1,0 +1,124 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+  aNumber       String        @id
+  name          String
+  preferredName String?
+  email         String
+  role          String
+  createdAt     DateTime      @default(now())
+  history       History? // Single History entry per User
+  pdfs          Pdfs[]
+  activityLogs  ActivityLog[]
+}
+
+model History {
+  id       Int        @id @default(autoincrement())
+  aNumber  String     @unique // Ensure a one-to-one relation with User
+  requests Requests[]
+  chats    Chats[]
+  user     User       @relation(fields: [aNumber], references: [aNumber])
+
+  @@index([aNumber])
+}
+
+model Requests {
+  id          Int      @id @default(autoincrement())
+  aNumber     String
+  request     String
+  schoolYear  String
+  class       String
+  section     String
+  createdAt   DateTime @default(now())
+  summaryText String
+  historyId   Int
+  history     History  @relation(fields: [historyId], references: [id])
+
+  @@index([aNumber])
+}
+
+model Chats {
+  id         Int        @id @default(autoincrement())
+  aNumber    String
+  request    String
+  schoolYear String
+  class      String
+  section    String
+  createdAt  DateTime   @default(now())
+  messages   Messages[]
+  historyId  Int
+  history    History    @relation(fields: [historyId], references: [id])
+
+  @@index([aNumber])
+}
+
+enum MessageSender {
+  USER
+  AI
+  PROMPT
+}
+
+model Messages {
+  id        Int      @id @default(autoincrement())
+  aNumber   String
+  sender    MessageSender
+  text      String   @db.LongText
+  createdAt DateTime @default(now())
+  chatId    Int
+  chat      Chats    @relation(fields: [chatId], references: [id])
+
+  @@index([aNumber])
+}
+
+model Pdfs {
+  id         Int           @id @default(autoincrement())
+  aNumber    String
+  pdfName    String
+  schoolYear String
+  class      String
+  section    String
+  loadedOn   DateTime      @default(now())
+  pdfText    PdfTextLine[]
+  user       User          @relation(fields: [aNumber], references: [aNumber])
+  report     Report?       @relation("PdfReport")
+
+  @@index([aNumber])
+}
+
+model PdfTextLine {
+  id         Int    @id @default(autoincrement())
+  aNumber    String
+  lineText   String @db.VarChar(1024)
+  lineNumber Int // Order of the line within the PDF
+  pdfId      Int // Foreign key linking to Pdfs model
+  pdf        Pdfs   @relation(fields: [pdfId], references: [id])
+
+  @@index([aNumber])
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  aNumber   String
+  action    String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [aNumber], references: [aNumber])
+
+  @@index([aNumber])
+}
+
+model Report {
+  id           Int      @id @default(autoincrement())
+  pdfId        Int      @unique
+  pdf          Pdfs     @relation("PdfReport", fields: [pdfId], references: [id])
+  summaryText  String   @db.VarChar(4096)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+

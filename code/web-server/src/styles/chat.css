@@ -1,0 +1,118 @@
+/* Chat Container */
+/* Assuming this is in ~/styles/chat.css */
+
+.chat-app-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+}
+
+.chat-history {
+}
+
+.chat-main {
+    padding: 25px;
+    width: 600px;
+    border-left: 2px solid #c2c2c2;
+}
+
+.chat-container {
+    color: rgb(54, 54, 54);
+    max-width: 800px; /* Set a maximum width for the chat */
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+/* Messages Container */
+.messages-container {
+    flex-grow: 1; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+    scrollbar-width: thin;
+}
+  
+  /* Message Styling */
+.user-message,
+.ai-message {
+    margin: 5px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    display: inline-block; 
+    max-width: 80%; 
+    word-wrap: break-word; 
+    white-space: pre-wrap; 
+}
+  
+.user-message {
+    background-color: #f0f0f0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    text-align: right;
+    align-self: flex-end; 
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.418);
+}
+
+.ai-message {
+    background-color: #dde8f1;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: left;
+    align-self: flex-start; 
+    box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.418);
+}
+  
+/* Input Container */
+.input-container {
+    display: flex;
+    margin-top: 5px;
+}
+  
+input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
+  
+button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.send-button {
+    margin-left: 10px;
+}
+  
+button:hover {
+    background-color: #007bffc0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+}
