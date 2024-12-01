@@ -51,7 +51,7 @@ git clone https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ide
 ```
 
 ### Setting Up the AI Model
-In your current terminal window, navigate to the directory with the AI model code. Once you are in the directory, use the following commands to create a virtual Python environment and install the correct dependencies.
+In your current terminal window, navigate to `code/ai-server` (the AI server directory) in the project repository. Once you are in the correct directory, use the following commands to create a virtual Python environment and install the correct dependencies.
 
 Creating the Virtual Environment:
 ```bash
@@ -65,18 +65,18 @@ Installing Dependencies:
 pip3 install -r requirements.txt
 ```
 
-From the AI directory, navigate to `/train/loras`. In this directory, run the following command to uncompress the AI model training files:
+From the AI server directory (`code/ai-server`), navigate to `/train/loras`. In this directory, run the following command to uncompress the AI model training files:
 ```bash
 tar -xzf loras.tar.gz
 ```
 
-After uncompressing the training files, return to the AI model base directory and run the following command to download the AI model and start the Flask server hosting the model:
+After uncompressing the training files, return to the AI server directory (`code/ai-server`) and run the following command to download the AI model and start the Flask server hosting the model:
 ```bash
 flask run
 ```
 
 ### USU Single Sign-On Setup
-In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the SSO server code. Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
+In a new terminal window (leave the previous terminal windows open and running), navigate to `code/sso-server` (the directory with the SSO server code). Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
 
 From the SSO directory, run the following commands to install the required dependencies:
 ```bash
@@ -89,27 +89,28 @@ bun run start
 ```
 
 ### Setting Website Environment Variables
-In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code. Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
+In a new terminal window (leave the previous terminal windows open and running), navigate to `code/web-server` (the directory with the website code). Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
 
 ### Setting Up the Website
-In the same terminal window as the previous step, navigate to the directory with the website code (if you are not already there). From that directory, run `bun install`. This should install any neccessary Node.js packages.
+In the same terminal window as the previous step, navigate to the directory with the website code (`code/web-server` if you are not already there). From that directory, run `bun install`. This should install any neccessary Node.js packages.
 ```bash
 bun install
 ```
 
 ### Setting Up the Database
-In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code. Make sure Docker Desktop is running an configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
+In a new terminal window (leave the previous terminal windows open and running), navigate to the directory with the website code (`code/web-server`). Make sure Docker Desktop is running an configured for your system, and run the database setup script in the website code directory `/start-database.sh`. This will create the Docker container and run it.
 ```bash
 ./start-database.sh
 ```
 
-After creating the Docker container and verifying that it is running, run `bun db:push` in your terminal.
+After creating the Docker container and verifying that it is running, run `bun install` and `bun db:push` in your terminal.
 ```bash
+bun install
 bun db:push
 ```
 
 ### Starting the Web Server
-From the previous terminal window with the website directory open, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default the URL is `localhost:3000`).
+From the previous terminal window with the website directory (`code/web-server`) open, you can run `bun dev` to start the web server. The terminal should tell you which URL the website is accessible on (by default the URL is `localhost:3000`).
 ```bash
 bun dev
 ```
