@@ -1,8 +1,6 @@
-import Summary from "~/components/summary"
+import Report from "~/components/Report";
 import "~/styles/globals.css";
 import "~/styles/page.css";
-import Card from '~/components/card';
-import { getPdf } from "~/server/db/queries/get";
 
 export default async function ReportPage({
   params,
@@ -14,21 +12,5 @@ export default async function ReportPage({
     return (<h1>Invalid PDF id</h1>)
   }
 
-  const pdfResponse = await getPdf(pdfId)
-  if (pdfResponse.errors || !pdfResponse.data) {
-    return (<h1>Error retrieving PDF</h1>)
-  }
-
-  const pdf = pdfResponse.data
-
-  return (
-    <div>
-      <div className='gradientBlock title roboto-bold'>Report</div>
-      <div className='content roboto-regular'>
-        <Card title="Summary" content={
-          <Summary pdf={pdf}></Summary>
-        }/>
-      </div>
-    </div>
-  )
+  return (<Report pdfId={pdfId}/>)
 }

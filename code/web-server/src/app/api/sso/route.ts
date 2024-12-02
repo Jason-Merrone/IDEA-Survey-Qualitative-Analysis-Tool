@@ -11,6 +11,8 @@ import { type SessionData, sessionOptions } from "../lib";
 import { checkUserExists, getUser } from '~/server/db/queries/get';
 import { createUser } from '~/server/db/queries/create';
 
+import { env } from 'process';
+
 export async function POST(req: Request) {
     if (req.headers.get('content-type') !== 'application/json') {
         return NextResponse.json({ message: 'Invalid content type' }, { status: 400 });
@@ -37,7 +39,12 @@ export async function POST(req: Request) {
         session.name = result.displayName[0];
         session.preferredName = result.eduPersonNickname[0];
         session.email = result.usuEmailIDAddress[0];
-        session.role = filteredRoles[0];
+        if (env.DEMO === 'true') {
+            session.role = 'FACULTY';
+        }
+        else {
+            session.role = filteredRoles[0];
+        }
         session.isLoggedIn = true;        
 
         const userExists = await checkUserExists(session.aNumber);

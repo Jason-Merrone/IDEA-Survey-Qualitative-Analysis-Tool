@@ -9,6 +9,9 @@ interface UploadInputProps {
 
 export default function UploadInput({ closeModal }: UploadInputProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [schoolYear, setSchoolYear] = useState<string>("");
+  const [className, setClassName] = useState<string>("");
+  const [section, setSection] = useState<string>("");
 
   const keywords = [
     "Comments -",
@@ -50,13 +53,10 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
         splitText.push(pdfText);
 
         const pdfName = selectedFile.name.split(".")[0] || "Unnamed PDF";
-        const schoolYear = "";
-        const className = "";
-        const section = "";
 
         splitText.shift();
         const finalSplitText = splitText.flatMap((chunk) =>
-          splitByPunctuation(chunk)
+          splitByPunctuation(chunk),
         );
 
         console.log("Extracted Text:", finalSplitText);
@@ -65,7 +65,7 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
           schoolYear,
           className,
           section,
-          finalSplitText
+          finalSplitText,
         );
 
         if (!response.data) {
@@ -85,15 +85,46 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
 
   return (
     <div>
+      Select a PDF for the report
       <input
+        className="m-2"
         type="file"
         accept=".pdf"
         onChange={handleFileChange}
         id="file-selector"
       />
-      <button onClick={handleSubmit} className="submit-button">
-        Submit
-      </button>
+      <div>
+        <input
+          className="m-2 border-2"
+          type="text"
+          onChange={(e) => setSchoolYear(e.target.value)}
+          placeholder="School Year"
+        />
+      </div>
+      <div>
+        <input
+          className="m-2 border-2"
+          type="text"
+          onChange={(e) => setClassName(e.target.value)}
+          placeholder="Class Name"
+        />
+      </div>
+      <div>
+        <input
+          className="m-2 border-2"
+          type="text"
+          onChange={(e) => setSection(e.target.value)}
+          placeholder="Section"
+        />
+      </div>
+      <div>
+        <button
+          className="m-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 }

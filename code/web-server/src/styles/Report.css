@@ -1,0 +1,47 @@
+.report-layout-row {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    padding: 32px;
+}
+
+.report-layout-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px auto;
+    width: 100%;
+}
+
+.left-pane {
+}
+
+.right-pane {
+    max-width: 600px;
+}
+
+.pie-chart {
+    max-height: 600px;
+}
+
+.comments {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.report-card > h3 {
+    font-size: 1.4em;
+}
+
+.loading-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    min-width: 600px;
+}

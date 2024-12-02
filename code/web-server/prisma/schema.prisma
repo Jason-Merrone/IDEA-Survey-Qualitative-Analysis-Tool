@@ -92,6 +92,20 @@ model Pdfs {
   @@index([aNumber])
 }
 
+enum CommentAttribute {
+  KNOWLEDGEABLE
+  ENGAGING
+  SUPPORTIVE
+  CLEAR
+  PASSIONATE
+  CONFUSING
+  UNFAIR
+  BORING
+  UNHELPFUL
+  DISORGANIZED
+  OTHER
+}
+
 model PdfTextLine {
   id         Int    @id @default(autoincrement())
   aNumber    String
@@ -99,6 +113,7 @@ model PdfTextLine {
   lineNumber Int // Order of the line within the PDF
   pdfId      Int // Foreign key linking to Pdfs model
   pdf        Pdfs   @relation(fields: [pdfId], references: [id])
+  attribute  CommentAttribute?
 
   @@index([aNumber])
 }

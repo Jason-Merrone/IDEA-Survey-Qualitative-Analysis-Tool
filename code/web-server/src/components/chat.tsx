@@ -10,6 +10,8 @@ import { getChatResponse } from "~/actions/ai";
 import { getChatMessages } from "~/server/db/queries/get";
 import { TypingDots } from "./loading";
 import { MessageSender } from "@prisma/client";
+import ReactMarkdown from "react-markdown"
+import "~/styles/markdown.css"
 
 interface ChatProps {
   chatId: number | null;
@@ -82,7 +84,7 @@ const Chat = ({ chatId }: ChatProps) => {
       <div className="messages-container" ref={messagesContainerRef}>
         {messages.map((msg, index) => (
           <div key={index} className={msg.sender == MessageSender.USER ? "user-message" : "ai-message"}>
-            {msg.text == null ? <TypingDots /> : <p>{msg.text}</p>}
+            {msg.text == null ? <TypingDots /> : <ReactMarkdown className="markdown">{msg.text}</ReactMarkdown>}
           </div>
         ))}
       </div>

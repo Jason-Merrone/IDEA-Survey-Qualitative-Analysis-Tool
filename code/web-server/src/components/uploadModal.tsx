@@ -14,9 +14,11 @@ const UploadWithModal = () => {
 
   return (
     <div>
-      
-      <button onClick={openModal} className="open-modal-button">
-        Upload PDF
+      <button
+        onClick={openModal}
+        className="m-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+      >
+        Generate New Report
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <UploadInput closeModal={closeModal} />

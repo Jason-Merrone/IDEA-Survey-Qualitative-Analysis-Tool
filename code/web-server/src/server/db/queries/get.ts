@@ -154,6 +154,25 @@ export async function getPdf(
   }
 }
 
+export type PdfWithComments = Pdfs & { pdfText: PdfTextLine[] }
+
+export async function getPdfWithAllComments(
+  pdfId: number
+): Promise<Response<PdfWithComments>> {
+  try {
+    const session = await getUserSession()
+
+    const pdf = await db.pdfs.findUnique({
+      where: { id: pdfId, aNumber: session.aNumber },
+      include: { pdfText: true },
+    })
+
+    return { data: pdf }
+  } catch (error: any) {
+    return { data: null, errors: [{ title: "Failed to retrieve PDFs", detail: error.message }] }
+  }
+}
+
 export async function getPdfTextLines(
   pdfId: number
 ): Promise<Response<{ textLines: PdfTextLine[] }>> {
@@ -171,6 +190,18 @@ export async function getPdfTextLines(
   }
 }
 
+export async function getPdfTextLine(
+  pdfTextLineId: number,
+): Promise<Response<PdfTextLine>> {
+  try {
+    const pdfTextLine = await db.pdfTextLine.findUnique({
+      where: { id: pdfTextLineId }
+    })
+    return { data: pdfTextLine }
+  } catch (error: any) {
+    return { data: null, errors: [{ title: "Failed to retrieve text line", detail: error.message }] }
+  }
+}
 
 export async function getReports(): Promise<Response<Report[]>> {
   try {

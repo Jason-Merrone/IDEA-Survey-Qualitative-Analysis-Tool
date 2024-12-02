@@ -1,5 +1,5 @@
 "use server";
-import { Report, MessageSender } from "@prisma/client";
+import { Report, MessageSender, CommentAttribute } from "@prisma/client";
 import { Response } from "~/server";
 import { db } from "~/server/db";
 import { getUserSession } from "~/actions/session";
@@ -90,6 +90,21 @@ export async function createPdf(
     return { data: { id: newPdf.id, message: `PDF created with ID: ${newPdf.id} and ${pdfTextLines.length} lines of text` } };
   } catch (error: any) {
     return { data: null, errors: [{ title: "Failed to create PDF", detail: error.message }] };
+  }
+}
+
+export async function updatePdfTextLineWithAttribute(
+  pdfTextLineId: number,
+  attribute: CommentAttribute,
+): Promise<Response<null>> {
+  try {
+    await db.pdfTextLine.update({
+      where: { id: pdfTextLineId },
+      data: { attribute: attribute }
+    })
+    return { }
+  } catch (error: any) {
+    return { errors: [{ title: "Failed to update PdfTextLine", detail: error.message }] }
   }
 }
 

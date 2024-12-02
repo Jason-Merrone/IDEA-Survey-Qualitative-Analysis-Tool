@@ -1,0 +1,60 @@
+.comment {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px auto;
+}
+
+.attr-knowledgeable {
+    border: 2px solid #FF5733;
+    background-image: linear-gradient(to right, #ffe8e4, #ffb8a9);
+}
+
+.attr-engaging {
+    border: 2px solid #FFC300;
+    background-image: linear-gradient(to right, #fffaeb, #ffe389);
+}
+
+.attr-supportive {
+    border: 2px solid #DAF7A6;
+    background-image: linear-gradient(to right, #fffaeb, #daf7a6);
+}
+
+.attr-clear {
+    border: 2px solid #33FFBD;
+    background-image: linear-gradient(to right, #f7fffc, #a9ffe3);
+}
+
+.attr-passionate {
+    border: 2px solid #33CFFF;
+    background-image: linear-gradient(to right, #f7fdff, #a9ebff);
+}
+
+.attr-confusing {
+    border: 2px solid #8A33FF;
+    background-image: linear-gradient(to right, #fbf7ff, #cea9ff);
+}
+
+.attr-unfair {
+    border: 2px solid #FF33A1;
+    background-image: linear-gradient(to right, #ffe4f2, #ff81c5);
+}
+
+.attr-boring {
+    border: 2px solid #FF6F61;
+    background-image: linear-gradient(to right, #ffecea, #ff9388);
+}
+
+.attr-unhelpful {
+    border: 2px solid #FFEB3B;
+    background-image: linear-gradient(to right, #fffdec, #fff389);
+}
+
+.attr-disorganized {
+    border: 2px solid #00E676;
+    background-image: linear-gradient(to right, #e6fff3, #abffd6);
+}
+
+.attr-other {
+    
+}

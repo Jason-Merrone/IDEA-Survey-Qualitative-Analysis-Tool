@@ -63,7 +63,6 @@
     display: inline-block; 
     max-width: 80%; 
     word-wrap: break-word; 
-    white-space: pre-wrap; 
 }
   
 .user-message {

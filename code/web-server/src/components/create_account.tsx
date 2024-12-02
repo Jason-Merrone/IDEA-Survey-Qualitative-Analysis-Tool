@@ -1,16 +1,18 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "~/styles/login.css";
 
-import { checkUserExists } from '~/server/db/queries/get';
-import { createUser } from '~/server/db/queries/create';
-import { createUserSession } from '~/actions/session';
-import { type SessionData } from '~/app/api/lib';
+import { checkUserExists } from "~/server/db/queries/get";
+import { createUser } from "~/server/db/queries/create";
+import { createUserSession } from "~/actions/session";
+import { type SessionData } from "~/app/api/lib";
+import { useToast } from "~/components/toast";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 const CreateAccount = () => {
   const router = useRouter();
+  const { showToast } = useToast();
 
   const [aNumber, setANumber] = useState("");
   const [name, setName] = useState("");
@@ -20,26 +22,26 @@ const CreateAccount = () => {
 
   async function handleSaveAccount() {
     const userExists = await checkUserExists(aNumber);
-        if (userExists.data?.exists) {
-            alert("User already exists. Please login.");
-        }
-        else {
-          const sessionData: SessionData = {
-            aNumber: aNumber,
-            name: name,
-            preferredName: preferredName,
-            email: email,
-            role: role,
-            isLoggedIn: true
-          };
+    if (userExists.data?.exists) {
+      alert("User already exists. Please login.");
+    } else {
+      const sessionData: SessionData = {
+        aNumber: aNumber,
+        name: name,
+        preferredName: preferredName,
+        email: email,
+        role: role,
+        isLoggedIn: true,
+      };
 
-          await createUser(aNumber, name, preferredName, email, role);
+      await createUser(aNumber, name, preferredName, email, role);
 
-          await createUserSession(sessionData);
+      await createUserSession(sessionData);
 
-          router.push('/');
-        }
-  };
+      showToast("Account created successfully", "success");
+      router.push("/");
+    }
+  }
 
   return (
     <div className="login-page roboto-regular">
@@ -89,7 +91,11 @@ const CreateAccount = () => {
 
       <div className="login">
         <label htmlFor="role">Role:</label>
-        <select id="role" value={role} onChange={(e) => setRole(e.target.value)}>
+        <select
+          id="role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        >
           <option value="STUDENT">Student</option>
           <option value="STAFF">Staff</option>
           <option value="FACULTY">Faculty</option>

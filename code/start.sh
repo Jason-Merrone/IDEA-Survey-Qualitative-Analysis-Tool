@@ -1,12 +1,11 @@
 #!/bin/bash
 
-for cmd in tmux unzip docker mysqladmin; do
+for cmd in tmux unzip docker; do
     if ! command -v $cmd &>/dev/null; then
         echo "$cmd not found. Please install before proceeding."
         echo "tmux can be installed with `brew install tmux (MacOS)` or `sudo apt install tmux (Linux)`"
         echo "unzip can be installed with `brew install unzip (MacOS)` or `sudo apt install unzip (Linux)`"
         echo "Docker Desktop can be installed from from https://www.docker.com"
-        echo "mysqladmin can be installed with `brew install mysql-client (MacOS)` or `sudo apt install mysql-client (Linux)`"
         exit 1
     fi
 done
@@ -49,17 +48,7 @@ tmux send-keys -t $TMUX_SESSION:2 "cd $(pwd)/web-server && cp .env.example .env 
 tmux new-window -t $TMUX_SESSION -n 'Database'
 tmux send-keys -t $TMUX_SESSION:3 "cd $(pwd)/web-server && ./start-database.sh" C-m
 echo "Waiting for the database to be ready..."
-sleep 5
-retries=10
-count=0
-while ! docker exec idea-ideas-mysql mysqladmin ping -h localhost --silent; do
-    sleep 2
-    ((count++))
-    if [ $count -ge $retries ]; then
-        echo "Database did not become available in time, exiting..."
-        exit 1
-    fi
-done
+sleep 30
 tmux send-keys -t $TMUX_SESSION:3 "bun db:push" C-m
 
 tmux new-window -t $TMUX_SESSION -n 'Web Server'

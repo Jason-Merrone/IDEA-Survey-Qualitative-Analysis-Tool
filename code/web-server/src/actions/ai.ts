@@ -1,10 +1,10 @@
 "use server";
-import { MessageSender, PdfTextLine } from "@prisma/client";
+import { MessageSender, PdfTextLine, CommentAttribute } from "@prisma/client";
 import { env } from "~/env";
 const apiUrl = env.AI_URL;
 import type { Response } from "~/server/";
-import { createMessage } from "~/server/db/queries/create";
-import { getChatMessages, getPdfTextLines } from "~/server/db/queries/get";
+import { createMessage, updatePdfTextLineWithAttribute } from "~/server/db/queries/create";
+import { getChatMessages, getPdfTextLine, getPdfTextLines } from "~/server/db/queries/get";
 
 const SPECIAL_TOKENS = {
   "begin_of_text": "<|begin_of_text|>,",
@@ -68,23 +68,33 @@ export async function getChatResponse(chatId: number, userMessage: string): Prom
   return { data: aiResponseMessage }
 }
 
+type SemanticResponse = { data: [{ Sentiment: number, attribute: string }] }
+
 export async function getSemantic(
-  data?: Record<string, string>,
-): Promise<Response<Record<string, string>>> {
-  const response = await fetch(`${apiUrl}/semantic-test`, {
+  pdfTextLineId: number,
+): Promise<Response<CommentAttribute>> {
+  const pdfTextLine = await getPdfTextLine(pdfTextLineId)
+  if (!pdfTextLine.data) {
+    return { data: null, errors: [{ title: "Could not retrieve PdfTextLine for semantic analysis" }] }
+  }
+
+  const response = await fetch(`${apiUrl}/semantic`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    body: JSON.stringify(data ?? {}),
-  });
+    body: JSON.stringify({ comment: pdfTextLine.data.lineText }),
+  })
 
   if (!response.ok) {
     return { errors: [{ title: "Failed to fetch summary" }] };
   }
 
-  const json = (await response.json()) as Record<string, string>;
+  const json = (await response.json()) as SemanticResponse
+  const attributeText = json.data[0].attribute.toUpperCase()
+  const attribute = attributeText in CommentAttribute ? attributeText as CommentAttribute : null
+  if (attribute) await updatePdfTextLineWithAttribute(pdfTextLineId, attribute)
 
-  return json;
+  return { data: attribute }
 }
