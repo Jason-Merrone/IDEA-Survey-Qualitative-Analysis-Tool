@@ -11,6 +11,7 @@ import "~/styles/markdown.css"
 import ReactMarkdown from "react-markdown"
 import { fetchOrGenerateSummary } from "~/actions/summary"
 import { LoadingBars } from "./loading"
+import { useToast } from "./toast"
 
 interface ReportProps {
     pdfId: number
@@ -29,6 +30,7 @@ const Report = ({ pdfId }: ReportProps) => {
     const [comments, setComments] = useState<PdfTextLine[]>()
     const [summary, setSummary] = useState<string>()
     const [errors, setErrors] = useState<Error[]>()
+    const { showToast } = useToast()
 
     const loadPDF = async () => {
         const pdfResponse = await getPdfWithAllComments(pdfId)
@@ -36,10 +38,18 @@ const Report = ({ pdfId }: ReportProps) => {
             setPDF(undefined)
             setComments(undefined)
             setErrors(pdfResponse.errors)
+            showToast("Failed to load PDF", "error")
         } else if (pdfResponse.data) {
-            setPDF(pdfResponse.data)
-            setComments(pdfResponse.data.pdfText)
-            setErrors(pdfResponse.errors)
+            if (pdfResponse.data.pdfText.length == 0) {
+                setPDF(undefined)
+                setComments(undefined)
+                setErrors(pdfResponse.errors)
+                showToast("Report is blank because PDF has no content", "warning")
+            } else {
+                setPDF(pdfResponse.data)
+                setComments(pdfResponse.data.pdfText)
+                setErrors(pdfResponse.errors)
+            }
         }
     }
 

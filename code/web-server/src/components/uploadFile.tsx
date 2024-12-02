@@ -2,16 +2,20 @@
 import React, { useState } from "react";
 import extractTextFromPDF from "pdf-parser-client-side";
 import { createPdf } from "~/server/db/queries/create";
+import { useToast } from "./toast";
+import { Pdfs } from "@prisma/client";
 
 interface UploadInputProps {
   closeModal: () => void; // Add closeModal as a prop
+  onPdfUploadSuccess: (newPdf: Pdfs) => void
 }
 
-export default function UploadInput({ closeModal }: UploadInputProps) {
+export default function UploadInput({ closeModal, onPdfUploadSuccess }: UploadInputProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [schoolYear, setSchoolYear] = useState<string>("");
   const [className, setClassName] = useState<string>("");
   const [section, setSection] = useState<string>("");
+  const { showToast } = useToast()
 
   const keywords = [
     "Comments -",
@@ -36,6 +40,7 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
         console.error("Error extracting text from PDF.");
         return;
       }
+      console.log(`pdfText=${pdfText}`);
 
       const splitText: string[] = [];
       for (const keyword of keywords) {
@@ -55,11 +60,16 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
         const pdfName = selectedFile.name.split(".")[0] || "Unnamed PDF";
 
         splitText.shift();
+        console.log(`splitText=${JSON.stringify(splitText)}`)
         const finalSplitText = splitText.flatMap((chunk) =>
           splitByPunctuation(chunk),
         );
 
-        console.log("Extracted Text:", finalSplitText);
+        if (!finalSplitText || finalSplitText.length == 0) {
+          showToast("No comments found in PDF", "warning")
+        }
+
+        console.log("finalSplitText=", finalSplitText);
         const response = await createPdf(
           pdfName,
           schoolYear,
@@ -74,6 +84,7 @@ export default function UploadInput({ closeModal }: UploadInputProps) {
         }
 
         console.log("PDF created with ID:", response.data.id);
+        onPdfUploadSuccess(response.data)
       }
 
       // Close the modal after successful submission

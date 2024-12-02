@@ -34,20 +34,19 @@ nvm install 22.11.0
 nvm use 22.11.0
 
 TMUX_SESSION="IDEA-Ideas"
-tmux has-session -t $TMUX_SESSION 2>/dev/null
-if [ $? != 0 ]; then
-    tmux new-session -d -s $TMUX_SESSION
-fi
+tmux kill-session -t $TMUX_SESSION 2>/dev/null
+
+tmux has-session -t $TMUX_SESSION 2>/dev/null || tmux new-session -d -s $TMUX_SESSION
 
 tmux new-window -t $TMUX_SESSION -n 'SSO Server'
 tmux send-keys -t $TMUX_SESSION:1 "cd $(pwd)/sso-server && cp .env.example .env && bun install && bun run start" C-m
 
-tmux new-window -t $TMUX_SESSION -n 'Website'
+tmux new-window -t $TMUX_SESSION -n 'Web Server Setup'
 tmux send-keys -t $TMUX_SESSION:2 "cd $(pwd)/web-server && cp .env.example .env && bun install" C-m
 
 tmux new-window -t $TMUX_SESSION -n 'Database'
 tmux send-keys -t $TMUX_SESSION:3 "cd $(pwd)/web-server && ./start-database.sh" C-m
-echo "Waiting for the database to be ready..."
+echo "Waiting 30 seconds for the database to be ready..."
 sleep 30
 tmux send-keys -t $TMUX_SESSION:3 "bun db:push" C-m
 

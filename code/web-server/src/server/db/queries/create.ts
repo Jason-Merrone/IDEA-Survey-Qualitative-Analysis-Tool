@@ -1,5 +1,5 @@
 "use server";
-import { Report, MessageSender, CommentAttribute } from "@prisma/client";
+import { Report, MessageSender, CommentAttribute, Pdfs } from "@prisma/client";
 import { Response } from "~/server";
 import { db } from "~/server/db";
 import { getUserSession } from "~/actions/session";
@@ -60,7 +60,7 @@ export async function createPdf(
   className: string,
   section: string,
   pdfTextLines: string[]
-): Promise<Response<{ id: number, message: string }>> {
+): Promise<Response<Pdfs>> {
   const user = await getUserSession();
   if (!user) {
     return { data: null, errors: [{ title: "User not found" }] };
@@ -87,7 +87,7 @@ export async function createPdf(
     
     await db.pdfTextLine.createMany({ data: linesData });
 
-    return { data: { id: newPdf.id, message: `PDF created with ID: ${newPdf.id} and ${pdfTextLines.length} lines of text` } };
+    return { data: newPdf };
   } catch (error: any) {
     return { data: null, errors: [{ title: "Failed to create PDF", detail: error.message }] };
   }

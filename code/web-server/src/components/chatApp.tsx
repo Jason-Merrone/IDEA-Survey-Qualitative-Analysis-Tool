@@ -11,7 +11,7 @@ import { getPdfTextLines, getUserChats, getUserPdfs } from "~/server/db/queries/
 import { deleteChat } from "~/server/db/queries/delete";
 import UploadInput from "./uploadFile";
 import { getUserSession } from "~/actions/session";
-import { MessageSender } from "@prisma/client";
+import { MessageSender, Pdfs } from "@prisma/client";
 
 interface Chat {
   id: number;
@@ -19,16 +19,11 @@ interface Chat {
   semesterIds: number[];
 }
 
-interface Pdf {
-  id: number;
-  pdfName: string;
-}
-
 const ChatApp = () => {
   const [chatId, setChatId] = useState<number | null>(null);
   const [chatHistory, setChatHistory] = useState<Chat[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [pdfs, setPdfs] = useState<Pdf[]>([]);
+  const [pdfs, setPdfs] = useState<Pdfs[]>([]);
   const [selectedPdfIds, setSelectedPdfIds] = useState<number[]>([]);
 
   useEffect(() => {
@@ -106,6 +101,12 @@ const ChatApp = () => {
     throw new Error("Function not implemented.");
   }
 
+  function onPdfUploadSuccess(pdf: Pdfs) {
+    setPdfs([...pdfs, pdf])
+    setSelectedPdfIds([...selectedPdfIds, pdf.id])
+    handleCreateChat()
+  }
+
   return (
     <div className="chat-app-container">
       {/* Sidebar for Create Button and Chat History */}
@@ -145,20 +146,21 @@ const ChatApp = () => {
                   checked={selectedPdfIds.includes(pdf.id)}
                   onChange={() => togglePdfSelection(pdf.id)}
                 />
-                {pdf.pdfName}
+                {pdf.class} {pdf.schoolYear}-{pdf.section}
               </label>
             </li>
           ))}
         </ul>
-        <h4>Or Upload a New PDF</h4>
-        <UploadInput closeModal={closeModal} />
         <div className="modal-actions">
           <Button
-            text="Confirm"
+            text="Create Chat"
             onClick={handleCreateChat}
             disabled={!selectedPdfIds.length}
           />
         </div>
+        <br></br>
+        <h4>Or Upload a New PDF</h4>
+        <UploadInput closeModal={closeModal} onPdfUploadSuccess={onPdfUploadSuccess} />
       </Modal>
     </div>
   );

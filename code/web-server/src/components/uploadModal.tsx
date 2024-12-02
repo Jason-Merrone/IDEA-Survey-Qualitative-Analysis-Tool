@@ -5,8 +5,9 @@ import React, { useState } from "react";
 import Modal from "./modal";
 import UploadInput from "./uploadFile";
 import "~/styles/modal.css";
+import { Pdfs } from "@prisma/client";
 
-const UploadWithModal = () => {
+const UploadWithModal = ({ onPdfUploadSuccess }: { onPdfUploadSuccess: (pdf: Pdfs) => void }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -21,7 +22,7 @@ const UploadWithModal = () => {
         Generate New Report
       </button>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <UploadInput closeModal={closeModal} />
+        <UploadInput closeModal={closeModal} onPdfUploadSuccess={onPdfUploadSuccess} />
       </Modal>
     </div>
   );

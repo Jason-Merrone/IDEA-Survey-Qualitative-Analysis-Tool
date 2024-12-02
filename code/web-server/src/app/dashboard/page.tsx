@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import UploadWithModal from "~/components/uploadModal";
 import "~/styles/globals.css";
 import "~/styles/page.css";
-import { getReports } from "~/server/db/queries/get";
+import { getUserPdfs } from "~/server/db/queries/get";
 import { getUserSession } from "~/actions/session";
+import { Pdfs } from "@prisma/client";
 
 const DashboardPage = () => {
   const router = useRouter();
-  const [reports, setReports] = useState<any[]>([]);
+  const [pdfs, setPDFs] = useState<Pdfs[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -25,38 +26,47 @@ const DashboardPage = () => {
 
   // Fetch reports on load
   useEffect(() => {
-    const fetchReports = async () => {
-      const reportResponse = await getReports();
-      if (reportResponse.errors || !reportResponse.data) {
+    const fetchPDFs = async () => {
+      const user = await getUserSession(); // Fetch user session dynamically
+      if (!user) {
+        console.error("User not logged in");
+        return;
+      }
+      const pdfResponse = await getUserPdfs(user.aNumber);
+      if (pdfResponse.errors || !pdfResponse.data) {
         setError("Failed to load reports");
         return;
       }
-      setReports(reportResponse.data);
+      setPDFs(pdfResponse.data);
     };
 
-    fetchReports();
+    fetchPDFs();
   }, []);
 
-  const handleViewReport = async (reportId: number) => {
-    router.push(`/report/${reportId}`);
+  const handleViewReport = async (pdfId: number) => {
+    router.push(`/report/${pdfId}`);
   };
+
+  const onPdfUploadSuccess = (pdf: Pdfs) => {
+    setPDFs([...pdfs, pdf])
+  }
 
   return (
     <div>
       <div className="gradientBlock title roboto-bold">Dashboard</div>
       <div className="dashboard content roboto-regular">
-        <UploadWithModal />
+        <UploadWithModal onPdfUploadSuccess={onPdfUploadSuccess} />
         <div>
           <h2>Your Reports</h2>
           {error && <p>{error}</p>}
           <ul>
-            {reports.map((report) => (
-              <li key={report.id}>
+            {pdfs.map((pdf) => (
+              <li key={pdf.id}>
                 <button
                   className="m-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
-                  onClick={() => handleViewReport(report.id)}
+                  onClick={() => handleViewReport(pdf.id)}
                 >
-                  View Report {report.id}
+                  View Report for {pdf.class} {pdf.schoolYear}-{pdf.section}
                 </button>
               </li>
             ))}
