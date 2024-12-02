@@ -10,6 +10,7 @@
    - [Python](#python)
 4. [Getting Started](#getting-started)
    - [Cloning the Git Repository](#cloning-the-git-repository)
+   - [Setup Script](#setup-script)
    - [Setting Up the AI Model](#setting-up-the-ai-model)
    - [USU Single Sign-On Setup](#usu-single-sign-on-setup)
    - [Setting Website Environment Variables](#setting-website-environment-variables)
@@ -80,6 +81,24 @@ After uncompressing the training files, return to the AI server directory (`code
 ```bash
 flask run
 ```
+
+## Setup Script
+In the `code` directory, there is a bash script titled `start.sh`. This script will set up the SSO server, web server, and database automatically for you. It is supported for MacOS and Linux (or WSL).
+
+Apart from the software prerequisites listed above, the following packages are **required** to be install on your operating system for the script to run successfully.
+- `tmux`
+- `unzip`
+
+After cloing the repository, you will need to run the following command to make the script executable:
+```bash
+chmod +x start.sh
+```
+
+After running the script, you should be able to use IDEA Ideas by accessing the website at `http://localhost:3000`.
+
+If you run into any issues with the script, I would recommend moving on with the manual setup instructions below.
+
+**Common Issue with the Startup Script**: After creating the MySQL database in a Docker container, the script waits 30 seconds for the database to be ready before attemping to push the database schema to it. If 30 seconds is not enough, this step will fail and you will need to run `bun db:push` in the `code/web-server` directory.
 
 ### USU Single Sign-On Setup
 In a new terminal window (leave the previous terminal windows open and running), navigate to `code/sso-server` (the directory with the SSO server code). Once you are in the directory, copy the contents of `.env.example` to a new file in the directory named `.env`.
