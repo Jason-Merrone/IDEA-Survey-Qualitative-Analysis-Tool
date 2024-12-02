@@ -14,7 +14,6 @@
         - [Creating a New Chat](#creating-a-new-chat)
     - [Report Page](#report-page)
 - [Example Workflow](#example-workflow)
-- [Common Issues](#common-issues)
 - [Frequently Asked Questions (FAQs)](#frequently-asked-questions-faqs)
 
 
@@ -58,7 +57,7 @@ The navigation bar is present on each page of the IDEA Ideas website. The naviga
 ### Dashboard (`/dashboard`)
 The `Dashboard` page is your personal home page for the IDEA Ideas website, and the page can be accessed by clicking on the `Dashboard` link in the navigation bar. From the `Dashboard` page, you can upload PDFs of IDEA course evaluations and see links to previously generated IDEA course survey reports.
 
-![Dashboard](images/Dashboard.png)
+![Dashboard](images/DashboardWithReport.png)
 
 #### Uploading a PDF from the Dashboard
 From the `Dashboard` page, you can upload a PDF for your IDEA survey by clicking on the **Generate New Report** button. After clicking on the button, you will be presented with a popup box that will ask you to upload a PDF and enter the PDF details (school year, class name, class section). After uploading the PDF and entering the details, click on the **Submit** button.
@@ -66,7 +65,13 @@ From the `Dashboard` page, you can upload a PDF for your IDEA survey by clicking
 ![PDF Upload](images/PDFUpload.png)
 
 #### Accessing a Report
+To access a report for a PDF you have uploaded, go to your `Dashboard` page (through the link on the navigation bar). Once you are on the your dashboard, you will see links to all the reports available to you. Click on the link for the report you would like, and it will direct you to the report page.
 
+On the report page, there are three sections to view: a Summary section, an Attribute Breakdown section, and a Comments section.
+
+The Summary section has the AI's overall summary of the written feedback from the uploaded PDF. The Attribute Breakdown section has our AI model's anaylsis of the overall sentiment of the written feedback, split up in a pie chart. The Comments section has each individual comment from the uploaded PDF, and the comments are color coded based on the sentiment of the comment.
+
+![Report Page](images/ExampleReportPage.png)
 
 ### AI Chat (`/chat`)
 The `AI Chat` page is the main page from which you can consult with your own personal AI chatbot about a specific course evaluation PDF. When you go to the `AI Chat` page (by clicking on the link in the navigation bar), you will see all (if any) previous chats that you have had.
@@ -76,11 +81,13 @@ To select an existing chat, click on the chat name. To delete an existing chat, 
 ![AI Chat](images/AIChat.png)
 
 #### Creating a New Chat
-To create a new chat, click on the **Create New Chat** button. You will be presented with a popup box that will ask you to select or upload a PDF to use for the new chat. After selecting the correct PDF, click on the **Confirm** button.
+To create a new chat, click on the **Create New Chat** button. You will be presented with a popup box that will ask you to select a PDF to use for the new chat. After selecting the correct PDF, click on the **Create Chat** button. 
+
+If you are uploading a new PDF from the menu for a new chat, upload your PDF, fill out the class details, then click on the **Submit** button.
 
 ![PDF Upload Chat](images/PDFUploadChat.png)
 
-After you have selected or created your chat, you can ask the AI chatbot questions about the selected course evaluation PDF by entering your message into the box that says *Type your message*. After typing out your message, click on the **Send** button and wait for the AI's response!
+After you have selected or created your chat, you can ask the AI chatbot questions about the selected course evaluation PDF by clicking on the name of the chat you want and entering your message into the box that says *Type your message*. After typing out your message, click on the **Send** button and wait for the AI's response!
 
 ![AI Chat Example](images/ChatExample.png)
 
@@ -97,7 +104,6 @@ I am a USU faculty member who would like to get a quick summary of my students' 
 
 (Finish workflow example)
 
-## Common Issues
-- After uploading a PDF to your Dashboard, it make take some time for the PDF to be processed and the report generated. Please be patient and wait on the Dashboard page until the report is generated.
-
 ## Frequently Asked Questions (FAQs)
+- Who can access my PDFs and Reports?
+    - Only the user who uploaded the PDF can view both the PDF and the resulting report.
