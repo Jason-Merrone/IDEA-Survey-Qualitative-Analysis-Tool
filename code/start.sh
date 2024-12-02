@@ -19,7 +19,7 @@ fi
 echo "Checking for nvm..."
 if ! command -v nvm &> /dev/null; then
   echo "nvm not found, installing..."
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   source ~/.nvm/nvm.sh
 fi
 

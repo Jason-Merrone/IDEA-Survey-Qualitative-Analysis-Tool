@@ -28,8 +28,17 @@ IDEA Ideas uses a local generative AI model to help process student feedback fro
 ### Node.js
 IDEA Ideas runs on the Node.js JavaScript runtime environment. Node.js v22.11.0 (LTS) is the recommended and supported version of Node.js for running IDEA Ideas. Node.js can be downloaded from the official [Node.js website](https://nodejs.org/en/download/package-manager). We also recommend using the Node Version Manager (`nvm`) when installing multiple versions of Node.js on the same system. Instructions for downloading and installing `nvm` can be found on the official [Node Version Manager GitHub](https://github.com/nvm-sh/nvm).
 
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash  # Linux and MacOS
+```
+
 ### Bun
 Bun is the Node.js package manager used for IDEA Ideas. Bun will need to be installed on your system. Installation instructions can be found on the [Bun website](https://bun.sh/).
+
+```bash
+curl -fsSL https://bun.sh/install | bash     # Linux and MacOS
+powershell -c "irm bun.sh/install.ps1 | iex" # Windows
+```
 
 ### Docker
 The database for IDEA Ideas is hosted in a Docker container. In order to use Docker containers, you need to install Docker Desktop on your machine. The installer download and installation instructions for Docker Desktop can be found on the [official Docker website](https://www.docker.com/products/docker-desktop/).
@@ -43,11 +52,11 @@ Please follow the given steps to start all of the individual services and server
 ### Cloning the Git Repository
 The Git repository for IDEA Ideas can be cloned through SSH or HTTPS
 ```bash
-git clone git@gitlab.cs.usu.edu:a02297804/cs3450-team-1-project.git idea-ideas
+git clone --single-branch --branch master git@gitlab.cs.usu.edu:a02297804/cs3450-team-1-project.git idea-ideas
 ```
 or
 ```bash
-git clone https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ideas
+git clone --single-branch --branch master https://gitlab.cs.usu.edu/a02297804/cs3450-team-1-project.git idea-ideas
 ```
 
 ### Setting Up the AI Model
