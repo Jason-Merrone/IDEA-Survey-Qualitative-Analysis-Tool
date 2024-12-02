@@ -92,7 +92,6 @@ The Summary section has the AI's overall summary of the written feedback from th
 
 ![Report Page](images/ExampleReportPage.png)
 
-
 ## Example Workflow
 I am a USU faculty member who would like to get a quick summary of my students' written feedback from an IDEA survey. Here is how I would use IDEA Ideas:
 
