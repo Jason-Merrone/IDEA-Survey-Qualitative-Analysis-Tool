@@ -67,12 +67,6 @@ From the `Dashboard` page, you can upload a PDF for your IDEA survey by clicking
 #### Accessing a Report
 To access a report for a PDF you have uploaded, go to your `Dashboard` page (through the link on the navigation bar). Once you are on the your dashboard, you will see links to all the reports available to you. Click on the link for the report you would like, and it will direct you to the report page.
 
-On the report page, there are three sections to view: a Summary section, an Attribute Breakdown section, and a Comments section.
-
-The Summary section has the AI's overall summary of the written feedback from the uploaded PDF. The Attribute Breakdown section has our AI model's anaylsis of the overall sentiment of the written feedback, split up in a pie chart. The Comments section has each individual comment from the uploaded PDF, and the comments are color coded based on the sentiment of the comment.
-
-![Report Page](images/ExampleReportPage.png)
-
 ### AI Chat (`/chat`)
 The `AI Chat` page is the main page from which you can consult with your own personal AI chatbot about a specific course evaluation PDF. When you go to the `AI Chat` page (by clicking on the link in the navigation bar), you will see all (if any) previous chats that you have had.
 
@@ -92,6 +86,12 @@ After you have selected or created your chat, you can ask the AI chatbot questio
 ![AI Chat Example](images/ChatExample.png)
 
 ### Report Page
+On the report page (which can be accessed from the `Dashboard` page) there are three sections to view: a Summary section, an Attribute Breakdown section, and a Comments section.
+
+The Summary section has the AI's overall summary of the written feedback from the uploaded PDF. The Attribute Breakdown section has our AI model's anaylsis of the overall sentiment of the written feedback, split up in a pie chart. The Comments section has each individual comment from the uploaded PDF, and the comments are color coded based on the sentiment of the comment.
+
+![Report Page](images/ExampleReportPage.png)
+
 
 ## Example Workflow
 I am a USU faculty member who would like to get a quick summary of my students' written feedback from an IDEA survey. Here is how I would use IDEA Ideas:
@@ -101,8 +101,9 @@ I am a USU faculty member who would like to get a quick summary of my students' 
 3. After being directed to the USU Sign-on page, I will sign-in with my USU username (`john.doe@usu.edu`) and USU password.
 4. After logging-in and completing the MFA challenge, I will be directed to my IDEA Ideas Dashboard.
 5. From the Dashboard page, I will click on the **Generate New Report** button and upload the IDEA survey PDF.
-
-(Finish workflow example)
+6. After uploading the IDEA survey PDF, click on the link on the dashboard to the PDF you created.
+7. The report will now start to generate. I will wait until the report is ready, then review the results!
+8. To logout, I will click on the **Logout** link in the navigation bar!
 
 ## Frequently Asked Questions (FAQs)
 - Who can access my PDFs and Reports?
