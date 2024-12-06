@@ -282,87 +282,145 @@ export default ReportViewer;
 
 ---
 
-### 2.3. Database Normalization
+### 2.3. Database Schema and Normalization
 
 #### 2.3.1. Description
 
-The database schema is designed to ensure consistency, avoid redundancy, and maintain data integrity by adhering to third normal form (3NF). We are using **Prisma** as the Object-Relational Mapping (ORM) tool to manage the database interactions efficiently.
+The database schema is designed to ensure consistency, avoid redundancy, and maintain data integrity by adhering to the principles of third normal form (3NF). We utilize **Prisma** as the Object-Relational Mapping (ORM) tool to efficiently manage all database interactions, ensuring the data model is both flexible and performant.
 
 #### 2.3.2. Key Considerations
+
 1. **Performance:**
-   - **Indexed Queries**: Prisma allows the creation of indexed fields to optimize query performance. For example, indexing on the `userId` field in the `Request` and `ActivityLog` tables ensures quick lookups when fetching all requests or logs related to a user:
-     ```prisma
-     model Request {
-       id        Int      @id @default(autoincrement())
-       userId    Int      @index
-       requestType  Enum
-       status    Enum
-       requestData JSON
-       createdAt DateTime @default(now())
-     }
-     ```
-   - **Efficient Querying**: Prisma's lazy loading and `include` options allow fetching related data (like a user’s requests and associated summaries) in a single query to avoid N+1 problems:
-     ```javascript
-     const userRequests = await prisma.user.findUnique({
-       where: { id: 1 },
-       include: { requests: true },
+   - **Indexed Queries**: The schema employs indexed fields to optimize query performance. For example, the `aNumber` field in the `History`, `Requests`, `Chats`, and `ActivityLog` tables is indexed to ensure efficient lookups. These indexes help in speeding up operations like fetching a user’s history or associated activity logs.
+     
+     - In the `schema.prisma` file, indexes are explicitly defined using the `@@index` directive to facilitate faster searches:
+       ```prisma
+       model History {
+         id       Int     @id @default(autoincrement())
+         aNumber  String  @unique
+         requests Requests[]
+         chats    Chats[]
+         user     User    @relation(fields: [aNumber], references: [aNumber])
+         
+         @@index([aNumber])
+       }
+       ```
+
+   - **Efficient Querying**: Prisma's `include` feature allows related data to be retrieved efficiently in a single query, avoiding the N+1 problem. For example, retrieving a user along with their history and activity logs can be done as follows:
+     ```typescript
+     const userWithHistoryAndLogs = await db.user.findUnique({
+       where: { aNumber: "A123" },
+       include: { history: true, activityLogs: true }
      });
      ```
 
 2. **Maintainability:**
-   - **Schema Evolution**: Prisma’s migration system ensures that changes to the schema can be smoothly introduced. For example, adding a new field like `responseTime` to the `Request` table will automatically generate a migration:
+   - **Schema Evolution**: Prisma’s migration system facilitates the easy evolution of the database schema. For instance, adding a new field such as `preferredName` to the `User` table can be done using Prisma migrations:
      ```bash
-     npx prisma migrate dev --name add_response_time_to_request
+     bun prisma migrate dev --name add_preferred_name_to_user
      ```
-   - **Schema Modularity**: Each entity (User, Request, Summary, ActivityLog) is modularly designed, making updates easier without disrupting other parts of the system. New fields or entities can be added without affecting the overall data flow.
+     This generates a migration script that is then applied to the database to keep the schema up to date.
+   
+   - **Schema Modularity**: Each entity in the schema is designed to be modular, meaning that changes to individual entities (e.g., adding fields or updating relationships) can be made without affecting the entire schema. For example, adding a new relation to the `User` table will not disrupt existing relations between `User`, `Requests`, `Pdfs`, etc.
 
 3. **Integration:**
-   - **AI Summarization and Requests**: Prisma will store the results of AI-driven requests (e.g., summaries) and maintain links between user requests and the AI outputs. For example, after a summary is generated, it will be associated with the request and stored:
-     ```javascript
-     const newSummary = await prisma.summary.create({
-       data: {
-         requestId: requestId,
-         summaryText: generatedSummary,
-         sentimentScore: 0.75,
-       },
-     });
-     ```
-   - **User Activity Logging**: Prisma will track user actions (e.g., logging in, submitting requests) through the `ActivityLog` table. This allows detailed tracking of user behavior, improving auditing and debugging.
-
-4. **Complexity:**
-   - **Relational Simplicity**: The schema avoids unnecessary complexity by focusing on clear, direct relationships between key entities. For instance, a `User` can have many `Requests`, and each `Request` may have one associated `Summary`. This straightforward relational mapping reduces the complexity of joins and simplifies queries.
-   - **Many-to-One and One-to-Many Relationships**: The relationships between `User`, `Request`, `Summary`, and `ActivityLog` are kept simple to maintain data clarity. For example:
-     ```prisma
-     model User {
-       id       Int      @id @default(autoincrement())
-       email    String   @unique
-       requests Request[]
-     }
-
-     model Request {
-       id       Int      @id @default(autoincrement())
-       userId   Int
-       summary  Summary?
-     }
-     ```
-
-5. **Object-Oriented Design:**
-   - **ORM-Driven Models**: Prisma automatically generates strongly-typed models based on the database schema. Each entity (e.g., `User`, `Request`, `Summary`) is mapped to a class-like structure in the application code, allowing object-oriented interaction with the database:
+   - **User and Request Management**: Prisma is used to create, update, and delete users, requests, and other related data, such as PDFs and messages. For example, when a user is created, a corresponding `History` record is also created:
      ```typescript
-     const user = await prisma.user.findUnique({
-       where: { id: userId },
+     const newUser = await db.user.create({
+       data: { aNumber, name, preferredName, email, role },
+     });
+     
+     const newHistory = await db.history.create({
+       data: { aNumber },
      });
      ```
-   - **Encapsulation**: Each entity's behavior is encapsulated within the ORM models, allowing high-level interactions like creating, updating, or querying records without needing to write raw SQL. Transactions between related entities (e.g., `User` creating a `Request` and generating a `Summary`) are managed in a clear, object-oriented way:
+
+   - **User Activity Logging**: The `ActivityLog` table records user actions such as creating a request or submitting a message. This enables better auditing and debugging capabilities:
      ```typescript
-     await prisma.$transaction(async (prisma) => {
-       const request = await prisma.request.create({...});
-       const summary = await prisma.summary.create({...});
+     const newActivityLog = await db.activityLog.create({
+       data: { aNumber, action: "User logged in" },
      });
      ```
 
-By leveraging Prisma’s powerful ORM features, this schema is optimized for performance, maintainability, and integration, allowing for efficient tracking of user activity and the history of their requests. The use of object-oriented design principles and clean, modular relationships ensures that the system remains flexible and scalable as requirements evolve.
+4. **Complexity Management:**
+   - **Relational Simplicity**: The schema maintains straightforward relationships between entities to avoid unnecessary complexity. For instance, each `User` has a one-to-one relationship with `History` and one-to-many relationships with `Requests`, `Chats`, and `Pdfs`. This helps minimize the complexity of joins and keeps the data model easy to understand and work with.
+     
+     - **One-to-One Relationship**: The `User` and `History` models maintain a one-to-one relationship to ensure that each user has a unique history:
+       ```prisma
+       model User {
+         aNumber    String    @id
+         history    History?  @relation(fields: [aNumber], references: [aNumber])
+       }
+       
+       model History {
+         id       Int     @id @default(autoincrement())
+         aNumber  String  @unique
+         user     User    @relation(fields: [aNumber], references: [aNumber])
+       }
+       ```
 
+   - **Cascade Operations**: The schema supports cascading deletions to prevent orphaned records. For example, deleting a user also deletes related records such as their history, requests, and activity logs:
+     ```typescript
+     await db.user.delete({
+       where: { aNumber },
+       include: { history: true, requests: true, chats: true, pdfs: true }
+     });
+     ```
+
+5. **Object-Oriented Design and ORM-Driven Models:**
+   - **ORM-Generated Types**: Prisma generates strongly-typed TypeScript models based on the database schema, simplifying interactions with the database and reducing runtime errors. Each entity (e.g., `User`, `Requests`, `Chats`) is represented as a class-like object that can be directly used in TypeScript code:
+     ```typescript
+     import { User } from "@prisma/client";
+     
+     const getUser = async (aNumber: string): Promise<User | null> => {
+       return await db.user.findUnique({ where: { aNumber } });
+     };
+     ```
+   
+   - **Transaction Management**: Prisma supports transactional operations to ensure data consistency when multiple related records are being created or updated. For example, creating a new chat and its related messages in a single transaction:
+     ```typescript
+     await db.$transaction(async (prisma) => {
+       const newChat = await prisma.chats.create({
+         data: { aNumber, request, schoolYear, class: className, section },
+       });
+       
+       await prisma.messages.create({
+         data: { aNumber, chatId: newChat.id, text: "Hello", sender: "USER" },
+       });
+     });
+     ```
+
+#### 2.3.3. Example Use Cases
+
+- **User and History Creation**: When a new user is created, a `History` entry is automatically generated to track the user's activity. The creation process includes inserting records in both `User` and `History` tables, ensuring referential integrity between the two entities.
+  
+- **PDF and Text Line Management**: Users can upload PDFs which are stored in the `Pdfs` table. Each line in a PDF is stored separately in the `PdfTextLine` table, allowing for fine-grained operations like updating individual lines with attributes such as comments or annotations:
+  ```typescript
+  const newPdf = await db.pdfs.create({
+    data: { aNumber, pdfName, schoolYear, class: className, section },
+  });
+
+  const pdfLines = pdfTextLines.map((line, index) => ({
+    aNumber, lineText: line, lineNumber: index + 1, pdfId: newPdf.id,
+  }));
+
+  await db.pdfTextLine.createMany({ data: pdfLines });
+  ```
+
+- **Deleting Users and Related Data**: The `deleteUser` function deletes a user and all associated data, such as their history, requests, and messages. This cascading deletion ensures that no orphan records are left in the database:
+  ```typescript
+  await db.user.delete({ where: { aNumber }, include: { history: true, requests: true, chats: true, pdfs: true } });
+  ```
+
+#### 2.3.4. Summary
+
+By leveraging Prisma’s powerful ORM features, this schema is optimized for performance, maintainability, and integration, allowing efficient tracking of user activity and managing requests, PDFs, and messages. The use of object-oriented design principles, type safety, and straightforward relationships ensures that the system remains flexible, scalable, and easy to maintain as requirements evolve.
+
+Schema Diagram
+![Diagram](images/Schema.png)
+
+Attribute Diagram
+![Diagram](images/attributes.png)
 ---
 
 ## 3. Module Focus on Key Design Elements
