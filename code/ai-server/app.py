@@ -145,14 +145,11 @@ def summary_test():
 def semantic_test():
     request_data = request.get_json()
 
-    sentiment = random.randint(0,2)
+    sentiment = random.randint(0,1)
 
-    attribute = "explanatory"
-    if(sentiment == 0):
-        attribute = "grading"
-    elif(sentiment == 1):
-        attribute = None
-
+    attribute = "confusing"
+    if(sentiment == 1):
+        attribute = "knowledgeable"
     
     response = {"data":[{"attribute": attribute, "Sentiment": sentiment}]}
     return response, 201

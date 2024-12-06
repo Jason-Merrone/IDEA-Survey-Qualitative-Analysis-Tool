@@ -273,19 +273,19 @@ The Flask server must be running.
 
 #### Steps
 
-1. Send a POST request to `/summary` with the `Content-Type` header set to `application/json` and the following body:
-```json
-{
-    "prompt": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable. The material was challenging, but the professor explained concepts clearly and provided ample office hours for additional support. The course was well-structured, with assignments and exams aligning closely with the learning objectives, and the feedback on assignments was detailed and constructive, helping me improve. I appreciated the inclusion of real-world examples, which made the material relatable, and the effective use of technology, though the online platform occasionally had issues that could be addressed. While the lectures were informative, adding more interactive activities and slowing down during some rushed topics could enhance engagement and comprehension. Overall, this course was challenging but fair, and the professor's accessibility and clear communication made it a rewarding experience."
-}
-```
+1. Send a POST request to `/summary-test` with the `Content-Type` header set to `application/json` and the following body:
+   ```json
+   {
+       "prompt": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable. The material was challenging, but the professor explained concepts clearly and provided ample office hours for additional support. The course was well-structured, with assignments and exams aligning closely with the learning objectives, and the feedback on assignments was detailed and constructive, helping me improve. I appreciated the inclusion of real-world examples, which made the material relatable, and the effective use of technology, though the online platform occasionally had issues that could be addressed. While the lectures were informative, adding more interactive activities and slowing down during some rushed topics could enhance engagement and comprehension. Overall, this course was challenging but fair, and the professor's accessibility and clear communication made it a rewarding experience."
+   }
+   ```
 
 #### Expected Results
 
 The server replies with a 201 and a summary of the provided text is returned in the following format:
 ```json
 {
-   "data": [{ "response": "SUMMARY GOES HERE" }]
+   "data": [{ "response": "Lorem ipsum dolor sit amet" }]
 }
 ```
 
@@ -301,19 +301,19 @@ The Flask server must be running.
 
 #### Steps
 
-1. Send a POST request to `/semantic` with the `Content-Type` header set to `application/json` and the following body:
-```json
-{
-    "comment": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable."
-}
-```
+1. Send a POST request to `/semantic-test` with the `Content-Type` header set to `application/json` and the following body:
+   ```json
+   {
+       "comment": "Professor Smith is extremely knowledgeable and passionate about the subject, which made the course engaging and enjoyable."
+   }
+   ```
 
 #### Expected Results
 
 The server replies with a 201 and an attribute of the provided text is returned in the following format:
 ```json
 {
-   "data": [{ "attribute": "ATTRIBUTE GOES HERE", "sentiment": 0 }]
+   "data": [{ "attribute": "ATTRIBUTE GOES HERE", "Sentiment": 0 }]
 }
 ```
 The returned attribute must be one of the following and must correspond to the respective sentiment number:
@@ -322,3 +322,38 @@ The returned attribute must be one of the following and must correspond to the r
 |---------------|-----------------------------------------------------------|
 | 0             | confusing, unfair, boring, unhelpful, disorganized        |
 | 1             | knowledgeable, engaging, supportive, clear, passionate    |
+
+## Running Automated AI Tests
+
+To run the automated AI tests, navigate to the root `ai-server` directory, install the required dependencies by running `pip install -r requirements.txt`, and then run the tests using `pytest`.
+
+## Automated Tests for AI
+
+### Summary Function Test
+
+- **Functionality Tested**: `/summary-test` endpoint
+- **Expected Results**: A successful response with a placeholder summary.
+- **Implementation**:
+    ```python
+    def test_summary_endpoint(self):
+        response = self.client.post('/summary-test', data=json.dumps({"prompt": "Some professor reviews"}),
+                                    content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        self.assertTrue("Lorem ipsum dolor sit amet" in response.json['data'][0]['response'])
+    ```
+
+### Semantic Analysis Test
+
+- **Functionality Tested**: `/semantic-test` endpoint
+- **Expected Results**: A successful response with a valid attribute and sentiment value.
+- **Implementation**:
+    ```python
+    def test_semantic_endpoint(self):
+        response = self.client.post('/semantic-test', data=json.dumps({"comment": "The professor was great"}),
+                                    content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        expected_attributes = ['confusing', 'unfair', 'boring', 'unhelpful', 'disorganized', 'knowledgeable', 'engaging', 'supportive', 'clear', 'passionate', 'other']
+        actual_data = response.json['data'][0]
+        self.assertIn(actual_data['attribute'], expected_attributes)
+        self.assertTrue(actual_data['Sentiment'] in [0, 1, None])
+    ```
