@@ -1,8 +1,8 @@
-# Sprint 4 Backlog
-
+# Sprint 4 - Development
 ## Sprint Overview
-- **Goal**: Integrate the PDF uploader, PDF parser, and AI APIs to finish our MVP for testing and refinements next sprint.
-- **Goal**: Time-box tasks and conduct brief check-ins during stand-up meetings for active tasks.
+- **Sprint Team Lead**: Brigham Byerly
+- **Sprint Goal**: Integrate the PDF uploader, PDF parser, and AI APIs to finish our MVP for testing and refinements next sprint.
+- **Sprint Goal**: Time-box tasks and conduct brief check-ins during stand-up meetings for active tasks.
 
 ---
 

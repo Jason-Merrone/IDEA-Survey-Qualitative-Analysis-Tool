@@ -1,7 +1,8 @@
-# Sprint 1 Backlog
-
+# Sprint 2 - Development
 ## Sprint Overview
+- **Sprint Team Lead**: Ethan Stapley
 - **Sprint Goal**: Set up foundational elements, including UI framework, database setup, AI setup, and initial API integration.
+- **Sprint Goal**: Complete High-Level and Low-Level Design Documents
 
 ---
 
@@ -9,9 +10,9 @@
 
 | Task ID | Task Name                          | Status       | Priority | Est. Hours | Assigned To     | Notes                    |
 |---------|------------------------------------|--------------|----------|------------|-----------------|--------------------------|
-| 1       | Set up Next.js project             | Finished     | High     | -          | Ethan B         |                          |
-| 2       | Implement basic routing/ API Routes| Finished     | High     | -          | Brigham/ Ethan B|                          |
-| 3       | Design initial UI layout           | Finished     | High     | -          | Ethan S         | Use USU branding standards|
+| 1       | Set up Next.js project             | Finished     | High     | -          | Ethan B.        |                          |
+| 2       | Implement basic routing/ API Routes| Finished     | High     | -          | Brigham/Ethan B.|                          |
+| 3       | Design initial UI layout           | Finished     | High     | -          | Ethan S.        | Use USU branding standards|
 | 4       | Set up database with Prisma        | Finished     | High     | -          | Trevor          |                          |
 | 6       | Implement SSO authentication       | Finished     | High     | -          | Brandon         |                          |
 | 7       | AI Data Set Functioning            | Finished     | High     | -          | Jason           |                          |
