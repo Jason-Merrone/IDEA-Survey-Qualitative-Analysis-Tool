@@ -66,6 +66,7 @@ git clone --single-branch --branch master https://gitlab.cs.usu.edu/a02297804/cs
 In your current terminal window, navigate to `code/ai-server` (the AI server directory) in the project repository. Once you are in the correct directory, use the following commands to create a virtual Python environment and install the necessary dependencies.
 
 Creating the Virtual Environment:
+
 ```bash
 python3 -m venv env
 source env/bin/activate    # On macOS and Linux
@@ -73,22 +74,56 @@ env\Scripts\activate       # On Windows
 ```
 
 Installing Dependencies:
+
 ```bash
 pip3 install -r requirements.txt
 ```
 
-From the AI server directory (`code/ai-server`), navigate to `/train/loras`. 
+From the AI server directory (`code/ai-server`), navigate to `/train`.
 
-Due to the large file size, you will need to download the compressed Lora files from [Box](https://usu.box.com/s/lkhwa4i88vzo97z94eiahzrned3xg5q3) and place the downloaded file in `code/ai-server/train/loras`.
+Due to the large file size, you will need to download the compressed Lora files from [Box](https://usu.box.com/s/lkhwa4i88vzo97z94eiahzrned3xg5q3) and place the downloaded file in `code/ai-server/train`.
 
-In this directory (`code/ai-server/train/loras`), run the following command to uncompress the AI model training files:
+In this directory (`code/ai-server/train`), run the following command to uncompress the AI model training files:
+
 ```bash
 tar -xzf loras.tar.gz
 ```
 
 After uncompressing the training files, return to the AI server directory (`code/ai-server`) and run the following command to download the AI model and start the Flask server hosting the model:
+
 ```bash
 flask run
+```
+
+**IMPORTANT NOTE**: If you intend to run the model on a CPU, you must use Llama 3.2 3B instruct in full precision rather than quantized. The unquantized model can be found here: [Llama 3.2-3B Instruct on Hugging Face](https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct). This is a gated repository, so you will need to gain access (Access is typically granted within  an hour or two on a business day).
+
+After gaining access, replace the following code:
+
+```python
+base_model_id = "unsloth/Llama-3.2-3B-Instruct-bnb-4bit"
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+tokenizer = AutoTokenizer.from_pretrained(base_model_id)
+model = AutoModelForCausalLM.from_pretrained(
+    base_model_id,
+    device_map=device).to(device)
+```
+
+With this code:
+
+```python
+token = "your_hf_authentication_token"  # Replace with your actual HF token
+base_model_id = "meta-llama/Llama-3.2-3B-Instruct"
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
+tokenizer = AutoTokenizer.from_pretrained(base_model_id, use_auth_token=token)
+model = AutoModelForCausalLM.from_pretrained(
+    base_model_id,
+    use_auth_token=token,
+    device_map="auto" if device == "cuda" else None,
+).to(device)
 ```
 
 ## Setup Script
